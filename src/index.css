@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+@font-face {
+  font-family: RalphieTall;
+  src: url("@/fonts/RalphieTall.otf") format("opentype");
+}
+
+:root,
+#root,
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Open Sans", sans-serif;
+  height: 100%;
+  overflow-x: hidden;
+
+  --border-check: 1px solid black;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.app {
+  height: 100%;
+  transition: background 300ms ease-in-out;
+}
+
+a {
+  text-decoration: none;
+}
+
+.z-100 {
+  z-index: 100;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #242427;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background: #48494e;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #2a2b24;
+}
+
+/* UTILITY CLASSES */
+
+.nowrap {
+  white-space: nowrap;
+}
+
