@@ -19,13 +19,16 @@ const Home = (props: Props) => {
           </h1>
         </div>
         <div className="home__video-container">
-          <iframe
-            src="https://www.youtube.com/embed/KudedLV0tP0?si=LMRpAUCSma9fBpNG"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
+          <div>
+            <iframe
+              src="https://www.youtube.com/embed/KudedLV0tP0?si=LMRpAUCSma9fBpNG"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+            <p>THE ERAS TOUR CONCERT FILM TRAILER</p>
+          </div>
         </div>
       </div>
     </section>
