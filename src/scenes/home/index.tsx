@@ -12,7 +12,10 @@ const Home = (props: Props) => {
         <div className="home__text-container">
           <h1>
             Venture on a magical journey through the different eras of{" "}
-            <span className="nowrap">Taylor Swift's</span> music!
+            <span className="nowrap">
+              <span className="taylor-swift">Taylor Swift</span>'s
+            </span>{" "}
+            music!
           </h1>
         </div>
         <div className="home__video-container">
