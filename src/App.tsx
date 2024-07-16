@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./scenes/navbar";
 import "./index.css";
 import Home from "./scenes/home";
+import Terminologies from "./scenes/terminologies";
 
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
@@ -34,6 +35,7 @@ const App = () => {
     <div className="app" style={{ background: backgoundColor }}>
       <Navbar selectedEra={selectedEra} setSelectedEra={setSelectedEra} />
       <Home />
+      {/* <Terminologies /> */}
     </div>
   );
 };

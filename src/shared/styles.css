@@ -1,0 +1,32 @@
+button {
+  padding-inline: 3rem;
+  border-radius: 15px;
+  border: 2px solid;
+  transition: background-color 200ms ease-in-out;
+}
+
+button p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  transition: color 200ms ease-in-out;
+}
+
+/* @media only screen and (max-width: 600px), only screen and (max-height: 600px) {
+  .home__text-container h1 {
+    font-size: 2.5rem;
+  }
+
+  .home__text-container {
+    padding: 1rem;
+  }
+} */
+
+@media only screen and (max-width: 600px), only screen and (max-height: 600px) {
+  button {
+    padding-inline: 1.5rem;
+  }
+  button p {
+    font-size: 1rem;
+  }
+}
