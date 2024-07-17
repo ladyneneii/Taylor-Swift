@@ -34,9 +34,11 @@ const Terminologies = (props: Props) => {
         <h1>
           Some Terminologies Before <span className="nowrap">We Start</span>
         </h1>
-        <div className="home__eras-tv-container">
-          <div className="home__eras-container">
-            <h3>What is the Eras Tour?</h3>
+      </div>
+      <div className="terms__eras-tv-container">
+        <div className="terms__eras-container">
+          <h1>What is the Eras Tour?</h1>
+          <div className="terms__eras-vid-container">
             <p>
               The Eras Tour is Taylor Swift's sixth concert and worldwide tour,
               starting in March 2023 and ending in December 2024. She divides
@@ -45,9 +47,20 @@ const Terminologies = (props: Props) => {
               except for the songs in the Acoustic Set, where she plays
               "surprise" songs from any album on a guitar or piano.
             </p>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/KudedLV0tP0?si=SwmdGfcIKuyPOj2Y"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
           </div>
-          <div className="home__tv-container">
-            <h3>What is Taylor's Version (TV)?</h3>
+        </div>
+        <div className="terms__tv-container">
+          <h1>What is Taylor's Version (TV)?</h1>
+          <div className="terms__tv-pics-container">
             <p>
               Taylor's Version refers to Taylor Swift's rerecording of her first
               six albums (Taylor Swift, Fearless, Speak Now, Red, 1989, and
@@ -69,12 +82,12 @@ const Terminologies = (props: Props) => {
               </span>{" "}
               that song.
             </p>
-            <p>
-              As of the {getCurrentDateFormatted()}, Taylor Swift has yet to
-              release the Taylor's Version of Taylor Swift (first and debut
-              album) and Reputation (sixth album).
-            </p>
           </div>
+          <p>
+            As of the {getCurrentDateFormatted()}, Taylor Swift has yet to
+            release the Taylor's Version of Taylor Swift (first and debut album)
+            and Reputation (sixth album).
+          </p>
         </div>
       </div>
     </div>

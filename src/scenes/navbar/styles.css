@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--responsive-padding);
+  padding: var(--container-padding);
   width: clamp(300px, 100%, 2040px);
   overflow-x: auto;
   z-index: 30;

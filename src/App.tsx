@@ -35,7 +35,9 @@ const App = () => {
     <div className="app" style={{ background: backgoundColor }}>
       <Navbar selectedEra={selectedEra} setSelectedEra={setSelectedEra} />
       <Home />
-      {/* <Terminologies />  */}
+      <section className="eras-container" style={{backgroundColor: backgoundColor}}>
+        <Terminologies />
+      </section>
     </div>
   );
 };

@@ -18,7 +18,7 @@ body {
   --border-check: 1px solid black;
 
   --responsive-width: min(1600px, 100%);
-  --responsive-padding: 1.5rem 3rem;
+  --container-padding: 1.5rem 3rem;
 }
 
 *,
@@ -29,7 +29,63 @@ body {
 
 .app {
   transition: background 300ms ease-in-out;
-  /* min-width: 500px; */
+  /* width: clamp(300px, 100%, 2040px); is not added here because when the screen size becomes too big that the max-width of 2040px is reached, i need the .app to surpass it, allowing for a background color on the extra space on the sides. adding the property will limit .app to 2040px only. */
+}
+
+.eras-container {
+  /* background-color: white; */
+  width: clamp(300px, 100%, 2040px);
+  margin-inline: auto;
+  padding: var(--container-padding);
+}
+
+.eras-container h1 {
+  font-size: 2rem;
+}
+
+.eras-container p {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+
+.eras-container iframe {
+  border-radius: 30px;
+  width: 560px;
+  height: 315px;
+}
+
+@media only screen and (max-width: 750px) {
+  .eras-container {
+    padding: 1rem;
+  }
+
+  .eras-container iframe {
+    width: 450px;
+    height: 253.13px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .eras-container iframe {
+    width: 400px;
+    height: 225px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  /* this is to avoid white background color when screen size becomes too small that the min-width of 300px is reached, surpassing the default width of .app, causing white background. */
+  .app {
+    width: clamp(300px, 100%, 2040px); 
+  }
+
+  .eras-container {
+    padding: 0;
+  }
+
+  .eras-container iframe {
+    width: 300px;
+    height: 168.75px;
+  }
 }
 
 a {
@@ -66,6 +122,3 @@ a {
 .underline {
   text-decoration: underline;
 }
-
-
-
