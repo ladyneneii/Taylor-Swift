@@ -1,3 +1,60 @@
 .terms__container {
-    background-color: white;
+  /* background-color: white; */
+  width: 100%;
+  min-height: 600px;
+  min-width: 500px;
+  padding: var(--responsive-padding);
+}
+
+.terms__h1-container {
+  text-align: center;
+}
+
+.terms__container h1 {
+  /* margin: 0;
+  padding: 0; */
+  font-weight: 500;
+  font-size: 4rem;
+  color: white;
+  font-family: RalphieTall;
+  letter-spacing: 0.3rem;
+}
+
+.home__eras-tv-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.home__eras-tv-container h3 {
+  margin: 0;
+}
+
+.home__eras-tv-container p {
+  line-height: 2rem;
+  
+}
+
+.home__eras-container {
+  border: 5px solid yellow;
+  flex-basis: 50%;
+  text-align: start;
+  padding: var(--responsive-padding);
+  background-color: white;
+  border-radius: 30px;
+}
+
+.home__tv-container {
+  border: 5px solid yellow;
+  flex-basis: 50%;
+  text-align: start;
+  padding: var(--responsive-padding);
+  background-color: white;
+  border-radius: 30px;
+}
+
+@media only screen and (max-width: 600px), only screen and (max-height: 600px) {
+  .terms__container {
+    padding: 1rem;
+  }
 }

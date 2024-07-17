@@ -4,11 +4,14 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--responsive-padding);
-  width: 100%;
+  width: clamp(300px, 100%, 2040px);
+  overflow-x: auto;
   z-index: 30;
   background-color: rgba(255, 255, 255, 0);
   backdrop-filter: blur(50px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav__eras-container {
@@ -91,7 +94,7 @@
   overflow: hidden;
 }
 
-@media only screen and (max-width: 600px), only screen and (max-height: 600px) {
+@media only screen and (max-width: 750px), only screen and (max-height: 750px) {
   .nav__container {
     padding: 1rem;
   }
@@ -105,9 +108,12 @@
   }
 }
 
-@media only screen and (max-width: 400px), only screen and (max-height: 400px) {
+@media only screen and (max-width: 470px), only screen and (max-height: 470px) {
+  .nav__container-sm-eras-container {
+    overflow: auto;
+  }
+
   .nav__container-sm.slide-in {
     width: 100%;
-    overflow: auto;
   }
 }

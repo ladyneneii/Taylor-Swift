@@ -12,14 +12,14 @@ type Props = {
 };
 
 const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
-  const isAboveLargeScreens = useMediaQuery("(min-width: 1320px)");
+  const isAboveLargeScreens = useMediaQuery("(min-width: 1400px)");
   const [showSidebar, setShowSidebar] = useState(false);
   const sidebarRef = useRef(null);
   useOutsideClick({ ref: sidebarRef, setVisibility: setShowSidebar });
 
   const eras = [
     "Home",
-    "Debut",
+    "Taylor Swift",
     "Fearless",
     "Speak Now",
     "Red",

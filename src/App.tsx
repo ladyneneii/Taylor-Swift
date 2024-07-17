@@ -8,7 +8,7 @@ const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
   const eras = [
     "Home",
-    "Debut",
+    "Taylor Swift",
     "Fearless",
     "Speak Now",
     "Red",
@@ -35,7 +35,7 @@ const App = () => {
     <div className="app" style={{ background: backgoundColor }}>
       <Navbar selectedEra={selectedEra} setSelectedEra={setSelectedEra} />
       <Home />
-      {/* <Terminologies /> */}
+      {/* <Terminologies />  */}
     </div>
   );
 };

@@ -14,12 +14,11 @@ body {
   box-sizing: border-box;
   scroll-behavior: smooth;
   font-family: "Open Sans", sans-serif;
-  overflow-x: hidden;
 
   --border-check: 1px solid black;
 
   --responsive-width: min(1600px, 100%);
-  --responsive-padding: 1.5rem max(4vw, 3rem);
+  --responsive-padding: 1.5rem 3rem;
 }
 
 *,
@@ -30,6 +29,7 @@ body {
 
 .app {
   transition: background 300ms ease-in-out;
+  /* min-width: 500px; */
 }
 
 a {
@@ -62,4 +62,10 @@ a {
 .nowrap {
   white-space: nowrap;
 }
+
+.underline {
+  text-decoration: underline;
+}
+
+
 
