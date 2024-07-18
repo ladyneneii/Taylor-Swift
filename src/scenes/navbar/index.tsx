@@ -68,12 +68,14 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
     >
       <div className="nav__container">
         <div className="nav__logo">
-          <img
-            src={Eras_Tour_Logo}
-            width={150}
-            alt="debut-logo"
-            className="nav__logo"
-          />
+          <a href="#home">
+            <img
+              src={Eras_Tour_Logo}
+              width={150}
+              alt="debut-logo"
+              className="nav__logo"
+            />
+          </a>
         </div>
         <div className="nav__eras-container">
           {isAboveLargeScreens ? (

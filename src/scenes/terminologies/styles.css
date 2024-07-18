@@ -1,15 +1,5 @@
-.terms__h1-container {
-  text-align: center;
-}
-
-.terms__h1-container h1 {
-  /* margin: 0;
-  padding: 0; */
-  font-weight: 500;
-  font-size: 4rem;
-  color: white;
-  font-family: RalphieTall;
-  letter-spacing: 0.3rem;
+.terms__container {
+  padding: 3rem 0;
 }
 
 .terms__eras-tv-container {
@@ -18,7 +8,7 @@
   gap: 2rem;
 }
 
-.terms__eras-tv-container h3 {
+.terms__eras-tv-container h1 {
   margin: 0;
 }
 
@@ -36,23 +26,65 @@
   gap: 2rem;
 }
 
-.terms__eras-vid-container p {
-  /* width: 50%; */
+.terms__container p {
   flex: 1;
 }
 
+.terms__tv-pics-text-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.terms__tv-pics-container {
+  display: inline-grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 1rem;
+  align-items: center;
+  /* align-content: center;
+  justify-content: center; */
+  place-content: center;
+  width: 600px;
+}
+
+.terms__tv-pics-container img {
+  width: 100%;
+}
+
 @media only screen and (max-width: 1400px) {
-  .terms__eras-vid-container {
+  .terms__eras-vid-container,
+  .terms__tv-pics-text-container {
     flex-direction: column;
   }
 
   .terms__eras-vid-container iframe {
     align-self: center;
   }
+
+  .terms__tv-pics-text-container {
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  .terms__tv-pics-text-container p {
+    order: -1;
+  }
 }
 
-@media only screen and (max-width: 470px) {
-  .terms__h1-container h1 {
-  font-size: 3rem;
+@media only screen and (max-width: 750px) {
+  .terms__tv-pics-container {
+    width: 450px;
+  }
 }
+
+@media only screen and (max-width: 500px) {
+  .terms__tv-pics-container {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .terms__tv-pics-container {
+    width: 300px;
+  }
 }

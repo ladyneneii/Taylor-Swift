@@ -23,7 +23,7 @@ const App = () => {
 
   const erasColor = [
     "black",
-    // "linear-gradient(180deg, #203e24 0%, #18a5bf 100%)",
+    "linear-gradient(180deg, #203e24 0%, #18a5bf 100%)",
     // "linear-gradient(180deg, #203e24 0%, #18a5bf 100%)",
     "green",
     "yellow",
@@ -35,7 +35,7 @@ const App = () => {
     <div className="app" style={{ background: backgoundColor }}>
       <Navbar selectedEra={selectedEra} setSelectedEra={setSelectedEra} />
       <Home />
-      <section className="eras-container" style={{backgroundColor: backgoundColor}}>
+      <section className="eras-container">
         <Terminologies />
       </section>
     </div>

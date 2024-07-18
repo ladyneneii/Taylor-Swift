@@ -7,7 +7,7 @@ type Props = {};
 
 const Home = (props: Props) => {
   return (
-    <section className="home__container">
+    <section id="home" className="home__container">
       <img src={Hero} className="home__hero" alt="taylor-swift-eras-tour" />
       <div className="home__text-container">
         <h1>

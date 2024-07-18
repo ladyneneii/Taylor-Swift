@@ -34,6 +34,7 @@ body {
 
 .eras-container {
   /* background-color: white; */
+  transition: background 300ms ease-in-out;
   width: clamp(300px, 100%, 2040px);
   margin-inline: auto;
   padding: var(--container-padding);
@@ -72,7 +73,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
   /* this is to avoid white background color when screen size becomes too small that the min-width of 300px is reached, surpassing the default width of .app, causing white background. */
   .app {
     width: clamp(300px, 100%, 2040px); 

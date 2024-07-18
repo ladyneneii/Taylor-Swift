@@ -1,5 +1,10 @@
 import React from "react";
 import "./styles.css";
+import Title from "@/shared/Title";
+import FearlessTV from "@/assets/fearless-logo.png";
+import SpeakNowTV from "@/assets/speak-now-logo.png";
+import RedTV from "@/assets/red-logo.png";
+import NineteenEightyNineTV from "@/assets/1989-logo.png";
 
 type Props = {};
 
@@ -30,11 +35,9 @@ const Terminologies = (props: Props) => {
 
   return (
     <div className="terms__container">
-      <div className="terms__h1-container">
-        <h1>
-          Some Terminologies Before <span className="nowrap">We Start</span>
-        </h1>
-      </div>
+      <Title color="white">
+        Some Terminologies Before <span className="nowrap">We Start</span>
+      </Title>
       <div className="terms__eras-tv-container">
         <div className="terms__eras-container">
           <h1>What is the Eras Tour?</h1>
@@ -42,10 +45,11 @@ const Terminologies = (props: Props) => {
             <p>
               The Eras Tour is Taylor Swift's sixth concert and worldwide tour,
               starting in March 2023 and ending in December 2024. She divides
-              the setlist of her concert into her first 11 albums or eras, each
-              having its dedicated set. The setlist is already predetermined,
-              except for the songs in the Acoustic Set, where she plays
-              "surprise" songs from any album on a guitar or piano.
+              the setlist of her concert into her first 11 albums or eras (10
+              eras at first before the release of the 11th album last April
+              2024), each having its dedicated set. The setlist is already
+              predetermined, except for the songs in the Acoustic Set, where she
+              plays "surprise" songs from any album on a guitar or piano.
             </p>
             <iframe
               width="560"
@@ -60,7 +64,25 @@ const Terminologies = (props: Props) => {
         </div>
         <div className="terms__tv-container">
           <h1>What is Taylor's Version (TV)?</h1>
-          <div className="terms__tv-pics-container">
+          <div className="terms__tv-pics-text-container">
+            <div className="terms__tv-pics-container">
+              <div>
+                <img  src={FearlessTV} alt="fearless-tv-logo" />
+              </div>
+              <div>
+                <img  src={SpeakNowTV} alt="speak-now-tv-logo" />
+              </div>
+              <div>
+                <img  src={RedTV} alt="red-tv-logo" />
+              </div>
+              <div>
+                <img
+                  
+                  src={NineteenEightyNineTV}
+                  alt="1989-tv-logo"
+                />
+              </div>
+            </div>
             <p>
               Taylor's Version refers to Taylor Swift's rerecording of her first
               six albums (Taylor Swift, Fearless, Speak Now, Red, 1989, and
