@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Navbar from "./scenes/navbar";
 import "./index.css";
 import Home from "./scenes/home";
+import EraContainer from "./shared/EraContainer";
 import Terminologies from "./scenes/terminologies";
+import TaylorSwift from "./scenes/taylor-swift";
 
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
@@ -23,21 +25,23 @@ const App = () => {
 
   const erasColor = [
     "black",
-    "linear-gradient(180deg, #203e24 0%, #18a5bf 100%)",
-    // "linear-gradient(180deg, #203e24 0%, #18a5bf 100%)",
-    "green",
-    "yellow",
+    "linear-gradient(to bottom, #000000 0%, #203e24 10%, #18a5bf 100%)",
   ];
 
   const backgoundColor = erasColor[eras.indexOf(selectedEra)];
 
   return (
-    <div className="app" style={{ background: backgoundColor }}>
-      <Navbar selectedEra={selectedEra} setSelectedEra={setSelectedEra} />
-      <Home />
-      <section className="eras-container">
-        <Terminologies />
+    <div className="app">
+      <section style={{ backgroundColor: erasColor[eras.indexOf("Home")] }}>
+        <Navbar selectedEra={selectedEra} setSelectedEra={setSelectedEra} />
+        <Home />
       </section>
+      <EraContainer bgcolor={erasColor[eras.indexOf("Home")]}>
+        <Terminologies />
+      </EraContainer>
+      <EraContainer bgcolor={erasColor[eras.indexOf("Taylor Swift")]}>
+        <TaylorSwift />
+      </EraContainer>
     </div>
   );
 };

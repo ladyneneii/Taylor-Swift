@@ -45,42 +45,52 @@ const Terminologies = (props: Props) => {
             <p>
               The Eras Tour is Taylor Swift's sixth concert and worldwide tour,
               starting in March 2023 and ending in December 2024. She divides
-              the setlist of her concert into her first 11 albums or eras (10
-              eras at first before the release of the 11th album last April
+              the setlist of the 3-hour concert into her first 11 albums or eras
+              (10 eras at first before the release of the 11th album last April
               2024), each having its dedicated set. The setlist is already
-              predetermined, except for the songs in the Acoustic Set, where she
-              plays "surprise" songs from any album on a guitar or piano.
+              predetermined, except for the songs in the acoustic set, where she
+              plays any songs from any of her 11 albums on a guitar or piano, hence so famously called the "surprise songs." <br />
+              <p>
+                On the 13th of October, 2023, Taylor Swift released a film
+                version of the Eras Tour with some songs excluded due to the
+                film's length.
+              </p>
             </p>
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/KudedLV0tP0?si=SwmdGfcIKuyPOj2Y"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
+            <div className="terms__iframe-container">
+              <iframe
+                src="https://www.youtube.com/embed/KudedLV0tP0?si=SwmdGfcIKuyPOj2Y"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+              <p className="media-title">THE ERAS TOUR CONCERT FILM TRAILER</p>
+            </div>
           </div>
         </div>
         <div className="terms__tv-container">
           <h1>What is Taylor's Version (TV)?</h1>
           <div className="terms__tv-pics-text-container">
-            <div className="terms__tv-pics-container">
-              <div>
-                <img  src={FearlessTV} alt="fearless-tv-logo" />
+            <div className="terms__tv-pics-media-title-container">
+              <div className="terms__tv-pics-container">
+                <div>
+                  <img src={FearlessTV} alt="fearless-tv-logo" />
+                </div>
+                <div>
+                  <img src={SpeakNowTV} alt="speak-now-tv-logo" />
+                </div>
+                <div>
+                  <img src={RedTV} alt="red-tv-logo" />
+                </div>
+                <div>
+                  <img src={NineteenEightyNineTV} alt="1989-tv-logo" />
+                </div>
               </div>
               <div>
-                <img  src={SpeakNowTV} alt="speak-now-tv-logo" />
-              </div>
-              <div>
-                <img  src={RedTV} alt="red-tv-logo" />
-              </div>
-              <div>
-                <img
-                  
-                  src={NineteenEightyNineTV}
-                  alt="1989-tv-logo"
-                />
+                <p className="media-title">
+                  Albums that currently have a{" "}
+                  <span className="nowrap">Taylor's Version</span>
+                </p>
               </div>
             </div>
             <p>

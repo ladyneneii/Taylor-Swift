@@ -1,14 +1,14 @@
 import React from 'react'
 
 type Props = {
-    color: string;
+    color?: string;
     children: React.ReactNode
 }
 
 const Title = ({color, children}: Props) => {
   return (
     <div className="title__container">
-      <h1 style={{color: color}}>
+      <h1 style={{color: color || "white"}}>
         {children}
       </h1>
     </div>
