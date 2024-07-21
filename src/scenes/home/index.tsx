@@ -16,7 +16,7 @@ const Home = (props: Props) => {
           different eras of her music!
         </h1>
         <div className="home__start-btn-container">
-          <Button bgcolor="white" color="black">START</Button>
+          <Button bgcolor="white" color="black" section="terms">START</Button>
         </div>
       </div>
     </section>

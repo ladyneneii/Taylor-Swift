@@ -19,6 +19,7 @@ body {
 
   --responsive-width: min(1600px, 100%);
   --container-padding: 1.5rem 3rem;
+  --border-radius: 30px;
 }
 
 *,
@@ -41,7 +42,7 @@ body {
 }
 
 iframe {
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   width: 560px;
   height: 315px;
 }

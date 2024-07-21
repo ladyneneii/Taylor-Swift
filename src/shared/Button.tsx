@@ -4,13 +4,17 @@ import "./styles.css";
 type Props = {
   bgcolor: string;
   color: string;
+  section: string;
   children: React.ReactNode;
 };
 
-const Button = ({ bgcolor, color, children }: Props) => {
+const Button = ({ bgcolor, color, section, children }: Props) => {
   const [isHovered, SetIsHovered] = useState(false);
+
   return (
     <button
+      // onClick={() => (window.location.hash = "terms")}
+      onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth" })}
       onMouseEnter={() => SetIsHovered(true)}
       onMouseLeave={() => SetIsHovered(false)}
       style={{

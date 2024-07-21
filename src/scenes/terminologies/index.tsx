@@ -34,7 +34,7 @@ const Terminologies = (props: Props) => {
   };
 
   return (
-    <div className="terms__container">
+    <div id="terms" className="terms__container">
       <Title color="white">
         Some Terminologies Before <span className="nowrap">We Start</span>
       </Title>

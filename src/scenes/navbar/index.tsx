@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./styles.css";
 import Eras_Tour_Logo from "@/assets/the-eras-tour-logo.png";
-import Debut_Logo from "@/assets/debut-logo.png";
 import { IoMenu, IoClose } from "react-icons/io5";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import useOutsideClick from "@/hooks/useOutsideClick";
@@ -54,6 +53,10 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
     else return `selectedEra ${textColor}`;
   };
 
+  const formatEraId = (currEra: string) => {
+    return currEra.toLowerCase().replace(/\s+/g, "");
+  };
+
   useEffect(() => {
     if (isAboveLargeScreens) {
       setShowSidebar(false);
@@ -66,39 +69,41 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
     <nav
     // style={{ backgroundColor: backgroundColor }}
     >
-      <div className="nav__container">
-        <div className="nav__logo">
-          <a href="#home">
-            <img
-              src={Eras_Tour_Logo}
-              width={150}
-              alt="debut-logo"
-              className="nav__logo"
-            />
-          </a>
-        </div>
-        <div className="nav__eras-container">
-          {isAboveLargeScreens ? (
-            eras.map((era, index) => (
-              <div className="nav__eras-link" key={index}>
-                <a
-                  href={`#${era}`}
-                  style={{ color: textColor }}
-                  className={borderColor(era)}
-                  onClick={() => setSelectedEra(era)}
-                >
-                  {era}
-                </a>
-              </div>
-            ))
-          ) : (
-            <IoMenu
-              size={50}
-              className="nav__hamburger"
-              style={{ color: textColor }}
-              onClick={() => setShowSidebar(true)}
-            />
-          )}
+      <div className="nav__parent-container">
+        <div className="nav__container">
+          <div className="nav__logo">
+            <a href="#home">
+              <img
+                src={Eras_Tour_Logo}
+                width={150}
+                alt="debut-logo"
+                className="nav__logo"
+              />
+            </a>
+          </div>
+          <div className="nav__eras-container">
+            {isAboveLargeScreens ? (
+              eras.map((era, index) => (
+                <div className="nav__eras-link" key={index}>
+                  <a
+                    href={`#${formatEraId(era)}`}
+                    style={{ color: textColor }}
+                    className={borderColor(era)}
+                    onClick={() => setSelectedEra(era)}
+                  >
+                    {era}
+                  </a>
+                </div>
+              ))
+            ) : (
+              <IoMenu
+                size={50}
+                className="nav__hamburger"
+                style={{ color: textColor }}
+                onClick={() => setShowSidebar(true)}
+              />
+            )}
+          </div>
         </div>
       </div>
 
@@ -122,7 +127,7 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
           {eras.map((era, index) => (
             <div key={index} className="nav__eras-link">
               <a
-                href={`#${era}`}
+                href={`#${formatEraId(era)}`}
                 style={{ color: textColor }}
                 className={borderColor(era)}
                 onClick={() => setSelectedEra(era)}
