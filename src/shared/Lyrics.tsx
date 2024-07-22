@@ -5,7 +5,7 @@ type Props = {
 };
 
 const Lyrics = ({ lines }: Props) => {
-  return <div>Lyrics</div>;
+  return <div className="lyrics__container">Lyrics</div>;
 };
 
 export default Lyrics;
