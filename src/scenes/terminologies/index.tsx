@@ -47,7 +47,7 @@ const Terminologies = (props: Props) => {
               starting in March 2023 and ending in December 2024. She divides
               the setlist of the 3-hour concert into her first 11 albums or eras
               (10 eras at first before the release of the 11th album last April
-              2024), each having its dedicated set. The setlist is already
+              2024), each having its dedicated set excluding the first album. The setlist is already
               predetermined, except for the songs in the acoustic set, where she
               plays any songs from any of her 11 albums on a guitar or piano, hence so famously called the "surprise songs." <br />
               <p>

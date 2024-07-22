@@ -20,6 +20,11 @@ body {
   --responsive-width: min(1600px, 100%);
   --container-padding: 1.5rem 3rem;
   --border-radius: 30px;
+
+  /* TAYLOR SWIFT */
+  --debut-green: #203e24;
+  --debut-teal: #18a5bf;
+  --debut-brown: #ae8c64;
 }
 
 *,
@@ -84,6 +89,7 @@ a {
 
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
