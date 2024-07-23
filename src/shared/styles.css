@@ -63,7 +63,6 @@ button p {
   padding: 0; */
   font-weight: 500;
   font-size: 4rem;
-  color: white;
   font-family: RalphieTall;
   letter-spacing: 0.3rem;
 }
@@ -94,10 +93,14 @@ button p {
 .carousel__container img {
   height: 250px;
   border-radius: var(--border-radius);
+  cursor: pointer;
 }
 
-.carousel__container img:hover {
-  cursor: pointer;
+.carousel__container .img-border-black:hover {
+  border: 2px solid black;
+}
+
+.carousel__container .img-border-white:hover {
   border: 2px solid white;
 }
 
@@ -156,7 +159,7 @@ button p {
 }
 
 .modal__container .img-container {
-  /* make sure to set a value to height so that the img shrinks as the screen is resized vertically */
+  /* make sure to set a value to height so that the CONTAINER scales as the screen is resized vertically */
   height: 90%;
   display: flex;
   flex-direction: column;
@@ -164,10 +167,8 @@ button p {
 }
 
 .modal__container p {
-  background-color: black;
   border-radius: 15px;
   padding: 0.5rem;
-  color: white;
   font-size: 1.5rem;
   letter-spacing: 0.3rem;
   /* align-self: center; */
@@ -177,11 +178,11 @@ button p {
 
 .modal__container p:hover {
   cursor: pointer;
-  color: rgb(176, 176, 176);
+  text-decoration: underline;
 }
 
 .modal__container img {
-  /* set both properties to 100% so the img scales accordingly as screen is resized whether horizontally or vertically */
+  /* set both properties to 100% so the IMG scales accordingly as screen is resized whether horizontally or vertically */
   max-width: 100%;
   max-height: 100%;
   /* setting width and height to 100% will cause the img to stretch and not be properly scaled as it will always occupy the full space of the parent */

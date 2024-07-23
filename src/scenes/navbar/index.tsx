@@ -18,7 +18,7 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
   useOutsideClick({ ref: sidebarRef, setVisibility: setShowSidebar });
 
   const textColor = erasColor[eras.indexOf(selectedEra)];
-  // const backgroundColor = textColor === "white" ? "black" : "white";
+
   const borderColor = (era: string) => {
     if (selectedEra !== era) return "";
     else return `selectedEra ${textColor}`;
@@ -37,8 +37,16 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
   console.log(selectedEra);
 
   return (
-    <nav>
-      <div className="nav__parent-container">
+    <nav style={{ color: textColor }}>
+      <div
+        className="nav__parent-container"
+        style={{
+          backgroundColor:
+            textColor === "white"
+              ? "rgba(0, 0, 0, 0.5)"
+              : "rgba(255, 255, 255, 0.5)",
+        }}
+      >
         <div className="nav__container">
           <div className="nav__logo">
             <a href="#home">
@@ -68,7 +76,6 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
               <IoMenu
                 size={50}
                 className="nav__hamburger"
-                style={{ color: textColor }}
                 onClick={() => setShowSidebar(true)}
               />
             )}
@@ -81,13 +88,17 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
         className={`nav__container-sm ${
           showSidebar ? "slide-in" : "slide-out"
         }`}
-        // style={{ backgroundColor: backgroundColor }}
+        style={{
+          backgroundColor:
+            textColor === "white"
+              ? "rgba(0, 0, 0, 0.5)"
+              : "rgba(255, 255, 255, 0.5)",
+        }}
         ref={sidebarRef}
       >
         <div className="nav__container-sm-closebtn-container">
           <IoClose
             size={50}
-            style={{ color: textColor }}
             onClick={() => setShowSidebar(false)}
             className="nav__container-sm-close"
           />

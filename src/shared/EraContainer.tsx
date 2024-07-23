@@ -5,27 +5,29 @@ import { CarouselProps } from "./types";
 import Lyrics from "./Lyrics";
 
 type Props = {
+  textColor: string;
   bgcolor: string;
   children: React.ReactNode;
   pictures?: Array<CarouselProps>;
-  carouselBgColor?: string;
   lyrics?: Array<string>;
 };
 
 const EraContainer = ({
+  textColor,
   bgcolor,
   children,
   pictures,
-  carouselBgColor,
-  lyrics
+  lyrics,
 }: Props) => {
   return (
-    <section className="era-container" style={{ background: bgcolor }}>
+    <section
+      className="era-container"
+      style={{ background: bgcolor, color: textColor, borderColor: textColor }}
+    >
       <div className="era-container-padding">{children}</div>
       {pictures && (
         <Carousel
-          bgcolor={carouselBgColor}
-          color={carouselBgColor === "black" ? "white" : "black"}
+          bgColor={textColor === "white" ? "black" : "white"}
           pictures={pictures}
         />
       )}

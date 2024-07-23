@@ -5,11 +5,9 @@ import Home from "./scenes/home";
 import EraContainer from "./shared/EraContainer";
 import Terminologies from "./scenes/terminologies";
 import TaylorSwift from "./scenes/taylor-swift";
-import Carousel from "./shared/Carousel";
-import { CarouselProps } from "./shared/types";
 import { debutCarousel } from "./data/img-data";
 import { debutLyrics } from "./data/lyrics";
-import { eras } from "./shared/types";
+import { eras, erasColor } from "./shared/types";
 
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
@@ -19,22 +17,31 @@ const App = () => {
     "linear-gradient(to bottom, #000000 0%, #203e24 10%, #18a5bf 100%)",
   ];
 
-  
-
-
   return (
     <div className="app">
-      <section style={{ backgroundColor: erasBgColor[eras.indexOf("Home")] }}>
+      <section
+        style={{
+          backgroundColor: erasBgColor[eras.indexOf("Home")],
+          color: erasColor[eras.indexOf("Home")],
+        }}
+      >
         <Navbar selectedEra={selectedEra} setSelectedEra={setSelectedEra} />
         <Home />
       </section>
-      <EraContainer bgcolor={erasBgColor[eras.indexOf("Home")]}>
+
+      {/* no need to set universal textColor for terminologies because in this section, there are two text colors */}
+      <EraContainer
+        textColor={erasColor[eras.indexOf("Home")]}
+        bgcolor={erasBgColor[eras.indexOf("Home")]}
+      >
         <Terminologies />
       </EraContainer>
+
+      {/* DEBUT / Taylor Swift */}
       <EraContainer
+        textColor={erasColor[eras.indexOf("Taylor Swift")]}
         bgcolor={erasBgColor[eras.indexOf("Taylor Swift")]}
         pictures={debutCarousel}
-        carouselBgColor="black"
         lyrics={debutLyrics}
       >
         <TaylorSwift />

@@ -4,12 +4,11 @@ import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import Modal from "./Modal";
 
 type Props = {
-  bgcolor?: string;
-  color?: string;
+  bgColor?: string;
   pictures: Array<CarouselProps>;
 };
 
-const Carousel = ({ bgcolor, color, pictures }: Props) => {
+const Carousel = ({ bgColor, pictures }: Props) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -64,11 +63,14 @@ const Carousel = ({ bgcolor, color, pictures }: Props) => {
 
   return (
     <>
-      {showModal && <Modal setShowModal={setShowModal} imgPath={modalImg} />}
-      <div
-        className="carousel__container"
-        style={{ backgroundColor: bgcolor || "white", color: color || "black" }}
-      >
+      {showModal && (
+        <Modal
+          setShowModal={setShowModal}
+          imgPath={modalImg}
+          closeBgColor={bgColor}
+        />
+      )}
+      <div className="carousel__container" style={{ backgroundColor: bgColor }}>
         <div className="left-arrow" onClick={scrollToLeft}>
           {canScrollLeft && <BiSolidLeftArrow size={25} />}
         </div>
@@ -76,6 +78,9 @@ const Carousel = ({ bgcolor, color, pictures }: Props) => {
           {pictures?.map(({ imgPath, description }: CarouselProps, index) => (
             <div key={index}>
               <img
+                className={`img-border-${
+                  bgColor === "black" ? "white" : "black"
+                }`}
                 onClick={() => handleImgClick(imgPath)}
                 src={imgPath}
                 alt={description}

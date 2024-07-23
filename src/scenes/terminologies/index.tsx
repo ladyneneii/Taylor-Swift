@@ -6,9 +6,7 @@ import SpeakNowTV from "@/assets/speak-now-logo.png";
 import RedTV from "@/assets/red-logo.png";
 import NineteenEightyNineTV from "@/assets/1989-logo.png";
 
-type Props = {};
-
-const Terminologies = (props: Props) => {
+const Terminologies = () => {
   const getCurrentDateFormatted = (): string => {
     const currentDate = new Date();
 
@@ -35,7 +33,7 @@ const Terminologies = (props: Props) => {
 
   return (
     <div id="terms" className="terms__container">
-      <Title color="white">
+      <Title>
         Some Terminologies Before <span className="nowrap">We Start</span>
       </Title>
       <div className="terms__eras-tv-container">
