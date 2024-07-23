@@ -57,7 +57,7 @@
 }
 
 .track-number {
-  border: 1px solid white;
+  border: 1px solid;
   padding: 1rem;
   border-radius: 15px 0 0 15px;
   display: flex;
@@ -65,7 +65,7 @@
 }
 
 .track {
-  border: 1px solid white;
+  border: 1px solid;
   border-radius: 0 15px 15px 0;
   text-align: center;
   display: flex;

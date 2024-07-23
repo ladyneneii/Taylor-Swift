@@ -184,6 +184,8 @@ button p {
   /* set both properties to 100% so the img scales accordingly as screen is resized whether horizontally or vertically */
   max-width: 100%;
   max-height: 100%;
+  /* setting width and height to 100% will cause the img to stretch and not be properly scaled as it will always occupy the full space of the parent */
+  /* setting max-width and max-height to 100% instead ensures that the height and width of the image will always follow the height and width of the parent, respectively, while the resizing of the image is properly scaled since the values set to max-width and max-height are not the absolute width and height of the image; they are just the max. */
 }
 
 /* Lyrics.tsx */

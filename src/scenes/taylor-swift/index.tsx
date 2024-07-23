@@ -4,9 +4,12 @@ import Title from "@/shared/Title";
 import DebutAlbum from "@/assets/album-taylor-swift.webp";
 import Carousel from "@/shared/Carousel";
 
-type Props = {};
+type Props = {
+  color: string;
+  borderColor: string;
+};
 
-const TaylorSwift = (props: Props) => {
+const TaylorSwift = ({color, borderColor}: Props) => {
   const debutTrackList = [
     {
       title: "Tim McGraw",
@@ -85,7 +88,7 @@ const TaylorSwift = (props: Props) => {
   };
 
   return (
-    <div style={{ color: "white" }} id="taylorswift" className="container">
+    <div style={{ color: "white", borderColor: "white" }} id="taylorswift" className="container">
       <Title
         subtitle={`Taylor Swift's first album is called "Taylor Swift." It is also called the debut or self-titled album. As soon as the Taylor's version of this album releases, this section will be changed.`}
       >

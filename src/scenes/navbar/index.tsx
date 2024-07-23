@@ -4,6 +4,7 @@ import Eras_Tour_Logo from "@/assets/the-eras-tour-logo.png";
 import { IoMenu, IoClose } from "react-icons/io5";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import useOutsideClick from "@/hooks/useOutsideClick";
+import { eras, erasColor } from "@/shared/types";
 
 type Props = {
   selectedEra: string;
@@ -15,36 +16,6 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const sidebarRef = useRef(null);
   useOutsideClick({ ref: sidebarRef, setVisibility: setShowSidebar });
-
-  const eras = [
-    "Home",
-    "Taylor Swift",
-    "Fearless",
-    "Speak Now",
-    "Red",
-    "1989",
-    "Reputation",
-    "Lover",
-    "Folklore",
-    "Evermore",
-    "Midnights",
-    "TTPD",
-  ];
-
-  const erasColor = [
-    "white",
-    "white",
-    "black",
-    "white",
-    "white",
-    "black",
-    "white",
-    "black",
-    "black",
-    "black",
-    "white",
-    "black",
-  ];
 
   const textColor = erasColor[eras.indexOf(selectedEra)];
   // const backgroundColor = textColor === "white" ? "black" : "white";
@@ -66,9 +37,7 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
   console.log(selectedEra);
 
   return (
-    <nav
-    // style={{ backgroundColor: backgroundColor }}
-    >
+    <nav>
       <div className="nav__parent-container">
         <div className="nav__container">
           <div className="nav__logo">
