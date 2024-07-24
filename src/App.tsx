@@ -8,6 +8,7 @@ import TaylorSwift from "./scenes/taylor-swift";
 import { debutCarousel } from "./data/img-data";
 import { debutLyrics } from "./data/lyrics";
 import { eras, erasColor } from "./shared/types";
+import { details } from "./data/details";
 
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
@@ -59,7 +60,7 @@ const App = () => {
           pictures={debutCarousel}
           lyrics={debutLyrics}
         >
-          <TaylorSwift EraTitle={era} />
+          <TaylorSwift details={details[index]} textColor={erasColor[index + 1]} EraTitle={era} />
         </EraContainer>
       ))}
     </div>

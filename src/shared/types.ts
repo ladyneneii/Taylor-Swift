@@ -30,6 +30,9 @@ export const erasColor = [
   "white",
 ];
 
+export const blackish = "rgba(0, 0, 0, 0.5)"
+export const whitish = "rgba(255, 255, 255, 0.5)"
+
 export interface CarouselProps {
   imgPath: string;
   description?: string;

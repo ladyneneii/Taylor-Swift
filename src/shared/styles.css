@@ -69,11 +69,21 @@ button p {
   margin-block-end: 0;
 }
 
+.title__container h2 {
+  font-weight: 100;
+  margin-block: 0;
+  letter-spacing: 0.5rem;
+  font-family: PistilliRoman;
+  font-size: 1rem;
+}
+
 .title__container h4 {
   margin-block-end: 53.12px;
   letter-spacing: 0.2rem;
   max-width: 1000px;
   margin-inline: auto;
+  text-align: start;
+  line-height: 2rem;
 }
 
 @media only screen and (max-width: 470px) {
@@ -202,7 +212,6 @@ button p {
 
 .lyrics__container {
   position: relative;
-  max-width: 1290.5px;
   margin-inline: auto;
   /* this padding is important so the quotation marks do not exceed the universal padding */
   padding-inline: 3rem; 

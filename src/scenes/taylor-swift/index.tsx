@@ -3,13 +3,15 @@ import "./styles.css";
 import Title from "@/shared/Title";
 import DebutAlbum from "@/assets/album-taylor-swift.webp";
 import { debutTrackList } from "@/data/tracklists";
-import { eras, erasColor } from "@/shared/types";
+import { blackish, eras, erasColor, whitish } from "@/shared/types";
 
 type Props = {
+  details: string;
+  textColor: string;
   EraTitle: string;
 };
 
-const TaylorSwift = ({ EraTitle }: Props) => {
+const TaylorSwift = ({ details, textColor, EraTitle }: Props) => {
   const formatEraId = (currEra: string) => {
     return currEra.toLowerCase().replace(/\s+/g, "");
   };
@@ -26,9 +28,15 @@ const TaylorSwift = ({ EraTitle }: Props) => {
   };
 
   return (
-    <div id={eraId} className="container">
+    <div
+      id={eraId}
+      className="container"
+      style={{
+        fontWeight: textColor === "black" ? 500 : 100,
+      }}
+    >
       <Title
-        subtitle={`Taylor Swift's first album is called "Taylor Swift." It is also called the debut or self-titled album. As soon as the Taylor's version of this album releases, this section will be changed.`}
+        details={details}
       >
         {EraTitle}
       </Title>
@@ -38,15 +46,10 @@ const TaylorSwift = ({ EraTitle }: Props) => {
           {/* ALBUM */}
           <div className="album-tracks-h2">
             <div className="h2-instruction">
-              <h2>ALBUM TRACKS</h2>
-              <p
-                style={{
-                  fontWeight:
-                    erasColor[eras.indexOf(EraTitle)] === "black" ? 500 : 100,
-                }}
-              >
-                (Select a song you want to listen to!)
-              </p>
+              <h2 style={{ fontWeight: textColor === "black" ? 800 : 500 }}>
+                ALBUM TRACKS
+              </h2>
+              <p>(Select a song you want to listen to!)</p>
             </div>
             <div className="album-tracks-container">
               {debutTrackList.map(({ title, url }, index) => (
@@ -56,10 +59,7 @@ const TaylorSwift = ({ EraTitle }: Props) => {
                     title === track ? "currently-playing" : ""
                   }`}
                   style={{
-                    backgroundColor:
-                      erasColor[eras.indexOf(EraTitle)] === "black"
-                        ? "rgba(255, 255, 255, 0.5)"
-                        : "rgba(0, 0, 0, 0.5)",
+                    backgroundColor: textColor === "black" ? whitish : blackish,
                   }}
                   onClick={() => handleClickTrack(url, title)}
                 >
@@ -72,17 +72,16 @@ const TaylorSwift = ({ EraTitle }: Props) => {
 
           {/* BONUS */}
           <div className="bonus-track-h2">
-            <h2>BONUS TRACK</h2>
+            <h2 style={{ fontWeight: textColor === "black" ? 800 : 500 }}>
+              BONUS TRACK
+            </h2>
             <div className="bonus-track-desc">
               <div
                 className={`track-info ${
                   "Crazier" === track ? "currently-playing" : ""
                 }`}
                 style={{
-                  backgroundColor:
-                    erasColor[eras.indexOf(EraTitle)] === "black"
-                      ? "rgba(255, 255, 255, 0.5)"
-                      : "rgba(0, 0, 0, 0.5)",
+                  backgroundColor: textColor === "black" ? whitish : blackish,
                 }}
                 onClick={() =>
                   handleClickTrack(
@@ -95,12 +94,7 @@ const TaylorSwift = ({ EraTitle }: Props) => {
                 <div className="track">Crazier</div>
               </div>
               <div className="bonus-desc">
-                <p
-                  style={{
-                    fontWeight:
-                      erasColor[eras.indexOf(EraTitle)] === "black" ? 500 : 100,
-                  }}
-                >
+                <p>
                   Taylor Swift wrote and sang Crazier for Hannah Montana: The
                   Movie and is actually not part of this album. However, we, the
                   Swifties, hope for this song to make it to the Taylor's

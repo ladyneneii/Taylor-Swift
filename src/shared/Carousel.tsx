@@ -4,7 +4,7 @@ import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import Modal from "./Modal";
 
 type Props = {
-  bgColor?: string;
+  bgColor: string;
   pictures: Array<CarouselProps>;
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { blackish, whitish } from "./types";
 
 type Props = {
   eraNumber: number;
@@ -21,17 +22,17 @@ const Lyrics = ({ eraNumber, lines }: Props) => {
   ];
 
   const citeColor = [
-    "rgba(0, 0, 0, 0.5)",
-    "rgba(255, 255, 255, 0.5)",
-    "rgba(0, 0, 0, 0.5)",
-    "rgba(0, 0, 0, 0.5)",
-    "rgba(0, 0, 0, 0.5)",
-    "rgba(0, 0, 0, 0.5)",
-    "rgba(0, 0, 0, 0.5)",
-    "rgba(0, 0, 0, 0.5)",
-    "rgba(255, 255, 255, 0.5)",
-    "rgba(255, 255, 255, 0.5)",
-    "rgba(0, 0, 0, 0.5)",
+    blackish,
+    whitish,
+    blackish,
+    blackish,
+    blackish,
+    blackish,
+    blackish,
+    blackish,
+    whitish,
+    whitish,
+    blackish,
   ];
 
   return (
@@ -41,7 +42,7 @@ const Lyrics = ({ eraNumber, lines }: Props) => {
     >
       <div
         className="lyrics__container"
-        style={{ color: lyricsColor[eraNumber - 1] }}
+        style={{ color: lyricsColor[eraNumber - 1], maxWidth: "1386.5px" }}
         // style={{ color: "white" }}
       >
         <h1>{lines[0]}</h1>

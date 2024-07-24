@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 import Carousel from "./Carousel";
-import { CarouselProps } from "./types";
+import { blackish, CarouselProps, whitish } from "./types";
 import Lyrics from "./Lyrics";
 
 type Props = {
@@ -29,7 +29,7 @@ const EraContainer = ({
       <div className="era-container-padding">{children}</div>
       {pictures && (
         <Carousel
-          bgColor={textColor === "white" ? "black" : "white"}
+          bgColor={textColor === "white" ? blackish : whitish}
           pictures={pictures}
         />
       )}

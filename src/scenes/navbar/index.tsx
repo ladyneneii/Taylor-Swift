@@ -5,7 +5,7 @@ import Eras_Tour_Logo_Black from "@/assets/the-eras-tour-logo-black.png";
 import { IoMenu, IoClose } from "react-icons/io5";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import useOutsideClick from "@/hooks/useOutsideClick";
-import { eras, erasColor } from "@/shared/types";
+import { blackish, eras, erasColor, whitish } from "@/shared/types";
 
 type Props = {
   selectedEra: string;
@@ -44,8 +44,8 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
         style={{
           backgroundColor:
             textColor === "white"
-              ? "rgba(0, 0, 0, 0.5)"
-              : "rgba(255, 255, 255, 0.5)",
+              ? blackish
+              : whitish,
         }}
       >
         <div className="nav__container">
@@ -94,8 +94,8 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
         style={{
           backgroundColor:
             textColor === "white"
-              ? "rgba(0, 0, 0, 0.5)"
-              : "rgba(255, 255, 255, 0.5)",
+              ? blackish
+              : whitish,
         }}
         ref={sidebarRef}
       >
