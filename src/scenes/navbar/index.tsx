@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./styles.css";
 import Eras_Tour_Logo from "@/assets/the-eras-tour-logo.png";
+import Eras_Tour_Logo_Black from "@/assets/the-eras-tour-logo-black.png";
 import { IoMenu, IoClose } from "react-icons/io5";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import useOutsideClick from "@/hooks/useOutsideClick";
@@ -16,6 +17,8 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const sidebarRef = useRef(null);
   useOutsideClick({ ref: sidebarRef, setVisibility: setShowSidebar });
+
+  console.log(selectedEra);
 
   const textColor = erasColor[eras.indexOf(selectedEra)];
 
@@ -34,8 +37,6 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
     }
   }, [isAboveLargeScreens]);
 
-  console.log(selectedEra);
-
   return (
     <nav style={{ color: textColor }}>
       <div
@@ -51,7 +52,9 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
           <div className="nav__logo">
             <a href="#home">
               <img
-                src={Eras_Tour_Logo}
+                src={
+                  textColor === "white" ? Eras_Tour_Logo : Eras_Tour_Logo_Black
+                }
                 width={150}
                 alt="debut-logo"
                 className="nav__logo"

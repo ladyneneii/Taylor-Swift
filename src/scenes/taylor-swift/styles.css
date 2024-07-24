@@ -14,16 +14,33 @@
   gap: 3rem;
 }
 
+.tracks-title-container h2 {
+  font-weight: 500;
+  letter-spacing: 1rem;
+}
+
 .album-tracks-h2 {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.tracks-title-container h2 {
-  font-weight: 500;
-  letter-spacing: 1rem;
-  margin-top: 0;
+.h2-instruction {
+  display: flex;
+  align-items: center;
+  margin-bottom: 19.92px;
+  gap: 2rem;
+}
+
+.h2-instruction h2,
+.h2-instruction p {
+  margin-block: 0;
+}
+
+.h2-instruction p {
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  line-height: 1.5rem;
 }
 
 .album-tracks-container {
@@ -38,7 +55,6 @@
 }
 
 .track-info {
-  background-color: rgba(0, 0, 0, 0.5);
   /* padding: 0.5rem 1rem; */
   border-radius: 15px;
   display: flex;
@@ -76,6 +92,10 @@
   /* background-color: #ae8c64; */
 }
 
+.bonus-track-h2 h2 {
+  margin-top: 0;
+}
+
 .bonus-track-desc {
   display: flex;
   justify-content: space-between;
@@ -96,7 +116,8 @@
 .bonus-desc p {
   margin: 0;
   font-size: 1rem;
-  line-height: 2rem;
+  letter-spacing: 0.2rem;
+  line-height: 1.5rem;
 }
 
 .album-iframe-container {
@@ -115,6 +136,14 @@
 
 .album-iframe-container iframe {
   box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width: 1580px) {
+  .h2-instruction {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
 }
 
 @media only screen and (max-width: 1400px) {

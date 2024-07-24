@@ -5,6 +5,7 @@ import { CarouselProps } from "./types";
 import Lyrics from "./Lyrics";
 
 type Props = {
+  eraNumber: number;
   textColor: string;
   bgcolor: string;
   children: React.ReactNode;
@@ -13,6 +14,7 @@ type Props = {
 };
 
 const EraContainer = ({
+  eraNumber,
   textColor,
   bgcolor,
   children,
@@ -31,7 +33,9 @@ const EraContainer = ({
           pictures={pictures}
         />
       )}
-      {lyrics && <Lyrics lines={lyrics} />}
+      {lyrics && (
+        <Lyrics eraNumber={eraNumber} lines={lyrics} />
+      )}
     </section>
   );
 };

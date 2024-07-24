@@ -16,18 +16,18 @@ export const eras = [
 ];
 
 export const erasColor = [
-  "white",
-  "white",
-  "black",
-  "white",
+  "white", // textColor for Home
   "white",
   "black",
   "white",
+  "white",
+  "black",
+  "white",
   "black",
   "black",
   "black",
   "white",
-  "black",
+  "white",
 ];
 
 export interface CarouselProps {

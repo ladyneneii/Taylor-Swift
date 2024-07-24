@@ -59,8 +59,6 @@ const Carousel = ({ bgColor, pictures }: Props) => {
     };
   }, []);
 
-  console.log(modalImg, showModal);
-
   return (
     <>
       {showModal && (

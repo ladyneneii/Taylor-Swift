@@ -5,6 +5,11 @@
   src: url("@/fonts/RalphieTall.otf") format("opentype");
 }
 
+@font-face {
+  font-family: PistilliRoman;
+  src: url("@/fonts/PistilliRoman.otf") format("opentype");
+}
+
 :root,
 #root,
 html,
@@ -38,10 +43,9 @@ body {
   /* width: clamp(300px, 100%, 2040px); is not added here because when the screen size becomes too big that the max-width of 2040px is reached, i need the .app to surpass it, allowing for a background color on the extra space on the sides. adding the property will limit .app to 2040px only. */
 }
 
-
 /* adding the first class to override styles */
-.era-container-padding .media-title { 
-  font-size: 1rem ;
+.era-container-padding .media-title {
+  font-size: 1rem;
   line-height: 1.5rem;
   font-weight: bold;
 }

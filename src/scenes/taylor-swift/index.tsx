@@ -3,8 +3,18 @@ import "./styles.css";
 import Title from "@/shared/Title";
 import DebutAlbum from "@/assets/album-taylor-swift.webp";
 import { debutTrackList } from "@/data/tracklists";
+import { eras, erasColor } from "@/shared/types";
 
-const TaylorSwift = () => {
+type Props = {
+  EraTitle: string;
+};
+
+const TaylorSwift = ({ EraTitle }: Props) => {
+  const formatEraId = (currEra: string) => {
+    return currEra.toLowerCase().replace(/\s+/g, "");
+  };
+
+  const eraId = formatEraId(EraTitle);
   const [videoURL, setVideoURL] = useState(
     "https://www.youtube.com/embed/xKCek6_dB0M?si=NzXexXBrnBfXaJFt&amp;start=70"
   );
@@ -16,18 +26,28 @@ const TaylorSwift = () => {
   };
 
   return (
-    <div id="taylorswift" className="container">
+    <div id={eraId} className="container">
       <Title
         subtitle={`Taylor Swift's first album is called "Taylor Swift." It is also called the debut or self-titled album. As soon as the Taylor's version of this album releases, this section will be changed.`}
       >
-        Taylor Swift
+        {EraTitle}
       </Title>
       <div className="tracks-album-container">
         {/* TRACKS CONTAINER */}
         <div className="tracks-title-container">
           {/* ALBUM */}
           <div className="album-tracks-h2">
-            <h2>ALBUM TRACKS</h2>
+            <div className="h2-instruction">
+              <h2>ALBUM TRACKS</h2>
+              <p
+                style={{
+                  fontWeight:
+                    erasColor[eras.indexOf(EraTitle)] === "black" ? 500 : 100,
+                }}
+              >
+                (Select a song you want to listen to!)
+              </p>
+            </div>
             <div className="album-tracks-container">
               {debutTrackList.map(({ title, url }, index) => (
                 <div
@@ -35,6 +55,12 @@ const TaylorSwift = () => {
                   className={`track-info ${
                     title === track ? "currently-playing" : ""
                   }`}
+                  style={{
+                    backgroundColor:
+                      erasColor[eras.indexOf(EraTitle)] === "black"
+                        ? "rgba(255, 255, 255, 0.5)"
+                        : "rgba(0, 0, 0, 0.5)",
+                  }}
                   onClick={() => handleClickTrack(url, title)}
                 >
                   <div className="track-number">{index + 1}</div>
@@ -52,6 +78,12 @@ const TaylorSwift = () => {
                 className={`track-info ${
                   "Crazier" === track ? "currently-playing" : ""
                 }`}
+                style={{
+                  backgroundColor:
+                    erasColor[eras.indexOf(EraTitle)] === "black"
+                      ? "rgba(255, 255, 255, 0.5)"
+                      : "rgba(0, 0, 0, 0.5)",
+                }}
                 onClick={() =>
                   handleClickTrack(
                     "https://www.youtube.com/embed/B0p4Lv0t124?si=afSna_Jt3Wwj_usC&amp;start=96",
@@ -63,7 +95,12 @@ const TaylorSwift = () => {
                 <div className="track">Crazier</div>
               </div>
               <div className="bonus-desc">
-                <p>
+                <p
+                  style={{
+                    fontWeight:
+                      erasColor[eras.indexOf(EraTitle)] === "black" ? 500 : 100,
+                  }}
+                >
                   Taylor Swift wrote and sang Crazier for Hannah Montana: The
                   Movie and is actually not part of this album. However, we, the
                   Swifties, hope for this song to make it to the Taylor's

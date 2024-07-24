@@ -65,11 +65,12 @@ button p {
   font-size: 4rem;
   font-family: RalphieTall;
   letter-spacing: 0.3rem;
+  margin-block-start: 70px;
+  margin-block-end: 0;
 }
 
 .title__container h4 {
   margin-block-end: 53.12px;
-  font-weight: 100;
   letter-spacing: 0.2rem;
   max-width: 1000px;
   margin-inline: auto;
@@ -191,15 +192,87 @@ button p {
 
 /* Lyrics.tsx */
 
-.lyrics__container {
+.quote__container {
   width: clamp(300px, 100%, 2040px);
   margin-inline: auto;
   padding: var(--container-padding);
-  border: 5px solid yellow;
+  margin-top: 1rem;
+  /* border: 5px solid red; */
+}
+
+.lyrics__container {
+  position: relative;
+  max-width: 1290.5px;
+  margin-inline: auto;
+  /* this padding is important so the quotation marks do not exceed the universal padding */
+  padding-inline: 3rem; 
+}
+
+.lyrics__container::before {
+  content: "“";
+  position: absolute;
+  top: -30px;
+  left: 5px;
+  font-size: 5rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.lyrics__container::after {
+  content: "„";
+  position: absolute;
+  bottom: -30px;
+  right: 5px;
+  font-size: 5rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.lyrics__container h1 {
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 200;
+  letter-spacing: 0.3rem;
+}
+
+.lyrics__container h1:nth-child(2) {
+  text-indent: 5rem;
+}
+
+.lyrics__container h1:nth-child(3) {
+  text-indent: 10rem;
+}
+
+.cite-container {
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.cite-container cite {
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 750px) {
-  .lyrics__container {
+  .quote__container {
     padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .lyrics__container h1 {
+    font-size: 1.5rem;
+  }
+
+  .lyrics__container h1:nth-child(2) {
+    text-indent: 2.5rem;
+  }
+
+  .lyrics__container h1:nth-child(3) {
+    text-indent: 5rem;
+  }
+
+  .cite-container cite {
+    font-size: 1rem;
   }
 }
