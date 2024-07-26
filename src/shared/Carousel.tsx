@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { CarouselProps } from "./types";
+import { blackish, CarouselProps } from "./types";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import Modal from "./Modal";
 
@@ -77,7 +77,7 @@ const Carousel = ({ bgColor, pictures }: Props) => {
             <div key={index}>
               <img
                 className={`img-border-${
-                  bgColor === "black" ? "white" : "black"
+                  bgColor === blackish ? "white" : "black"
                 }`}
                 onClick={() => handleImgClick(imgPath)}
                 src={imgPath}

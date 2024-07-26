@@ -38,14 +38,16 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
   }, [isAboveLargeScreens]);
 
   return (
-    <nav style={{ color: textColor }}>
+    <nav
+      style={{
+        color: textColor,
+        fontWeight: textColor === "black" ? 600 : 100,
+      }}
+    >
       <div
         className="nav__parent-container"
         style={{
-          backgroundColor:
-            textColor === "white"
-              ? blackish
-              : whitish,
+          backgroundColor: textColor === "white" ? blackish : whitish,
         }}
       >
         <div className="nav__container">
@@ -92,10 +94,7 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
           showSidebar ? "slide-in" : "slide-out"
         }`}
         style={{
-          backgroundColor:
-            textColor === "white"
-              ? blackish
-              : whitish,
+          backgroundColor: textColor === "white" ? blackish : whitish,
         }}
         ref={sidebarRef}
       >

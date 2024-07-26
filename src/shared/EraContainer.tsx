@@ -3,6 +3,7 @@ import "./styles.css";
 import Carousel from "./Carousel";
 import { blackish, CarouselProps, whitish } from "./types";
 import Lyrics from "./Lyrics";
+import { LyricsTitle } from "@/data/lyrics";
 
 type Props = {
   eraNumber: number;
@@ -10,7 +11,7 @@ type Props = {
   bgcolor: string;
   children: React.ReactNode;
   pictures?: Array<CarouselProps>;
-  lyrics?: Array<string>;
+  lyricsArr?: Array<LyricsTitle>;
 };
 
 const EraContainer = ({
@@ -19,7 +20,7 @@ const EraContainer = ({
   bgcolor,
   children,
   pictures,
-  lyrics,
+  lyricsArr,
 }: Props) => {
   return (
     <section
@@ -33,9 +34,10 @@ const EraContainer = ({
           pictures={pictures}
         />
       )}
-      {lyrics && (
-        <Lyrics eraNumber={eraNumber} lines={lyrics} />
-      )}
+      {lyricsArr &&
+        lyricsArr.map((lyrics, index) => (
+          <Lyrics key={index} eraNumber={eraNumber} lyrics={lyrics} />
+        ))}
     </section>
   );
 };

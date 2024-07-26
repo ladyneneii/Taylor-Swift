@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import "./styles.css";
 import Title from "@/shared/Title";
 import DebutAlbum from "@/assets/album-taylor-swift.webp";
-import { debutTrackList } from "@/data/tracklists";
-import { blackish, eras, erasColor, whitish } from "@/shared/types";
+import { debutTrackList, fearlessTVTrackList, Tracks } from "@/data/tracklists";
+import { blackish, whitish } from "@/shared/types";
+import { IoIosMusicalNotes, IoIosMusicalNote } from "react-icons/io";
 
 type Props = {
   details: string;
   textColor: string;
   EraTitle: string;
+  tracks: Tracks;
 };
 
-const TaylorSwift = ({ details, textColor, EraTitle }: Props) => {
+const TaylorSwift = ({ details, textColor, EraTitle, tracks }: Props) => {
   const formatEraId = (currEra: string) => {
     return currEra.toLowerCase().replace(/\s+/g, "");
   };
@@ -21,6 +23,10 @@ const TaylorSwift = ({ details, textColor, EraTitle }: Props) => {
     "https://www.youtube.com/embed/xKCek6_dB0M?si=NzXexXBrnBfXaJFt&amp;start=70"
   );
   const [track, setTrack] = useState("Teardrops On My Guitar");
+
+  const { trackList, vaultTrackList, vaultDesc, bonusTrackList, bonusDesc } = tracks;
+
+  console.log(trackList);
 
   const handleClickTrack = (url: string, title: string) => {
     setVideoURL(url);
@@ -35,11 +41,7 @@ const TaylorSwift = ({ details, textColor, EraTitle }: Props) => {
         fontWeight: textColor === "black" ? 500 : 100,
       }}
     >
-      <Title
-        details={details}
-      >
-        {EraTitle}
-      </Title>
+      <Title details={details}>{EraTitle}</Title>
       <div className="tracks-album-container">
         {/* TRACKS CONTAINER */}
         <div className="tracks-title-container">
@@ -52,14 +54,17 @@ const TaylorSwift = ({ details, textColor, EraTitle }: Props) => {
               <p>(Select a song you want to listen to!)</p>
             </div>
             <div className="album-tracks-container">
-              {debutTrackList.map(({ title, url }, index) => (
+              {trackList.map(({ title, url }, index) => (
                 <div
                   key={index}
-                  className={`track-info ${
-                    title === track ? "currently-playing" : ""
-                  }`}
+                  className="track-info"
                   style={{
-                    backgroundColor: textColor === "black" ? whitish : blackish,
+                    backgroundColor:
+                      title === track
+                        ? "transparent"
+                        : textColor === "black"
+                        ? whitish
+                        : blackish,
                   }}
                   onClick={() => handleClickTrack(url, title)}
                 >
@@ -70,40 +75,71 @@ const TaylorSwift = ({ details, textColor, EraTitle }: Props) => {
             </div>
           </div>
 
-          {/* BONUS */}
-          <div className="bonus-track-h2">
-            <h2 style={{ fontWeight: textColor === "black" ? 800 : 500 }}>
-              BONUS TRACK
-            </h2>
-            <div className="bonus-track-desc">
-              <div
-                className={`track-info ${
-                  "Crazier" === track ? "currently-playing" : ""
-                }`}
-                style={{
-                  backgroundColor: textColor === "black" ? whitish : blackish,
-                }}
-                onClick={() =>
-                  handleClickTrack(
-                    "https://www.youtube.com/embed/B0p4Lv0t124?si=afSna_Jt3Wwj_usC&amp;start=96",
-                    "Crazier"
-                  )
-                }
-              >
-                <div className="track-number">Bonus</div>
-                <div className="track">Crazier</div>
+          {/* VAULT */}
+          {vaultTrackList && (
+            <div className="album-tracks-h2">
+              <div className="h2-instruction">
+                <h2 style={{ fontWeight: textColor === "black" ? 800 : 500 }}>
+                  VAULT TRACKS
+                </h2>
+                {vaultDesc && <p>({vaultDesc})</p>}
               </div>
-              <div className="bonus-desc">
-                <p>
-                  Taylor Swift wrote and sang Crazier for Hannah Montana: The
-                  Movie and is actually not part of this album. However, we, the
-                  Swifties, hope for this song to make it to the Taylor's
-                  Version of this album as she recently sang this song at the
-                  Eras Tour in June 2024.
-                </p>
+              <div className="album-tracks-container">
+                {vaultTrackList.map(({ title, url }, index) => (
+                  <div
+                    key={index}
+                    className="track-info"
+                    style={{
+                      backgroundColor:
+                        title === track
+                          ? "transparent"
+                          : textColor === "black"
+                          ? whitish
+                          : blackish,
+                    }}
+                    onClick={() => handleClickTrack(url, title)}
+                  >
+                    <div className="track-number">{index + 1}</div>
+                    <div className="track">{title}</div>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          )}
+
+          {/* BONUS */}
+          {bonusTrackList && (
+            <div className="bonus-track-h2">
+              <h2 style={{ fontWeight: textColor === "black" ? 800 : 500 }}>
+                BONUS TRACK
+              </h2>
+              <div className="bonus-track-desc">
+                {bonusTrackList.map(({ title, url }, index) => (
+                  <div
+                    key={index}
+                    className="track-info"
+                    style={{
+                      backgroundColor:
+                        title === track
+                          ? "transparent"
+                          : textColor === "black"
+                          ? whitish
+                          : blackish,
+                    }}
+                    onClick={() => handleClickTrack(url, title)}
+                  >
+                    <div className="track-number">{index + 1}</div>
+                    <div className="track">{title}</div>
+                  </div>
+                ))}
+                {bonusDesc && (
+                  <div className="bonus-desc">
+                    <p>{bonusDesc}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* ALBUM AND VID CONTAINER */}

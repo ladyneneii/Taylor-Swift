@@ -67,10 +67,6 @@
   transform: scale(1.1);
 }
 
-.track-info.currently-playing {
-  background-color: transparent;
-}
-
 .track-number {
   border: 1px solid;
   padding: 1rem;

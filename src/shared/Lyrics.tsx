@@ -1,12 +1,16 @@
 import React from "react";
 import { blackish, whitish } from "./types";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import { LyricsTitle } from "@/data/lyrics";
 
 type Props = {
   eraNumber: number;
-  lines: Array<string>;
+  lyrics: LyricsTitle;
 };
 
-const Lyrics = ({ eraNumber, lines }: Props) => {
+const Lyrics = ({ eraNumber, lyrics }: Props) => {
+  const isPhone = useMediaQuery("(max-width: 450px)");
+
   const lyricsColor = [
     "white",
     "white",
@@ -35,6 +39,9 @@ const Lyrics = ({ eraNumber, lines }: Props) => {
     blackish,
   ];
 
+  const { lines, songTitle, maxWidth } = lyrics;
+  const lineIndent = lines.length > 3 ? 0 : !isPhone ? 5 : 2.5;
+
   return (
     <div
       className="quote__container"
@@ -42,17 +49,24 @@ const Lyrics = ({ eraNumber, lines }: Props) => {
     >
       <div
         className="lyrics__container"
-        style={{ color: lyricsColor[eraNumber - 1], maxWidth: "1386.5px" }}
+        style={{ color: lyricsColor[eraNumber - 1], maxWidth: maxWidth }}
         // style={{ color: "white" }}
       >
-        <h1>{lines[0]}</h1>
-        <h1>{lines[1]}</h1>
-        <h1>{lines[2]}</h1>
+        {lines.map((line, index) => (
+          <h1
+            key={index}
+            style={{
+              textIndent: `${
+                !isPhone ? index * lineIndent : index * lineIndent
+              }rem`,
+            }}
+          >
+            {line}
+          </h1>
+        ))}
       </div>
       <div className="cite-container">
-        <cite style={{ color: citeColor[eraNumber - 1] }}>
-          Teardrops On My Guitar (Taylor Swift, 2009)
-        </cite>
+        <cite style={{ color: citeColor[eraNumber - 1] }}>{songTitle}</cite>
       </div>
     </div>
   );
