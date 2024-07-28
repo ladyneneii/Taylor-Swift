@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
+import { blackish } from "./types";
 
 type Props = {
   setShowModal: (value: boolean) => void;
@@ -18,7 +19,7 @@ const Modal = ({ setShowModal, imgPath, closeBgColor }: Props) => {
           onClick={() => setShowModal(false)}
           style={{
             backgroundColor: closeBgColor,
-            color: closeBgColor === "black" ? "white" : "black",
+            color: closeBgColor === blackish ? "white" : "black",
           }}
         >
           Close

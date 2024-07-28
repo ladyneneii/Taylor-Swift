@@ -8,7 +8,6 @@ import TaylorSwift from "./scenes/taylor-swift";
 import { debutCarousel } from "./data/img-data";
 import { quotes } from "./data/lyrics";
 import { eras, erasColor } from "./shared/types";
-import { details } from "./data/details";
 import { trackListsArr } from "./data/tracklists";
 
 const App = () => {
@@ -46,6 +45,7 @@ const App = () => {
       {/* no need to set universal textColor for terminologies because in this section, there are two text colors */}
       <EraContainer
         eraNumber={0}
+        eraTitle="Home"
         textColor={erasColor[eras.indexOf("Home")]}
         bgcolor={erasBgColor[eras.indexOf("Home")]}
       >
@@ -56,12 +56,17 @@ const App = () => {
         <EraContainer
           key={index + 1}
           eraNumber={index + 1}
+          eraTitle={era}
           textColor={erasColor[index + 1]}
           bgcolor={erasBgColor[index + 1]}
           pictures={debutCarousel}
           lyricsArr={quotes[index]}
         >
-          <TaylorSwift details={details[index]} textColor={erasColor[index + 1]} EraTitle={era} tracks={trackListsArr[index]} />
+          <TaylorSwift
+            eraNumber={index + 1}
+            textColor={erasColor[index + 1]}
+            tracks={trackListsArr[index]}
+          />
         </EraContainer>
       ))}
     </div>

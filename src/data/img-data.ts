@@ -1,5 +1,33 @@
 import { CarouselProps } from "@/shared/types";
 
+export const albums = [
+  "/images/album-taylor-swift.webp",
+  "/images/album-fearless-tv.jpg",
+  "/images/album-speak-now-tv.jpg",
+  "/images/album-red-tv.webp",
+  "/images/album-1989-tv.png",
+  "/images/album-reputation.png",
+  "/images/album-lover.jpg",
+  "/images/album-folklore.png",
+  "/images/album-evermore.jpg",
+  "/images/album-midnights.png",
+  "/images/album-ttpd.webp",
+];
+
+export const logos = [
+  "/images/logo-taylor-swift.png",
+  "/images/logo-fearless-tv.webp",
+  "/images/logo-speak-now-tv.png",
+  "/images/logo-red-tv.png",
+  "/images/logo-1989-tv.png",
+  "/images/logo-reputation.png",
+  "/images/logo-lover.png",
+  "/images/logo-folklore.png",
+  "/images/logo-evermore.png",
+  "/images/logo-midnights.png",
+  "/images/logo-ttpd.png",
+];
+
 export const debutCarousel: Array<CarouselProps> = [
   {
     imgPath:

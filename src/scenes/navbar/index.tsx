@@ -18,7 +18,7 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
   const sidebarRef = useRef(null);
   useOutsideClick({ ref: sidebarRef, setVisibility: setShowSidebar });
 
-  console.log(selectedEra);
+  // console.log(selectedEra);
 
   const textColor = erasColor[eras.indexOf(selectedEra)];
 
@@ -41,7 +41,6 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
     <nav
       style={{
         color: textColor,
-        fontWeight: textColor === "black" ? 600 : 100,
       }}
     >
       <div

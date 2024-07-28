@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles.css";
-import Title from "@/shared/Title";
 import TaylorSwift from "@/assets/taylor-swift.jpg";
 import FearlessTV from "@/assets/fearless-logo.png";
 import SpeakNowTV from "@/assets/speak-now-logo.png";
@@ -34,9 +33,11 @@ const Terminologies = () => {
 
   return (
     <div id="terms" className="terms__container">
-      <Title>
-        Some Terminologies Before <span className="nowrap">We Start</span>
-      </Title>
+      <div className="h1-container">
+        <h1>
+          Some Terminologies Before <span className="nowrap">We Start</span>
+        </h1>
+      </div>
       <div className="terms__eras-tv-container">
         <div className="terms__ts-container">
           <h1>Who is Taylor Swift?</h1>

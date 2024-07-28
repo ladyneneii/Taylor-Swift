@@ -85,7 +85,8 @@ const debutBonusTrackList = [
   },
 ];
 
-const debutBonusTrackDesc = "Taylor Swift wrote and sang Crazier for Hannah Montana: The Movie and is actually not part of this album. However, we, the Swifties, hope for this song to make it to the Taylor's Version of this album as she recently sang this song at the Eras Tour in June 2024.";
+const debutBonusTrackDesc =
+  "Taylor Swift wrote and sang Crazier for Hannah Montana: The Movie and is actually not part of this album. However, we, the Swifties, hope for this song to make it to the Taylor's Version of this album as she recently sang this song at the Eras Tour in June 2024.";
 
 export const fearlessTVTrackList = [
   {
@@ -146,10 +147,6 @@ export const fearlessTVTrackList = [
   },
   {
     title: "Untouchable (Taylor’s Version)",
-    url: "https://www.youtube.com/embed/vUHDR6Rg3Y4?si=mmhjtpR1HWHLcsWH",
-  },
-  {
-    title: "Untouchable (Taylor’s Version)",
     url: "https://www.youtube.com/embed/8bNlGwnEUAs?si=Oh83zkHj2_bfZor3",
   },
   {
@@ -201,8 +198,7 @@ const fearlessTVVaultTrackList = [
   },
 ];
 
-const vaultTrackDescription =
-  "Vault tracks refer to Taylor Swift's songs that did not make it to the stolen versions of the first six albums but made it to the Taylor's Versions of the same albums. Simply put, when Taylor releases a Taylor's Version of an album, she includes all of the existing songs from the stolen version of the album with Taylor's Version in parentheses next to the titles, plus the additional vault tracks or songs that she had written at the time but did not make it onto the stolen version of the album. Since these vault tracks from an album did not exist until the release of Taylor's Version of the album, there is no need to annotate the titles with Taylor's Version. The purpose of Taylor's Version in parentheses next to song titles is to differentiate them from the stolen versions of the songs.";
+const vaultTrackDescription = `Vault tracks refer to Taylor Swift's songs that did not make it to the stolen versions of the first six albums but made it to the Taylor's Versions of the same albums. Simply put, when Taylor releases a Taylor's Version of an album, she includes all of the existing songs from the stolen version of the album with Taylor's Version in parentheses next to the titles, plus the additional vault tracks or songs that she had written at the time but did not make it onto the stolen version of the album. Since these vault tracks from an album did not exist until the release of Taylor's Version of the album, there is no need to annotate the titles with (Taylor's Version); instead, they are usually annotated with (From the Vault). The purpose of Taylor's Version in parentheses next to song titles is to differentiate them from the stolen versions of the songs.`;
 
 const fearlessTVBonusTrackList = [
   {

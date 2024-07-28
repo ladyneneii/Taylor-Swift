@@ -1,9 +1,75 @@
 /* EraContainer.tsx */
 
+.era-hero {
+  width: clamp(300px, 100%, 2040px);
+  margin-inline: auto;
+  /* border: 5px solid blue; */
+  position: relative;
+}
+
+.hero-overlay {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #203e247b;
+  z-index: 2;
+}
+
+.era-hero-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.title-desc-album-photo {
+  width: 100%;
+  /* border: 5px solid red; */
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  justify-content: center;
+  padding: 10rem 3rem;
+  position: relative;
+  z-index: 5;
+}
+
+.title-desc {
+  max-width: 800px;
+  text-align: center;
+  /* margin-inline: auto; */
+}
+
+.title-desc p {
+  letter-spacing: 0.2rem;
+  text-align: start;
+  line-height: 2rem;
+  margin-block-end: 0px;
+  font-size: 1rem;
+}
+
+.album-photo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.album-photo img {
+  border-radius: var(--border-radius);
+  width: 560px;
+  box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1);
+}
+
 .era-container-padding {
   width: clamp(300px, 100%, 2040px);
   margin-inline: auto;
   padding: var(--container-padding);
+  /* border: 5px solid white; */
 }
 
 .era-container-padding h1 {
@@ -15,13 +81,36 @@
   line-height: 2.5rem;
 }
 
+@media only screen and (max-width: 1400px) {
+  .title-desc-album-photo {
+    flex-direction: column;
+  }
+}
+
 @media only screen and (max-width: 750px) {
+  .title-desc img,
+  .album-photo img {
+    width: 450px;
+  }
+
   .era-container-padding {
     padding: 1rem;
   }
 }
 
+@media only screen and (max-width: 500px) {
+  .title-desc img,
+  .album-photo img {
+    width: 400px;
+  }
+}
+
 @media only screen and (max-width: 450px) {
+  .title-desc img,
+  .album-photo img {
+    width: 300px;
+  }
+
   .era-container {
     width: max(300px, 100%);
   }
@@ -49,46 +138,6 @@ button p {
   }
   button p {
     font-size: 1rem;
-  }
-}
-
-/* Title.tsx */
-
-.title__container {
-  text-align: center;
-}
-
-.title__container h1 {
-  /* margin: 0;
-  padding: 0; */
-  font-weight: 500;
-  font-size: 4rem;
-  font-family: RalphieTall;
-  letter-spacing: 0.3rem;
-  margin-block-start: 70px;
-  margin-block-end: 0;
-}
-
-.title__container h2 {
-  font-weight: 100;
-  margin-block: 0;
-  letter-spacing: 0.5rem;
-  font-family: PistilliRoman;
-  font-size: 1rem;
-}
-
-.title__container h4 {
-  margin-block-end: 53.12px;
-  letter-spacing: 0.2rem;
-  max-width: 1000px;
-  margin-inline: auto;
-  text-align: start;
-  line-height: 2rem;
-}
-
-@media only screen and (max-width: 470px) {
-  .title__container h1 {
-    font-size: 3rem;
   }
 }
 
@@ -214,7 +263,7 @@ button p {
   position: relative;
   margin-inline: auto;
   /* this padding is important so the quotation marks do not exceed the universal padding */
-  padding-inline: 3rem; 
+  padding-inline: 3rem;
   /* border: 5px solid red; */
 }
 
