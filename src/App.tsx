@@ -15,19 +15,19 @@ const App = () => {
 
   const erasBgColor = [
     "#000000",
-    "linear-gradient(to bottom, #000000 0%, #203e24 10%, #18a5bf 100%)",
-    "linear-gradient(to bottom, #18a5bf 0%, #ddc477 10%, 	#462f1b 100%)",
-    "linear-gradient(to bottom, #462f1b  0%, #52316b 10%, #db7ca5 100%)",
-    "linear-gradient(to bottom, #db7ca5  0%, #9c1b15 10%, 	#b99982 100%)",
-    "linear-gradient(to bottom, #b99982  0%, 	#94a9bb 10%, 	#5b86ae 100%)",
-    "linear-gradient(to bottom, #5b86ae  0%, 	#222222 10%, 	#eeeeee 100%)",
-    "linear-gradient(to bottom, #eeeeee  0%, 	#fdcdcd 10%, 	#cec0fc 100%)",
-    "linear-gradient(to bottom, #cec0fc  0%, 	#cccccc 10%, 	#929292 100%)",
-    "linear-gradient(to bottom, #929292  0%, 	#efd3b6 10%, 	#4f2424 100%)",
-    // "linear-gradient(to bottom, #4f2424  0%, 	#550101 10%, 	#351c75 100%)",
-    "linear-gradient(to bottom, #4f2424  0%, 	#351c75 10%, 	#550101 100%)",
-    // "linear-gradient(to bottom, #351c75  0%, 	#231e1a 10%, 	#a79e8f 100%)",
-    "linear-gradient(to bottom, #550101  0%, 	#231e1a 10%, 	#a79e8f 100%)",
+    "linear-gradient(to bottom, #203e24 10%, #18a5bf 100%)",
+    "linear-gradient(to bottom, #462f1b 10%, #ddc477 100%)",
+    "linear-gradient(to bottom, #52316b 10%, #db7ca5 100%)",
+    "linear-gradient(to bottom, #9c1b15 10%, 	#b99982 100%)",
+    "linear-gradient(to bottom, 	#94a9bb 10%, 	#5b86ae 100%)",
+    "linear-gradient(to bottom, 	#222222 10%, 	#eeeeee 100%)",
+    "linear-gradient(to bottom, 	#fdcdcd 10%, 	#cec0fc 100%)",
+    "linear-gradient(to bottom, 	#cccccc 10%, 	#929292 100%)",
+    "linear-gradient(to bottom, 	#efd3b6 10%, 	#4f2424 100%)",
+    // "linear-gradient(to bottom, 	#550101 10%, 	#351c75 100%)",
+    "linear-gradient(to bottom, 	#351c75 10%, 	#550101 100%)",
+    // "linear-gradient(to bottom, 	#231e1a 10%, 	#a79e8f 100%)",
+    "linear-gradient(to bottom, 	#231e1a 10%, 	#a79e8f 100%)",
   ];
 
   return (

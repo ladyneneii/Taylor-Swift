@@ -18,7 +18,7 @@ export const eras = [
 export const erasColor = [
   "white", // textColor for Home
   "white",
-  "black",
+  "white",
   "white",
   "white",
   "black",

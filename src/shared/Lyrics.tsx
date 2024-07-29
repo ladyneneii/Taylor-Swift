@@ -13,7 +13,7 @@ const Lyrics = ({ eraNumber, lyrics }: Props) => {
 
   const lyricsColor = [
     "white",
-    "white",
+    "black",
     "white",
     "white",
     "white",
@@ -27,7 +27,7 @@ const Lyrics = ({ eraNumber, lyrics }: Props) => {
 
   const citeColor = [
     blackish,
-    whitish,
+    blackish,
     blackish,
     blackish,
     blackish,

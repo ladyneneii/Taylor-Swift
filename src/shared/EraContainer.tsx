@@ -4,7 +4,7 @@ import Carousel from "./Carousel";
 import { blackish, CarouselProps, eras, whitish } from "./types";
 import Lyrics from "./Lyrics";
 import { LyricsTitle } from "@/data/lyrics";
-import { albums, logos } from "@/data/img-data";
+import { albums, heroEras, logos } from "@/data/img-data";
 import { details } from "@/data/details";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
@@ -36,6 +36,53 @@ const EraContainer = ({
 
   const eraId = formatEraId(eraTitle);
 
+  const heroEraStyle: Record<string, object> = {
+    "Taylor Swift": useMediaQuery("(min-width: 1600px)")
+      ? {
+          objectPosition: "center 20%",
+        }
+      : {
+          objectPosition: "center",
+        },
+    "Speak Now": isMedium
+      ? {
+          objectPosition: "70% center",
+        }
+      : {
+          objectPosition: "center",
+        },
+    Red: useMediaQuery("(min-width: 1600px)")
+      ? {
+          objectPosition: "center 20%",
+        }
+      : {
+          objectPosition: "center",
+        },
+    "1989": useMediaQuery("(min-width: 1700px)")
+      ? {
+          objectPosition: "center 25%",
+        }
+      : {
+          objectPosition: "center",
+        },
+    Lover: {
+      objectPosition: "top",
+    },
+    Folklore: useMediaQuery("(min-width: 1700px)")
+      ? {
+          objectPosition: "center 30%",
+        }
+      : {
+          objectPosition: "center",
+        },
+    Midnights: {
+      objectPosition: "top",
+    },
+    TTPD: {
+      transform: "scaleX(-1)",
+    },
+  };
+
   return (
     <section
       className="era-container"
@@ -44,12 +91,17 @@ const EraContainer = ({
     >
       {eraTitle !== "Home" && (
         <div className="era-hero">
-          {/* <img
-            src="/images/hero-taylor-swift.jpg"
-            alt=""
+          <img
+            src={heroEras[eraNumber - 1]}
+            alt={heroEras[eraNumber - 1]}
             className="era-hero-img"
+            style={heroEraStyle[eraTitle]}
           />
-          <div className="hero-overlay"></div> */}
+          <div
+            className="hero-overlay"
+            style={{ background: "rgba(0, 0, 0, 0.6)" }}
+            // style={{ background: overlayColors[eraNumber - 1] }}
+          ></div>
           <div className="title-desc-album-photo">
             <div className="title-desc" style={{ order: isTablet ? -2 : 0 }}>
               <img
@@ -61,9 +113,15 @@ const EraContainer = ({
                     : eras[eraNumber] === "Red" || eras[eraNumber] === "TTPD"
                     ? "170px"
                     : "120px",
+                  backgroundColor:
+                    eraTitle === "Reputation" ? "rgba(255, 255, 255, 0.5)" : "",
+                  boxShadow:
+                    eraTitle === "Reputation"
+                      ? "inset 0 0 2rem rgba(0, 0, 0, 0.9)"
+                      : "",
                 }}
               />
-              <p>{details[eraNumber - 1]}</p>
+              <p style={{ color: "white" }}>{details[eraNumber - 1]}</p>
             </div>
             <div
               className="album-photo"

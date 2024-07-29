@@ -86,7 +86,7 @@ const Terminologies = () => {
               (10 eras at first before the release of the 11th album last April
               2024), each having its dedicated set excluding the first album.
               The setlist is already predetermined, except for the songs in the
-              acoustic set, where she plays any songs from any of her 11 albums
+              acoustic set, where she plays any songs (or mash-ups thereof) from any of her 11 albums
               on a guitar or piano, hence so famously called the "surprise
               songs." <br />
               <p>

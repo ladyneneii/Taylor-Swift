@@ -28,6 +28,22 @@ export const logos = [
   "/images/logo-ttpd.png",
 ];
 
+export const heroEras = [
+  "/images/hero-taylor-swift.jpg",
+  "/images/hero-fearless-tv2.jpeg",
+  "/images/hero-speak-now-tv.jpg",
+  "/images/hero-red-tv.webp",
+  "/images/hero-1989-tv2.webp",
+  "/images/hero-reputation.webp",
+  "/images/hero-lover2.webp",
+  "/images/hero-folklore.jpg",
+  "/images/hero-evermore.jpg_large",
+  "/images/hero-midnights.jpg",
+  "/images/hero-ttpd.jpg",
+];
+
+export const overlayColors = ["#203e247b", "#462f1b7f", "#52316b88"];
+
 export const debutCarousel: Array<CarouselProps> = [
   {
     imgPath:
