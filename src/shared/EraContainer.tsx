@@ -18,7 +18,7 @@ type Props = {
 };
 
 const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor }: Props) => {
-  const isTablet = useMediaQuery("(max-width: 1400px)");
+  const isLarge = useMediaQuery("(max-width: 1400px)");
   const isMedium = useMediaQuery("(max-width: 750px)");
 
   const formatEraId = (currEra: string) => {
@@ -55,7 +55,7 @@ const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor }: Props) => {
         : "center",
     },
     Evermore: {
-      objectPosition: isTablet ? "90%" : "center",
+      objectPosition: isLarge ? "90%" : "center",
     },
     Midnights: {
       objectPosition: "top",
@@ -97,10 +97,10 @@ const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor }: Props) => {
             className="title-desc-album-photo"
             style={{
               paddingBlockEnd:
-                eraTitle === "TTPD" ? (!isTablet ? "1rem" : "4rem") : "10rem",
+                eraTitle === "TTPD" ? (!isLarge ? "1rem" : "4rem") : "10rem",
             }}
           >
-            <div className="title-desc" style={{ order: isTablet ? -2 : 0 }}>
+            <div className="title-desc" style={{ order: isLarge ? -2 : 0 }}>
               <img
                 src={logos[eraNumber - 1]}
                 alt={`${eras[eraNumber]}-album-cover`}
@@ -126,7 +126,7 @@ const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor }: Props) => {
           {eraTitle === "TTPD" && (
             <div
               className="title-desc-album-photo"
-              style={{ paddingBlockStart: !isTablet ? "1rem" : "4rem" }}
+              style={{ paddingBlockStart: !isLarge ? "1rem" : "4rem" }}
             >
               <div className="title-desc">
                 <img

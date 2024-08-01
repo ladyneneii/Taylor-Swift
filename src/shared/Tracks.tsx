@@ -1,4 +1,5 @@
 import { trackListsArr } from "@/data/tracklists";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import React, { useEffect, useState } from "react";
 
 type Props = {
@@ -16,6 +17,15 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
     defaultTrackIndex,
   } = trackListsArr[eraNumber - 1];
 
+  const is2XLarge = useMediaQuery("(min-width: 2000px)");
+  const isXLarge = useMediaQuery("(max-width: 2000px)");
+  const isLarge = useMediaQuery("(max-width: 1650px)");
+  const isMedium = useMediaQuery("(max-width: 1350px)");
+
+  const [cols, setCols] = useState(4);
+  const width = 300;
+  const height = 100;
+  const tracklistHeight = 850;
   const [videoURL, setVideoURL] = useState(
     "https://www.youtube.com/embed/xKCek6_dB0M?si=NzXexXBrnBfXaJFt&amp;start=70"
   );
@@ -38,7 +48,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
     setSquaresToMoveDown(() => {
       const newSquares = [];
 
-      for (let i = index + 4; i < length; i += 4) {
+      for (let i = index + cols; i < length; i += cols) {
         newSquares.push(i);
       }
 
@@ -46,13 +56,12 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
     });
 
     // if the square is not on the very right edge
-    if ((index + 1) % 4 !== 0) {
+    if ((index + 1) % cols !== 0) {
       setSquaresToMoveRight(() => {
         let i = index + 1;
         const newSquares = [];
-        const cols = 4;
 
-        for (; i <= index + 5; i += 4) {
+        for (; i <= index + cols + 1; i += cols) {
           newSquares.push(i);
           for (let j = i + 1; j % cols !== 0; ++j) {
             newSquares.push(j);
@@ -62,7 +71,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
         setSquaresToMoveDownOnce(() => {
           const newSquares = [];
 
-          for (; i < length; i += 4) {
+          for (; i < length; i += cols) {
             newSquares.push(i);
           }
 
@@ -72,7 +81,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
         return newSquares;
       });
     } else {
-      setSquaresToMoveDownOnce([])
+      setSquaresToMoveDownOnce([]);
       setSquaresToMoveRight([]);
     }
   };
@@ -81,17 +90,27 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
   const bonusTrackNumber =
     trackList.length + (vaultTrackList ? vaultTrackList.length : 0) + 1;
 
-  // console.log(squaresToMoveDown);
-  // if (squaresToMoveRight) console.log(squaresToMoveRight);
-
   useEffect(() => {
+    if (is2XLarge) setCols(5)
+    if (isXLarge) setCols(4);
+    if (isLarge) setCols(3);
+    if (isMedium) setCols(2);
+
     handleClickTrack(
       defaultTrackIndex,
       trackList[defaultTrackIndex].url,
       trackList[defaultTrackIndex].title,
       trackList.length
     );
-  }, []);
+
+    console.log(cols);
+  }, [cols, is2XLarge, isXLarge, isLarge, isMedium]);
+
+  // useEffect(() => {
+  //   console.log(squaresToMoveDown);
+  //   if (squaresToMoveDownOnce) console.log(squaresToMoveDownOnce);
+  //   if (squaresToMoveRight) console.log(squaresToMoveRight);
+  // }, [squaresToMoveDown, squaresToMoveDownOnce, squaresToMoveRight]);
 
   return (
     <div className="tracks__container">
@@ -101,11 +120,8 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
         <div>
           <h2>Album Tracks</h2>
         </div>
-        <div className="tracklist">
+        <div className="tracklist" style={{ height: `${tracklistHeight}px` }}>
           {trackList.map(({ title, url }, index) => {
-            const width = 290;
-            const height = 120;
-            const cols = 4;
             let left = 0;
             let top = 0;
 
@@ -115,25 +131,45 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
             return (
               <div
                 key={index}
-                className={`track-info-square ${
-                  title === track ? "expand" : ""
-                }`}
+                className="track-info-square"
                 style={{
-                  left: squaresToMoveRight.includes(index) ? left + 290 : left,
+                  width: title === track ? width * 2 : width,
+                  height: title === track ? height * 4 : height,
+                  left: squaresToMoveRight.includes(index)
+                    ? left + width
+                    : left,
                   top: squaresToMoveDown.includes(index)
-                    ? top + 240
+                    ? top + height * 3
                     : squaresToMoveDownOnce.includes(index)
-                    ? top + 120
+                    ? top + height * 2
                     : top,
                 }}
               >
                 <div
-                  className="track-info"
+                  className={`track-info ${title === track ? "expand" : ""}`}
                   onClick={() =>
                     handleClickTrack(index, url, title, trackList.length)
                   }
                 >
-                  {index}. {title}
+                  <div className="track-number-title">
+                    <div className="track-number">{index}.</div>
+                    <div className="track-title">{title}</div>
+                  </div>
+                  <div
+                    className={`track-iframe ${
+                      title === track ? "expand" : ""
+                    }`}
+                  >
+                    {title === track && (
+                      <iframe
+                        src={videoURL}
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      ></iframe>
+                    )}
+                  </div>
                 </div>
               </div>
             );
