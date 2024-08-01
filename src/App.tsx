@@ -3,12 +3,7 @@ import Navbar from "./scenes/navbar";
 import "./index.css";
 import Home from "./scenes/home";
 import EraContainer from "./shared/EraContainer";
-import Terminologies from "./scenes/terminologies";
-import TaylorSwift from "./scenes/taylor-swift";
-import { debutCarousel } from "./data/img-data";
-import { quotes } from "./data/lyrics";
 import { eras, erasColor } from "./shared/types";
-import { trackListsArr } from "./data/tracklists";
 
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
@@ -48,9 +43,7 @@ const App = () => {
         eraTitle="Home"
         textColor={erasColor[eras.indexOf("Home")]}
         bgcolor={erasBgColor[eras.indexOf("Home")]}
-      >
-        <Terminologies />
-      </EraContainer>
+      />
 
       {eras.slice(1).map((era, index) => (
         <EraContainer
@@ -59,15 +52,7 @@ const App = () => {
           eraTitle={era}
           textColor={erasColor[index + 1]}
           bgcolor={erasBgColor[index + 1]}
-          pictures={debutCarousel}
-          lyricsArr={quotes[index]}
-        >
-          <TaylorSwift
-            eraNumber={index + 1}
-            textColor={erasColor[index + 1]}
-            tracks={trackListsArr[index]}
-          />
-        </EraContainer>
+        />
       ))}
     </div>
   );

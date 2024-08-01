@@ -3,30 +3,21 @@ import "./styles.css";
 import Carousel from "./Carousel";
 import { blackish, CarouselProps, eras, whitish } from "./types";
 import Lyrics from "./Lyrics";
-import { LyricsTitle } from "@/data/lyrics";
+import { LyricsTitle, quotes } from "@/data/lyrics";
 import { albums, heroEras, logos } from "@/data/img-data";
 import { details } from "@/data/details";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import Tracks from "./Tracks";
+import Terminologies from "@/scenes/terminologies";
 
 type Props = {
   eraNumber: number;
   eraTitle: string;
   textColor: string;
   bgcolor: string;
-  children: React.ReactNode;
-  pictures?: Array<CarouselProps>;
-  lyricsArr?: Array<LyricsTitle>;
 };
 
-const EraContainer = ({
-  eraNumber,
-  eraTitle,
-  textColor,
-  bgcolor,
-  children,
-  pictures,
-  lyricsArr,
-}: Props) => {
+const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor }: Props) => {
   const isTablet = useMediaQuery("(max-width: 1400px)");
   const isMedium = useMediaQuery("(max-width: 750px)");
 
@@ -37,50 +28,53 @@ const EraContainer = ({
   const eraId = formatEraId(eraTitle);
 
   const heroEraStyle: Record<string, object> = {
-    "Taylor Swift": useMediaQuery("(min-width: 1600px)")
-      ? {
-          objectPosition: "center 20%",
-        }
-      : {
-          objectPosition: "center",
-        },
-    "Speak Now": isMedium
-      ? {
-          objectPosition: "70% center",
-        }
-      : {
-          objectPosition: "center",
-        },
-    Red: useMediaQuery("(min-width: 1600px)")
-      ? {
-          objectPosition: "center 20%",
-        }
-      : {
-          objectPosition: "center",
-        },
-    "1989": useMediaQuery("(min-width: 1700px)")
-      ? {
-          objectPosition: "center 25%",
-        }
-      : {
-          objectPosition: "center",
-        },
+    "Taylor Swift": {
+      objectPosition: useMediaQuery("(min-width: 1600px)")
+        ? "center 20%"
+        : "center",
+    },
+    "Speak Now": {
+      objectPosition: isMedium ? "70% center" : "center",
+    },
+    Red: {
+      objectPosition: useMediaQuery("(min-width: 1600px)")
+        ? "center 20%"
+        : "center",
+    },
+    "1989": {
+      objectPosition: useMediaQuery("(min-width: 1700px)")
+        ? "center 25%"
+        : "center",
+    },
     Lover: {
       objectPosition: "top",
     },
-    Folklore: useMediaQuery("(min-width: 1700px)")
-      ? {
-          objectPosition: "center 30%",
-        }
-      : {
-          objectPosition: "center",
-        },
+    Folklore: {
+      objectPosition: useMediaQuery("(min-width: 1700px)")
+        ? "center 30%"
+        : "center",
+    },
+    Evermore: {
+      objectPosition: isTablet ? "90%" : "center",
+    },
     Midnights: {
       objectPosition: "top",
     },
     TTPD: {
-      transform: "scaleX(-1)",
+      objectPosition: !useMediaQuery("(max-width: 950px)") ? "40%" : "35%",
     },
+  };
+
+  const logoStyle = {
+    height: isMedium
+      ? "auto"
+      : eras[eraNumber] === "Red" || eras[eraNumber] === "TTPD"
+      ? "170px"
+      : "120px",
+    backgroundColor:
+      eraTitle === "Reputation" ? "rgba(255, 255, 255, 0.5)" : "",
+    boxShadow:
+      eraTitle === "Reputation" ? "inset 0 0 2rem rgba(0, 0, 0, 0.9)" : "",
   };
 
   return (
@@ -89,6 +83,7 @@ const EraContainer = ({
       style={{ background: bgcolor, color: textColor, borderColor: textColor }}
       id={eraId}
     >
+      {/* HERO SECTION */}
       {eraTitle !== "Home" && (
         <div className="era-hero">
           <img
@@ -97,29 +92,19 @@ const EraContainer = ({
             className="era-hero-img"
             style={heroEraStyle[eraTitle]}
           />
+          <div className="hero-overlay"></div>
           <div
-            className="hero-overlay"
-            style={{ background: "rgba(0, 0, 0, 0.6)" }}
-            // style={{ background: overlayColors[eraNumber - 1] }}
-          ></div>
-          <div className="title-desc-album-photo">
+            className="title-desc-album-photo"
+            style={{
+              paddingBlockEnd:
+                eraTitle === "TTPD" ? (!isTablet ? "1rem" : "4rem") : "10rem",
+            }}
+          >
             <div className="title-desc" style={{ order: isTablet ? -2 : 0 }}>
               <img
                 src={logos[eraNumber - 1]}
                 alt={`${eras[eraNumber]}-album-cover`}
-                style={{
-                  height: isMedium
-                    ? "auto"
-                    : eras[eraNumber] === "Red" || eras[eraNumber] === "TTPD"
-                    ? "170px"
-                    : "120px",
-                  backgroundColor:
-                    eraTitle === "Reputation" ? "rgba(255, 255, 255, 0.5)" : "",
-                  boxShadow:
-                    eraTitle === "Reputation"
-                      ? "inset 0 0 2rem rgba(0, 0, 0, 0.9)"
-                      : "",
-                }}
+                style={logoStyle}
               />
               <p style={{ color: "white" }}>{details[eraNumber - 1]}</p>
             </div>
@@ -127,29 +112,70 @@ const EraContainer = ({
               className="album-photo"
               style={{ order: eraNumber % 2 !== 0 ? -1 : 1 }}
             >
-              {eraTitle === "TTPD" && (
+              {eraTitle === "TTPD" ? (
                 <img
                   src="/images/album-ttpd-standard.png"
                   alt="/images/album-ttpd-standard.png"
                 />
+              ) : (
+                <img src={albums[eraNumber - 1]} alt={albums[eraNumber - 1]} />
               )}
-              <img src={albums[eraNumber - 1]} alt={albums[eraNumber - 1]} />
             </div>
           </div>
+
+          {eraTitle === "TTPD" && (
+            <div
+              className="title-desc-album-photo"
+              style={{ paddingBlockStart: !isTablet ? "1rem" : "4rem" }}
+            >
+              <div className="title-desc">
+                <img
+                  src="/images/logo-the-anthology-transparent.png"
+                  alt={`${eras[eraNumber]}-album-cover`}
+                />
+                <p style={{ color: "white" }}>
+                  This album covers a variety of emotions, whether you are going
+                  through a heartbreak, grieving someone you just lost, being
+                  betrayed by someone you cared for, being manipulated and
+                  gaslit by an ex-lover, expressing your anger for being used,
+                  making a choice between missing someone or taking your
+                  revenge, falling in love with someone so hard you make up
+                  scenarios of them in your head, going back to high school for
+                  nostalgia, coming to terms with your bully and thanking them
+                  retrospectively for making you a strong person, ending a
+                  6-year relationship when you're about to get married, getting
+                  back at the people who wronged you, and just dying at the fact
+                  that you still have not understood how it came to be and how
+                  it ended just like that. This album is A LOT to take in, so
+                  make sure to take your time listening to it.
+                </p>
+              </div>
+              <div className="album-photo">
+                <img src={albums[eraNumber - 1]} alt={albums[eraNumber - 1]} />
+              </div>
+            </div>
+          )}
         </div>
       )}
 
-      <div className="era-container-padding">{children}</div>
-      {pictures && (
+      {/* TRACKS SECTION */}
+      {eraTitle === "Home" ? (
+        <Terminologies />
+      ) : (
+        <Tracks textColor={textColor} eraNumber={eraNumber} />
+      )}
+
+      {/* CAROUSEL SECTION */}
+      {eraTitle !== "Home" && (
         <Carousel
           bgColor={textColor === "white" ? blackish : whitish}
-          pictures={pictures}
+          eraNumber={eraNumber}
         />
       )}
-      {lyricsArr &&
-        lyricsArr.map((lyrics, index) => (
+      {/* {eraTitle !== "Home" &&
+        quotes[eraNumber - 1].map((lyrics, index) => (
           <Lyrics key={index} eraNumber={eraNumber} lyrics={lyrics} />
-        ))}
+        ))} */}
     </section>
   );
 };

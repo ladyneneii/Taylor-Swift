@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { blackish, CarouselProps } from "./types";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import Modal from "./Modal";
+import { carouselEras } from "@/data/img-data";
 
 type Props = {
   bgColor: string;
-  pictures: Array<CarouselProps>;
+  eraNumber: number;
 };
 
-const Carousel = ({ bgColor, pictures }: Props) => {
+const Carousel = ({ bgColor, eraNumber }: Props) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -73,7 +74,7 @@ const Carousel = ({ bgColor, pictures }: Props) => {
           {canScrollLeft && <BiSolidLeftArrow size={25} />}
         </div>
         <div ref={carouselRef} className="images-wrapper">
-          {pictures?.map(({ imgPath, description }: CarouselProps, index) => (
+          {carouselEras[eraNumber - 1].map(({ imgPath, description }: CarouselProps, index) => (
             <div key={index}>
               <img
                 className={`img-border-${
@@ -83,7 +84,6 @@ const Carousel = ({ bgColor, pictures }: Props) => {
                 src={imgPath}
                 alt={description}
               />
-              {/* <h1>{description}</h1> */}
               {description && (
                 <h1 dangerouslySetInnerHTML={{ __html: description }} />
               )}

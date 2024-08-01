@@ -1,5 +1,16 @@
 .terms__container {
-  padding: 3rem 0;
+  width: clamp(300px, 100%, 2040px);
+  margin-inline: auto;
+  padding: var(--container-padding);
+}
+
+.terms__container h1 {
+  font-size: 2rem;
+}
+
+.terms__container p {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
 }
 
 .h1-container {
@@ -137,6 +148,10 @@
 }
 
 @media only screen and (max-width: 750px) {
+  .terms__container {
+    padding: 1rem;
+  }
+
   .terms__ts-pic-container,
   .terms__tv-pics-container {
     width: 450px;

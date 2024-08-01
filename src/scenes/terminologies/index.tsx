@@ -53,48 +53,52 @@ const Terminologies = () => {
                 </p>
               </div>
             </div>
-            <p>
-              Taylor Alison Swift is an American songwriter, singer, and
-              musician who tells vivid, artistic, and poetic stories through her
-              music. She was born in 1989 on the 13th of December, started her
-              career in 2006, and has released 11 albums since then. She used to
-              make country music, but now she has been exploring other genres of
-              music that can be enjoyed by all ages. Her discography is a lot
-              more diverse than what a lot of people take credit her for, but
-              she excels at making songs that are too relatable as if she has
-              known you all her life. For some reason, she always has songs for
-              every emotion you feel and for every stage of life you are at. She
-              stays authentic to her aesthetic and does not attempt to please a
-              target audience to gain their favor. Her music is as raw and real
-              as it gets. <br />
+            <div>
+              <p>
+                Taylor Alison Swift is an American songwriter, singer, and
+                musician who tells vivid, artistic, and poetic stories through
+                her music. She was born in 1989 on the 13th of December, started
+                her career in 2006, and has released 11 albums since then. She
+                used to make country music, but now she has been exploring other
+                genres of music that can be enjoyed by all ages. Her discography
+                is a lot more diverse than what a lot of people take credit her
+                for, but she excels at making songs that are too relatable as if
+                she has known you all her life. For some reason, she always has
+                songs for every emotion you feel and for every stage of life you
+                are at. She stays authentic to her aesthetic and does not
+                attempt to please a target audience to gain their favor. Her
+                music is as raw and real as it gets.
+              </p>
               <p>
                 As proof of her hard work, she has won multiple awards and is
                 the first and only artist to win the GRAMMY for Album Of The
                 Year four times. She is regarded as THE music industry for a
                 reason.
               </p>
-            </p>
+            </div>
           </div>
         </div>
         <div className="terms__eras-container">
           <h1>What is the Eras Tour?</h1>
           <div className="terms__eras-vid-container">
-            <p>
-              The Eras Tour is Taylor Swift's sixth concert and worldwide tour,
-              starting in March 2023 and ending in December 2024. She divides
-              the setlist of the 3-hour concert into her first 11 albums or eras
-              (10 eras at first before the release of the 11th album last April
-              2024), each having its dedicated set excluding the first album.
-              The setlist is already predetermined, except for the songs in the
-              acoustic set, where she plays any songs (or mash-ups thereof) from any of her 11 albums
-              on a guitar or piano, hence so famously called the "surprise
-              songs." <br />
+            <div>
+              <p>
+                The Eras Tour is Taylor Swift's sixth concert and worldwide
+                tour, starting in March 2023 and ending in December 2024. She
+                divides the setlist of the 3-hour concert into her first 11
+                albums or eras (10 eras at first before the release of the 11th
+                album last April 2024), each having its dedicated set excluding
+                the first album. The setlist is already predetermined, except
+                for the songs in the acoustic set, where she plays any songs (or
+                mash-ups thereof) from any of her 11 albums on a guitar or
+                piano, hence so famously called the "surprise songs."
+              </p>
               <p>
                 On the 13th of October, 2023, Taylor Swift released a film
                 version of the Eras Tour with some songs excluded due to the
                 film's length.
               </p>
-            </p>
+            </div>
             <div className="terms__iframe-container">
               <iframe
                 src="https://www.youtube.com/embed/KudedLV0tP0?si=SwmdGfcIKuyPOj2Y"

@@ -14,6 +14,7 @@
   width: 100%;
   height: 100%;
   z-index: 2;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .era-hero-img {
@@ -64,40 +65,34 @@
   box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1);
 }
 
-.era-container-padding {
-  width: clamp(300px, 100%, 2040px);
-  margin-inline: auto;
-  padding: var(--container-padding);
-  /* border: 5px solid white; */
-}
-
-.era-container-padding h1 {
-  font-size: 2rem;
-}
-
-.era-container-padding p {
-  font-size: 1.5rem;
-  line-height: 2.5rem;
+.the-anthology {
+  width: 560px;
 }
 
 @media only screen and (max-width: 1400px) {
   .title-desc-album-photo {
     flex-direction: column;
+    gap: 2rem;
   }
 }
 
 @media only screen and (max-width: 750px) {
+  .title-desc-album-photo {
+    padding-inline: 0;
+  }
+  .title-desc-album-photo p {
+    padding-inline: 1rem;
+  }
+
+  .the-anthology,
   .title-desc img,
   .album-photo img {
     width: 450px;
   }
-
-  .era-container-padding {
-    padding: 1rem;
-  }
 }
 
 @media only screen and (max-width: 500px) {
+  .the-anthology,
   .title-desc img,
   .album-photo img {
     width: 400px;
@@ -105,6 +100,7 @@
 }
 
 @media only screen and (max-width: 450px) {
+  .the-anthology,
   .title-desc img,
   .album-photo img {
     width: 300px;
@@ -140,12 +136,136 @@ button p {
   }
 }
 
+/* Tracks.tsx */
+
+.tracks__container {
+  width: clamp(300px, 100%, 2040px);
+  margin-inline: auto;
+  padding: var(--container-padding);
+  border: 5px solid white;
+}
+
+.tracks__container h1 {
+  font-size: 1rem;
+  letter-spacing: 0.3rem;
+  font-weight: 100;
+  margin-bottom: 2rem;
+}
+
+.tracks__container h2 {
+  font-family: RalphieTall;
+  font-weight: 100;
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+  margin-block: 2.5rem 1rem;
+}
+
+.tracklist-h2 {
+  border: 5px solid blue;
+}
+
+.tracklist {
+  border: 5px solid red;
+  position: relative;
+  height: 100vh;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* gap: 2rem; */
+}
+
+.track-info-square {
+  border: 2px solid blue;
+  position: absolute;
+  width: 290px;
+  height: 120px;
+  /* transition: width 0.5s ease-in-out, height 0.5s ease-in-out; */
+  transition: 0.5s ease-in-out;
+  
+  padding: 0.5rem;
+}
+
+.track-info {
+  border: 1px solid pink;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+  
+}
+
+.track-info-square:hover {
+  cursor: pointer;
+}
+
+.track-info-square.expand {
+  width: 580px;
+  height: 360px;
+}
+
+/* 
+.album-vault {
+  display: flex;
+  gap: 2rem;
+}
+
+.tracklist,
+.bonus-tracklist {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.tracklist {
+  height: max(600px, 80vh);
+}
+
+.tracklist p,
+.bonus-tracklist p {
+  margin-block: 0;
+}
+
+.track-info {
+  padding: 0.5rem;
+  width: 280px;
+}
+
+.track-info:hover {
+  cursor: pointer;
+}
+
+.iframe-bonus {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+.iframe-bonus .track-info {
+  padding: 0.5rem;
+  width: 100%;
+} */
+
+/* @media only screen and (max-width: 1550px) {
+  .tracks__container {
+    flex-direction: column;
+  }
+} */
+
+@media only screen and (max-width: 750px) {
+  .tracks__container {
+    padding: 1rem;
+  }
+}
+
 /* Carousel.tsx */
 
 .carousel__container {
   width: 100%;
   overflow: hidden;
-  padding: 2rem 4rem;
+  padding: 2rem 3rem;
   position: relative;
 }
 

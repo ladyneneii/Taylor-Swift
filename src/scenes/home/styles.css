@@ -2,7 +2,7 @@
   width: clamp(300px, 100%, 2040px);
   height: max(900px, 100vh);
   /* the same as */
-  /* min-height: 600px; */
+  /* min-height: 900px; */
   /* height: 100vh; */
 
   position: relative;

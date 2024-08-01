@@ -85,3 +85,17 @@ export const debutCarousel: Array<CarouselProps> = [
       "https://www.voguehk.com/media/2023/08/GettyImages-1508067193-1280x853.jpg",
   },
 ];
+
+export const carouselEras = [
+  debutCarousel,
+  debutCarousel,
+  debutCarousel,
+  debutCarousel,
+  debutCarousel,
+  debutCarousel,
+  debutCarousel,
+  debutCarousel,
+  debutCarousel,
+  debutCarousel,
+  debutCarousel,
+]

@@ -44,7 +44,7 @@ body {
 }
 
 /* adding the first class to override styles */
-.era-container-padding .media-title {
+.media-title {
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: bold;
@@ -117,4 +117,14 @@ a {
 
 .underline {
   text-decoration: underline;
+}
+
+.slightly-large-font {
+  font-size: 1.3rem;
+  font-weight: 100;
+  line-height: 2.3rem;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
