@@ -26,6 +26,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
   const isXTablet = useMediaQuery("(max-width: 650px)");
   const isPhone = useMediaQuery("(max-width: 550px)");
   const isSPhone = useMediaQuery("(max-width: 450px)");
+  const isXSPhone = useMediaQuery("(max-width: 350px)");
 
   const [cols, setCols] = useState(4);
   const [width, setWidth] = useState(300);
@@ -154,6 +155,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
   }, [cols, isSmall, is2XLarge, isXLarge, isLarge, isMedium, isPhone]);
 
   useEffect(() => {
+    // change the dimensions here; changing the initial values won't do anything because this if block below overrides the new values
     if (isLTablet) {
       setWidth(300);
       setHeight(100);
@@ -175,11 +177,16 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       setTrackIframeDimensionsExpand({ width: "390px", height: "219.38px" });
     }
     if (isSPhone) {
-      setWidth(155);
+      setWidth(310);
       setHeight(60);
       setTrackIframeDimensionsExpand({ width: "300px", height: "168.75px" });
     }
-  }, [isLTablet, isXTablet, isPhone, isSPhone]);
+    if (isXSPhone) {
+      setWidth(270);
+      setHeight(60);
+      setTrackIframeDimensionsExpand({ width: "260px", height: "146.25px" });
+    }
+  }, [isLTablet, isXTablet, isPhone, isSPhone, isXSPhone]);
 
   // useEffect(() => {
   //   console.log(`move down: ${squaresToMoveDown}`);
