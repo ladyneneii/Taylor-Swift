@@ -21,10 +21,25 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
   const isXLarge = useMediaQuery("(max-width: 2000px)");
   const isLarge = useMediaQuery("(max-width: 1650px)");
   const isMedium = useMediaQuery("(max-width: 1350px)");
+  const isSmall = useMediaQuery("(max-width: 1050px)");
+  const isLTablet = useMediaQuery("(min-width: 750px)");
+  const isXTablet = useMediaQuery("(max-width: 650px)");
+  const isPhone = useMediaQuery("(max-width: 550px)");
+  const isSPhone = useMediaQuery("(max-width: 450px)");
 
   const [cols, setCols] = useState(4);
-  const width = 300;
-  const height = 100;
+  const [width, setWidth] = useState(300);
+  const [height, setHeight] = useState(100);
+  const trackIframeDimensions = {
+    width: 0,
+    height: 0,
+  };
+  const [trackIframeDimensionsExpand, setTrackIframeDimensionsExpand] =
+    useState({
+      width: "540px",
+      height: "303.75px",
+    });
+
   const tracklistHeight = 850;
   const [videoURL, setVideoURL] = useState(
     "https://www.youtube.com/embed/xKCek6_dB0M?si=NzXexXBrnBfXaJFt&amp;start=70"
@@ -34,6 +49,9 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
   const [squaresToMoveDownOnce, setSquaresToMoveDownOnce] = useState<number[]>(
     []
   );
+  const [squaresToMoveDownThrice, setSquaresToMoveDownThrice] = useState<
+    number[]
+  >([]);
   const [squaresToMoveRight, setSquaresToMoveRight] = useState<number[]>([]);
 
   const handleClickTrack = (
@@ -52,11 +70,33 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
         newSquares.push(i);
       }
 
+      if (isPhone) {
+        for (let i = index + 1; i < length; i += cols) {
+          newSquares.push(i);
+        }
+      }
+
+      if (isSmall && !isPhone) {
+        setSquaresToMoveDownThrice(() => {
+          const newSquares = [];
+          for (let i = index + 1; i < length; i += cols) {
+            newSquares.push(i);
+          }
+
+          // if the square is on the very right edge
+          if ((index + 1) % cols === 0) {
+            newSquares.push(index - 1);
+          }
+
+          return newSquares;
+        });
+      }
+
       return newSquares;
     });
 
     // if the square is not on the very right edge
-    if ((index + 1) % cols !== 0) {
+    if (!isSmall && (index + 1) % cols !== 0) {
       setSquaresToMoveRight(() => {
         let i = index + 1;
         const newSquares = [];
@@ -81,8 +121,14 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
         return newSquares;
       });
     } else {
+      // empty the arrays if they are not utilized
       setSquaresToMoveDownOnce([]);
       setSquaresToMoveRight([]);
+    }
+
+    if (!isSmall || isPhone) {
+      // do not empty the array if it is isSmall because the array is used in the media query, but empty the array if it is isPhone because the array is not used in that media query
+      setSquaresToMoveDownThrice([]);
     }
   };
 
@@ -91,10 +137,11 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
     trackList.length + (vaultTrackList ? vaultTrackList.length : 0) + 1;
 
   useEffect(() => {
-    if (is2XLarge) setCols(5)
+    if (is2XLarge) setCols(5);
     if (isXLarge) setCols(4);
     if (isLarge) setCols(3);
     if (isMedium) setCols(2);
+    if (isPhone) setCols(1)
 
     handleClickTrack(
       defaultTrackIndex,
@@ -104,12 +151,43 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
     );
 
     console.log(cols);
-  }, [cols, is2XLarge, isXLarge, isLarge, isMedium]);
+  }, [cols, isSmall, is2XLarge, isXLarge, isLarge, isMedium, isPhone]);
+
+  useEffect(() => {
+    if (isLTablet) {
+      setWidth(300);
+      setHeight(100);
+      setTrackIframeDimensionsExpand({ width: "540px", height: "303.75px" });
+    }
+    // if (isTablet) {
+    //   setWidth(280);
+    //   setHeight(90);
+    //   setTrackIframeDimensionsExpand({ width: "500px", height: "253.13px" });
+    // }
+    if (isXTablet) {
+      setWidth(260);
+      setHeight(83);
+      setTrackIframeDimensionsExpand({ width: "500px", height: "253.13px" });
+    }
+    if (isPhone) {
+      setWidth(400); // expanded width is now the same as the rest of the widths instead of multiplied by 2
+      setHeight(72);
+      setTrackIframeDimensionsExpand({ width: "390px", height: "219.38px" });
+    }
+    if (isSPhone) {
+      setWidth(155);
+      setHeight(60);
+      setTrackIframeDimensionsExpand({ width: "300px", height: "168.75px" });
+    }
+  }, [isLTablet, isXTablet, isPhone, isSPhone]);
 
   // useEffect(() => {
-  //   console.log(squaresToMoveDown);
-  //   if (squaresToMoveDownOnce) console.log(squaresToMoveDownOnce);
-  //   if (squaresToMoveRight) console.log(squaresToMoveRight);
+  //   console.log(`move down: ${squaresToMoveDown}`);
+  //   if (squaresToMoveDownOnce)
+  //     console.log(`move down once: ${squaresToMoveDownOnce}`);
+  //   if (squaresToMoveRight) console.log(`move to right: ${squaresToMoveRight}`);
+  //   if (squaresToMoveDownThrice)
+  //     console.log(`move down thrice: ${squaresToMoveDownThrice}`);
   // }, [squaresToMoveDown, squaresToMoveDownOnce, squaresToMoveRight]);
 
   return (
@@ -127,18 +205,26 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
 
             left = (index % cols) * width;
             top = Math.floor(index / cols) * height;
+            // left = (index % 1) * width;
+            // top = Math.floor(index / 1) * height;
 
             return (
               <div
                 key={index}
                 className="track-info-square"
                 style={{
-                  width: title === track ? width * 2 : width,
-                  height: title === track ? height * 4 : height,
+                  width: isPhone ? width : title === track ? width * 2 : width,
+                  height: title === track
+                    ? height * 4
+                    : height,
                   left: squaresToMoveRight.includes(index)
                     ? left + width
+                    : isSmall && !isPhone && title === track && (index + 1) % 2 === 0
+                    ? left - width // expand to the left if isSmall and the square is on the very right edge
                     : left,
-                  top: squaresToMoveDown.includes(index)
+                  top: squaresToMoveDownThrice.includes(index)
+                    ? top + height * 4
+                    : squaresToMoveDown.includes(index)
                     ? top + height * 3
                     : squaresToMoveDownOnce.includes(index)
                     ? top + height * 2
@@ -159,6 +245,11 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
                     className={`track-iframe ${
                       title === track ? "expand" : ""
                     }`}
+                    style={
+                      title === track
+                        ? trackIframeDimensionsExpand
+                        : trackIframeDimensions
+                    }
                   >
                     {title === track && (
                       <iframe
