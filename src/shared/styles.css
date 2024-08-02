@@ -161,13 +161,16 @@ button p {
 }
 
 .tracklist-h2 {
-  /* border: 5px solid blue; */
+  border: 5px solid blue;
+  height: 120vh;
+  position: relative;
 }
 
 .tracklist {
-  /* border: 5px solid red; */
-  position: relative;
-  
+  border: 5px solid red;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .track-info-square {

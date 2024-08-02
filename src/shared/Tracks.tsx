@@ -28,6 +28,18 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
   const isSPhone = useMediaQuery("(max-width: 450px)");
   const isXSPhone = useMediaQuery("(max-width: 350px)");
 
+  const [debutRows, setDebutRows] = useState(0)
+  const [fearlessRows, setFearlessRows] = useState(0)
+  const [speakNowRows, setSpeakNowRows] = useState(0)
+  const [redRows, setRedRows] = useState(0)
+  const [nineteen89Rows, setNineteen89Rows] = useState(0)
+  const [reputationRows, setReputationRows] = useState(0)
+  const [loverRows, setLoverRows] = useState(0)
+  const [folkloreRows, setFolkloreRows] = useState(0)
+  const [evermoreRows, setEvermoreRows] = useState(0)
+  const [midnightsRows, setMidnightsRows] = useState(0)
+  const [ttpdRows, setTtpdRows] = useState(0)
+
   const [cols, setCols] = useState(4);
   const [width, setWidth] = useState(300);
   const [height, setHeight] = useState(100);
@@ -41,7 +53,8 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       height: "303.75px",
     });
 
-  const tracklistHeight = 850;
+  const [tracklistHeight, setTracklistHeight] = useState(850);
+  const [tracklistWidth, setTracklistWidth] = useState(width * 5);
   const [videoURL, setVideoURL] = useState(
     "https://www.youtube.com/embed/xKCek6_dB0M?si=NzXexXBrnBfXaJFt&amp;start=70"
   );
@@ -138,11 +151,29 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
     trackList.length + (vaultTrackList ? vaultTrackList.length : 0) + 1;
 
   useEffect(() => {
-    if (is2XLarge) setCols(5);
-    if (isXLarge) setCols(4);
-    if (isLarge) setCols(3);
-    if (isMedium) setCols(2);
-    if (isPhone) setCols(1)
+    if (is2XLarge) {
+      setTracklistWidth(width * 6)
+      setCols(5);
+    }
+    if (isXLarge) {
+      setTracklistWidth(width * 5)
+      setCols(4);
+    }
+    if (isLarge) {
+      setTracklistWidth(width * 4)
+      setCols(3);
+    }
+    if (isMedium) {
+      setTracklistWidth(width * 3)
+      setCols(2);
+    }
+    if (isSmall) {
+      setTracklistWidth(width * 2);
+    }
+    if (isPhone) {
+      // setTracklistWidth(width * 2)
+      setCols(1);
+    }
 
     handleClickTrack(
       defaultTrackIndex,
@@ -152,7 +183,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
     );
 
     console.log(cols);
-  }, [cols, isSmall, is2XLarge, isXLarge, isLarge, isMedium, isPhone]);
+  }, [cols, is2XLarge, isXLarge, isLarge, isMedium, isSmall, isPhone]);
 
   useEffect(() => {
     // change the dimensions here; changing the initial values won't do anything because this if block below overrides the new values
@@ -160,33 +191,33 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       setWidth(300);
       setHeight(100);
       setTrackIframeDimensionsExpand({ width: "540px", height: "303.75px" });
+      setTracklistWidth(width * 2);
     }
-    // if (isTablet) {
-    //   setWidth(280);
-    //   setHeight(90);
-    //   setTrackIframeDimensionsExpand({ width: "500px", height: "253.13px" });
-    // }
     if (isXTablet) {
       setWidth(260);
       setHeight(83);
       setTrackIframeDimensionsExpand({ width: "500px", height: "253.13px" });
+      setTracklistWidth(width * 2);
     }
     if (isPhone) {
       setWidth(400); // expanded width is now the same as the rest of the widths instead of multiplied by 2
       setHeight(72);
       setTrackIframeDimensionsExpand({ width: "390px", height: "219.38px" });
+      setTracklistWidth(width);
     }
     if (isSPhone) {
       setWidth(310);
       setHeight(60);
       setTrackIframeDimensionsExpand({ width: "300px", height: "168.75px" });
+      setTracklistWidth(width);
     }
     if (isXSPhone) {
       setWidth(270);
       setHeight(60);
       setTrackIframeDimensionsExpand({ width: "260px", height: "146.25px" });
+      setTracklistWidth(width);
     }
-  }, [isLTablet, isXTablet, isPhone, isSPhone, isXSPhone]);
+  }, [width, isLTablet, isXTablet, isPhone, isSPhone, isXSPhone]);
 
   // useEffect(() => {
   //   console.log(`move down: ${squaresToMoveDown}`);
@@ -202,10 +233,16 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       {/* <h1>Select the songs you want to listen to!</h1> */}
 
       <div className="tracklist-h2">
-        <div>
+        <div className="text-center">
           <h2>Album Tracks</h2>
         </div>
-        <div className="tracklist" style={{ height: `${tracklistHeight}px` }}>
+        <div
+          className="tracklist"
+          style={{
+            height: `${tracklistHeight}px`,
+            width: `${tracklistWidth}px`,
+          }}
+        >
           {trackList.map(({ title, url }, index) => {
             let left = 0;
             let top = 0;
@@ -221,12 +258,13 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
                 className="track-info-square"
                 style={{
                   width: isPhone ? width : title === track ? width * 2 : width,
-                  height: title === track
-                    ? height * 4
-                    : height,
+                  height: title === track ? height * 4 : height,
                   left: squaresToMoveRight.includes(index)
                     ? left + width
-                    : isSmall && !isPhone && title === track && (index + 1) % 2 === 0
+                    : isSmall &&
+                      !isPhone &&
+                      title === track &&
+                      (index + 1) % 2 === 0
                     ? left - width // expand to the left if isSmall and the square is on the very right edge
                     : left,
                   top: squaresToMoveDownThrice.includes(index)
