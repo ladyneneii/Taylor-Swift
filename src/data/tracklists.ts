@@ -1,6 +1,7 @@
-interface TrackInfo {
+export interface TrackInfo {
   title: string;
   url: string;
+  defaultUrl?: string;
 }
 
 export interface Tracks {
@@ -23,6 +24,8 @@ export const debutTrackList = [
   {
     title: "Teardrops On My Guitar",
     url: "https://www.youtube.com/embed/xKCek6_dB0M?si=em7kfmEv0M8DJQqr",
+    defaultUrl:
+      "https://www.youtube.com/embed/xKCek6_dB0M?si=NzXexXBrnBfXaJFt&amp;start=70",
   },
   {
     title: "A Place In This World",
