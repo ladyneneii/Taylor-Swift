@@ -3,6 +3,7 @@ import { blackish, CarouselProps } from "./types";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import Modal from "./Modal";
 import { carouselEras } from "@/data/img-data";
+import DOMPurify from "dompurify";
 
 type Props = {
   bgColor: string;
@@ -74,21 +75,29 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
           {canScrollLeft && <BiSolidLeftArrow size={25} />}
         </div>
         <div ref={carouselRef} className="images-wrapper">
-          {carouselEras[eraNumber - 1].map(({ imgPath, description }: CarouselProps, index) => (
-            <div key={index}>
-              <img
-                className={`img-border-${
-                  bgColor === blackish ? "white" : "black"
-                }`}
-                onClick={() => handleImgClick(imgPath)}
-                src={imgPath}
-                alt={description}
-              />
-              {description && (
-                <h1 dangerouslySetInnerHTML={{ __html: description }} />
-              )}
-            </div>
-          ))}
+          {carouselEras[eraNumber - 1].map(
+            ({ imgPath, description }: CarouselProps, index) => {
+              let sanitizedDesc = "";
+              if (description) {
+                sanitizedDesc = DOMPurify.sanitize(description);
+              }
+              return (
+                <div key={index}>
+                  <img
+                    className={`img-border-${
+                      bgColor === blackish ? "white" : "black"
+                    }`}
+                    onClick={() => handleImgClick(imgPath)}
+                    src={imgPath}
+                    alt={description}
+                  />
+                  {description && (
+                    <h1 dangerouslySetInnerHTML={{ __html: sanitizedDesc }} />
+                  )}
+                </div>
+              );
+            }
+          )}
         </div>
         <div className="right-arrow" onClick={scrollToRight}>
           {canScrollRight && <BiSolidRightArrow size={25} />}

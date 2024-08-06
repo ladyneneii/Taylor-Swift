@@ -9,6 +9,7 @@ import { details } from "@/data/details";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import Tracks from "./Tracks";
 import Terminologies from "@/scenes/terminologies";
+import DOMPurify from "dompurify";
 
 type Props = {
   eraNumber: number;
@@ -77,6 +78,8 @@ const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor }: Props) => {
       eraTitle === "Reputation" ? "inset 0 0 2rem rgba(0, 0, 0, 0.9)" : "",
   };
 
+  const sanitizedDetails = DOMPurify.sanitize(details[eraNumber - 1]);
+
   return (
     <section
       className="era-container"
@@ -106,7 +109,10 @@ const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor }: Props) => {
                 alt={`${eras[eraNumber]}-album-cover`}
                 style={logoStyle}
               />
-              <p style={{ color: "white" }}>{details[eraNumber - 1]}</p>
+              <p
+                style={{ color: "white" }}
+                dangerouslySetInnerHTML={{ __html: sanitizedDetails }}
+              ></p>
             </div>
             <div
               className="album-photo"

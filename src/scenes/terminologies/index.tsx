@@ -91,7 +91,7 @@ const Terminologies = () => {
                 the first album. The setlist is already predetermined, except
                 for the songs in the acoustic set, where she plays any songs (or
                 mash-ups thereof) from any of her 11 albums on a guitar or
-                piano, hence so famously called the "surprise songs."
+                piano, hence so famously called the "surprise songs".
               </p>
               <p>
                 On the 13th of October, 2023, Taylor Swift released a film
@@ -138,14 +138,16 @@ const Terminologies = () => {
             </div>
             <p>
               Taylor's Version refers to Taylor Swift's rerecording of her first
-              six albums (Taylor Swift, Fearless, Speak Now, Red, 1989, and
-              Reputation) after the master recordings of the six original
-              (stolen) albums were sold to Scooter Braun without Taylor's
-              consent. This meant that Scooter was in full control over the
-              albums, which Taylor was unhappy about. After all her failed
-              attempts at negotiation with Scooter to regain her rights over her
-              masters, she ultimately decided to rerecord and rerelease the six
-              albums under{" "}
+              six albums (
+              <span style={{ fontStyle: "italic" }}>Taylor Swift</span>,
+              Fearless, Speak Now, Red, 1989, and{" "}
+              <span style={{ fontStyle: "italic" }}>reputation</span>) after the
+              master recordings of the six original (stolen) albums were sold to
+              Scooter Braun without Taylor's consent. This meant that Scooter
+              was in full control over the albums, which Taylor was unhappy
+              about. After all her failed attempts at negotiation with Scooter
+              to regain her rights over her masters, she ultimately decided to
+              rerecord and rerelease the six albums under{" "}
               <span className="nowrap">
                 <strong>Taylor's Version</strong>.
               </span>{" "}
@@ -160,8 +162,11 @@ const Terminologies = () => {
           </div>
           <p>
             As of the {getCurrentDateFormatted()}, Taylor Swift has yet to
-            release the Taylor's Version of Taylor Swift (first and debut album)
-            and Reputation (sixth album).
+            release the Taylor's Version of{" "}
+            <span style={{ fontStyle: "italic" }}>Taylor Swift</span> (first and
+            debut album) and{" "}
+            <span style={{ fontStyle: "italic" }}>reputation</span> (sixth
+            album).
           </p>
         </div>
       </div>

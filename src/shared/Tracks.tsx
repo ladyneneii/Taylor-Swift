@@ -1,6 +1,8 @@
 import { TrackInfo, trackListsArr } from "@/data/tracklists";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import React, { useEffect, useState } from "react";
+import { blackish, whitish } from "./types";
+import DOMPurify from "dompurify";
 
 type Props = {
   textColor: string;
@@ -10,12 +12,17 @@ type Props = {
 const Tracks = ({ textColor, eraNumber }: Props) => {
   const {
     trackList,
-    vaultTrackList,
+    // vaultTrackList,
     vaultDesc,
-    bonusTrackList,
+    // bonusTrackList,
     bonusDesc,
     defaultTrackIndex,
   } = trackListsArr[eraNumber - 1];
+
+  let sanitizedBonusDesc = "";
+  if (bonusDesc) {
+    sanitizedBonusDesc = DOMPurify.sanitize(bonusDesc);
+  }
 
   const is2XLarge = useMediaQuery("(min-width: 2000px)");
   const isXLarge = useMediaQuery("(max-width: 2000px) and (min-width: 1651px)");
@@ -42,7 +49,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
 
   const [cols, setCols] = useState(4);
   const [width, setWidth] = useState(300);
-  const [height, setHeight] = useState(100);
+  const height = 100;
   const trackIframeDimensions = {
     width: 0,
     height: 0,
@@ -52,6 +59,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       width: "540px",
       height: "303.75px",
     });
+  const [squareHeightExpand, setSquareHeightExpand] = useState(height * 4);
 
   const [tracklistH2Height, setTracklistH2Height] = useState(0);
   const [tracklistHeight, setTracklistHeight] = useState(0);
@@ -177,41 +185,81 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
     }
   };
 
-  const vaultTrackNumber = trackList.length + 1;
-  const bonusTrackNumber =
-    trackList.length + (vaultTrackList ? vaultTrackList.length : 0) + 1;
+  // const vaultTrackNumber = trackList.length + 1;
+  // const bonusTrackNumber =
+  //   trackList.length + (vaultTrackList ? vaultTrackList.length : 0) + 1;
 
   useEffect(() => {
     if (is2XLarge) {
       setTracklistWidth(width * 6);
       setCols(5);
-       setDebutRows(6);
-       setFearlessRows(7);
+      setDebutRows(6);
+      setFearlessRows(9);
+      setSpeakNowRows(7);
+      setRedRows(9);
+      setNineteen89Rows(8);
+      setReputationRows(6);
+      setLoverRows(7);
+      setFolkloreRows(7);
+      setEvermoreRows(8);
+      setMidnightsRows(8);
     }
     if (isXLarge) {
       setTracklistWidth(width * 5);
       setCols(4);
       setDebutRows(7);
-      setFearlessRows(8);
+      setFearlessRows(10);
+      setSpeakNowRows(9);
+      setRedRows(11);
+      setNineteen89Rows(9);
+      setReputationRows(6);
+      setLoverRows(8);
+      setFolkloreRows(8);
+      setEvermoreRows(10);
+      setMidnightsRows(9);
     }
     if (isLarge) {
       setTracklistWidth(width * 4);
       setCols(3);
       setDebutRows(8);
-      setFearlessRows(10);
+      setFearlessRows(12);
+      setSpeakNowRows(10);
+      setRedRows(13);
+      setNineteen89Rows(10);
+      setReputationRows(8);
+      setLoverRows(10);
+      setFolkloreRows(9);
+      setEvermoreRows(11);
+      setMidnightsRows(11);
     }
     if (isMedium) {
       setTracklistWidth(width * 3);
       setCols(2);
-      setDebutRows(11);
-      setFearlessRows(13);
+      setDebutRows(12);
+      setFearlessRows(17);
+      setSpeakNowRows(14);
+      setRedRows(18);
+      setNineteen89Rows(15);
+      setReputationRows(10);
+      setLoverRows(13);
+      setFolkloreRows(12);
+      setEvermoreRows(16);
+      setMidnightsRows(14);
     }
     if (isSmall) {
       // when there are no squares moving to the right anymore, but cols is still 2
       setTracklistWidth(width * 2);
       setCols(2);
       setDebutRows(12);
-      setFearlessRows(14);
+      setFearlessRows(17);
+      setSpeakNowRows(15);
+      setRedRows(19);
+      setNineteen89Rows(15);
+      setReputationRows(12);
+      setLoverRows(14);
+      setFolkloreRows(14);
+      setEvermoreRows(16);
+      setMidnightsRows(16);
     }
     console.log(`isSmall: ${isSmall}`);
     setTracklistHeight(height * albumRows());
@@ -226,7 +274,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       trackList.length
     );
 
-    console.log(cols);
+    console.log(isMedium);
   }, [
     cols,
     height,
@@ -241,6 +289,15 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
     tracklistHeight,
     debutRows,
     fearlessRows,
+    speakNowRows,
+    redRows,
+    nineteen89Rows,
+    reputationRows,
+    loverRows,
+    folkloreRows,
+    evermoreRows,
+    midnightsRows,
+    ttpdRows,
   ]);
 
   useEffect(() => {
@@ -248,53 +305,108 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
     if (isLTablet) {
       // set the squares and iframes to their max dimensions
       setWidth(300);
-      setHeight(100);
       setTrackIframeDimensionsExpand({ width: "540px", height: "303.75px" });
+      setSquareHeightExpand(height * 4);
     }
     if (isXTablet) {
       setCols(2);
       setWidth(260);
-      setHeight(83);
       setTrackIframeDimensionsExpand({ width: "500px", height: "253.13px" });
+      // the time when square height is greatly bigger than the iframe height, so a custom height should be set
+      setSquareHeightExpand(330);
       setTracklistWidth(width * 2);
       setDebutRows(12);
-      setFearlessRows(14);
-      setTracklistH2Height(tracklistHeight + height + 60);
+      setFearlessRows(17);
+      setSpeakNowRows(15);
+      setRedRows(19);
+      setNineteen89Rows(15);
+      setReputationRows(12);
+      setLoverRows(14);
+      setFolkloreRows(14);
+      setEvermoreRows(16);
+      setMidnightsRows(16);
+      setTracklistH2Height(tracklistHeight + height + 20);
     }
     if (isPhone) {
       setCols(1);
       setWidth(400); // expanded width is now the same as the rest of the widths instead of multiplied by 2
-      setHeight(72);
       setTrackIframeDimensionsExpand({ width: "390px", height: "219.38px" });
+      setSquareHeightExpand(290);
       setTracklistWidth(width);
-      setDebutRows(trackList.length);
-      setFearlessRows(23);
+      setDebutRows(19);
+      setFearlessRows(29);
+      setSpeakNowRows(24);
+      setRedRows(32);
+      setNineteen89Rows(25);
+      setReputationRows(17);
+      setLoverRows(22);
+      setFolkloreRows(21);
+      setEvermoreRows(27);
+      setMidnightsRows(25);
       setTracklistH2Height(tracklistHeight + height + 60);
     }
     if (isSPhone) {
       setCols(1);
       setWidth(310);
-      setHeight(60);
       setTrackIframeDimensionsExpand({ width: "300px", height: "168.75px" });
+      setSquareHeightExpand(240);
       setTracklistWidth(width);
-      setDebutRows(trackList.length);
-      setFearlessRows(23);
-      setTracklistH2Height(tracklistHeight + height + 80);
+      setDebutRows(19);
+      setFearlessRows(29);
+      setSpeakNowRows(24);
+      setRedRows(32);
+      setNineteen89Rows(25);
+      setReputationRows(17);
+      setLoverRows(22);
+      setFolkloreRows(21);
+      setEvermoreRows(27);
+      setMidnightsRows(25);
+      setTracklistH2Height(tracklistHeight + height + 20);
     }
     if (isXSPhone) {
       setCols(1);
       setWidth(270);
-      setHeight(60);
       setTrackIframeDimensionsExpand({ width: "260px", height: "146.25px" });
+      setSquareHeightExpand(240);
       setTracklistWidth(width);
-      setDebutRows(trackList.length);
-      setFearlessRows(23);
-      setTracklistH2Height(tracklistHeight + height + 140);
+      setDebutRows(19);
+      setFearlessRows(29);
+      setSpeakNowRows(24);
+      setRedRows(32);
+      setNineteen89Rows(25);
+      setReputationRows(17);
+      setLoverRows(22);
+      setFolkloreRows(21);
+      setEvermoreRows(27);
+      setMidnightsRows(25);
+      setTracklistH2Height(tracklistHeight + height + 20);
     }
     console.log(`isSPhone: ${isSPhone}`);
     console.log(`isXTablet: ${isXTablet}`);
     setTracklistHeight(height * albumRows());
-  }, [width, height, tracklistHeight, tracklistH2Height, cols, isLTablet, isXTablet, isPhone, isSPhone, isXSPhone]);
+  }, [
+    width,
+    height,
+    tracklistHeight,
+    tracklistH2Height,
+    cols,
+    isLTablet,
+    isXTablet,
+    isPhone,
+    isSPhone,
+    isXSPhone,
+    debutRows,
+    fearlessRows,
+    speakNowRows,
+    redRows,
+    nineteen89Rows,
+    reputationRows,
+    loverRows,
+    folkloreRows,
+    evermoreRows,
+    midnightsRows,
+    ttpdRows,
+  ]);
 
   // useEffect(() => {
   //   console.log(`move down: ${squaresToMoveDown}`);
@@ -311,7 +423,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
 
       <div className="tracklist-h2" style={{ height: tracklistH2Height }}>
         <div className="text-center">
-          <h2>Album Tracks</h2>
+          <h2>Tracks</h2>
         </div>
         <div
           className="tracklist"
@@ -334,8 +446,13 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
                 key={index}
                 className="track-info-square"
                 style={{
-                  width: isPhone || isSPhone || isXSPhone ? width : title === track ? width * 2 : width,
-                  height: title === track ? height * 4 : height,
+                  width:
+                    isPhone || isSPhone || isXSPhone
+                      ? width
+                      : title === track
+                      ? width * 2
+                      : width,
+                  height: title === track ? squareHeightExpand : height,
                   left: squaresToMoveRight.includes(index)
                     ? left + width
                     : (isSmall || isXTablet) &&
@@ -344,23 +461,37 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
                       (index + 1) % 2 === 0
                     ? left - width // expand to the left if isSmall and the square is on the very right edge
                     : left,
-                  top: squaresToMoveDownThrice.includes(index)
-                    ? top + height * 4
-                    : squaresToMoveDown.includes(index)
-                    ? top + height * 3
-                    : squaresToMoveDownOnce.includes(index)
-                    ? top + height * 2
-                    : top,
+                  top:
+                    squaresToMoveDownThrice.includes(index) && isXTablet
+                      ? top + 330
+                      : squaresToMoveDownThrice.includes(index)
+                      ? top + height * 4
+                      : squaresToMoveDown.includes(index) && isXTablet
+                      ? top + 230
+                      : squaresToMoveDown.includes(index) && isPhone
+                      ? top + 190
+                      : squaresToMoveDown.includes(index) && isSPhone
+                      ? top + 140
+                      : squaresToMoveDown.includes(index) && isXSPhone
+                      ? top + 140
+                      : squaresToMoveDown.includes(index)
+                      ? top + height * 3
+                      : squaresToMoveDownOnce.includes(index)
+                      ? top + height * 2
+                      : top,
                 }}
               >
                 <div
                   className={`track-info ${title === track ? "expand" : ""}`}
+                  style={{
+                    backgroundColor: textColor === "white" ? blackish : whitish,
+                  }}
                   onClick={() =>
                     handleClickTrack(index, url, title, trackList.length)
                   }
                 >
                   <div className="track-number-title">
-                    <div className="track-number">{index}.</div>
+                    <div className="track-number">{index + 1}.</div>
                     <div className="track-title">{title}</div>
                   </div>
                   <div
@@ -389,93 +520,19 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
           })}
         </div>
       </div>
-
-      {/* <div className="tracklist-h2">
-        <div>
-          <h2>Album Tracks</h2>
-        </div>
-        <div className="tracklist">
-          {trackList.map(({ title, url }, index) => (
-            <div
-              key={index}
-              className={`track-info ${title === track ? "expand" : ""}`}
-              onClick={() => handleClickTrack(url, title)}
-            >
-              {title}
-            </div>
-          ))}
-        </div>
-      </div> */}
-
-      {/* <div className="album-vault">
-       
-        <div className="tracklist-h2">
-          <h2>Album Tracks</h2>
-          <div className="tracklist">
-            {trackList.map(({ title, url }, index) => (
-              <div
-                key={index}
-                className={`track-info ${title === track ? "selected" : ""}`}
-                onClick={() => handleClickTrack(url, title)}
-              >
-                <p>
-                  {index + 1}. {title}
-                </p>
-              </div>
-            ))}
+      {(vaultDesc || bonusDesc) && (
+        <div className="album-notes-container">
+          <div
+            className="album-notes"
+            style={{ maxWidth: vaultDesc && bonusDesc ? "none" : "1000px" }}
+          >
+            {vaultDesc && <p style={{marginBlockEnd: 0}}>{vaultDesc}</p>}
+            {bonusDesc && (
+              <p style={{marginBlockEnd: 0}} dangerouslySetInnerHTML={{ __html: sanitizedBonusDesc }}></p>
+            )}
           </div>
         </div>
-
-      
-        {vaultTrackList && (
-          <div className="tracklist-h2">
-            <h2>Vault Tracks</h2>
-            <div className="tracklist">
-              {vaultTrackList.map(({ title, url }, index) => (
-                <div
-                  key={index}
-                  className={`track-info ${title === track ? "selected" : ""}`}
-                  onClick={() => handleClickTrack(url, title)}
-                >
-                  <p>
-                    {index + 1}. {title}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div className="iframe-bonus">
-        <iframe
-          width="560"
-          height="315"
-          src={videoURL}
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
-        {bonusTrackList && (
-          <div className="tracklist-h2 ">
-            <h2>Bonus Track{bonusTrackList.length > 1 && "s"}</h2>
-            <div className="bonus-tracklist">
-              {bonusTrackList.map(({ title, url }, index) => (
-                <div
-                  key={index}
-                  className={`track-info ${title === track ? "selected" : ""}`}
-                  onClick={() => handleClickTrack(url, title)}
-                >
-                  <p>
-                    {index + 1}. {title}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div> */}
+      )}
     </div>
   );
 };

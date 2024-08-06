@@ -72,7 +72,13 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
                     className={borderColor(era)}
                     onClick={() => setSelectedEra(era)}
                   >
-                    {era}
+                    {era === "Reputation"
+                      ? "reputation"
+                      : era === "Folklore"
+                      ? "folklore"
+                      : era === "Evermore"
+                      ? "evermore"
+                      : era}
                   </a>
                 </div>
               ))
@@ -113,7 +119,13 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
                 className={borderColor(era)}
                 onClick={() => setSelectedEra(era)}
               >
-                {era}
+                {era === "Reputation"
+                  ? "reputation"
+                  : era === "Folklore"
+                  ? "folklore"
+                  : era === "Evermore"
+                  ? "evermore"
+                  : era}
               </a>
             </div>
           ))}
