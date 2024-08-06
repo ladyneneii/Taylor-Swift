@@ -203,6 +203,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       setFolkloreRows(7);
       setEvermoreRows(8);
       setMidnightsRows(8);
+      setTtpdRows(10);
     }
     if (isXLarge) {
       setTracklistWidth(width * 5);
@@ -217,6 +218,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       setFolkloreRows(8);
       setEvermoreRows(10);
       setMidnightsRows(9);
+      setTtpdRows(12);
     }
     if (isLarge) {
       setTracklistWidth(width * 4);
@@ -231,6 +233,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       setFolkloreRows(9);
       setEvermoreRows(11);
       setMidnightsRows(11);
+      setTtpdRows(14);
     }
     if (isMedium) {
       setTracklistWidth(width * 3);
@@ -245,6 +248,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       setFolkloreRows(12);
       setEvermoreRows(16);
       setMidnightsRows(14);
+      setTtpdRows(20);
     }
     if (isSmall) {
       // when there are no squares moving to the right anymore, but cols is still 2
@@ -260,8 +264,9 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       setFolkloreRows(14);
       setEvermoreRows(16);
       setMidnightsRows(16);
+      setTtpdRows(21);
     }
-    console.log(`isSmall: ${isSmall}`);
+    // console.log(`isSmall: ${isSmall}`);
     setTracklistHeight(height * albumRows());
     setTracklistH2Height(tracklistHeight + height + 30);
 
@@ -274,7 +279,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       trackList.length
     );
 
-    console.log(isMedium);
+    // console.log(isMedium);
   }, [
     cols,
     height,
@@ -325,6 +330,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       setFolkloreRows(14);
       setEvermoreRows(16);
       setMidnightsRows(16);
+      setTtpdRows(21);
       setTracklistH2Height(tracklistHeight + height + 20);
     }
     if (isPhone) {
@@ -343,6 +349,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       setFolkloreRows(21);
       setEvermoreRows(27);
       setMidnightsRows(25);
+      setTtpdRows(36);
       setTracklistH2Height(tracklistHeight + height + 60);
     }
     if (isSPhone) {
@@ -361,6 +368,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       setFolkloreRows(21);
       setEvermoreRows(27);
       setMidnightsRows(25);
+      setTtpdRows(36);
       setTracklistH2Height(tracklistHeight + height + 20);
     }
     if (isXSPhone) {
@@ -379,10 +387,11 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       setFolkloreRows(21);
       setEvermoreRows(27);
       setMidnightsRows(25);
+      setTtpdRows(36);
       setTracklistH2Height(tracklistHeight + height + 20);
     }
-    console.log(`isSPhone: ${isSPhone}`);
-    console.log(`isXTablet: ${isXTablet}`);
+    // console.log(`isSPhone: ${isSPhone}`);
+    // console.log(`isXTablet: ${isXTablet}`);
     setTracklistHeight(height * albumRows());
   }, [
     width,
@@ -491,7 +500,13 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
                   }
                 >
                   <div className="track-number-title">
-                    <div className="track-number">{index + 1}.</div>
+                    <div
+                      className={`track-number track-number-${
+                        textColor === "white" ? "white" : "black"
+                      }`}
+                    >
+                      {index + 1}.
+                    </div>
                     <div className="track-title">{title}</div>
                   </div>
                   <div
@@ -526,9 +541,12 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
             className="album-notes"
             style={{ maxWidth: vaultDesc && bonusDesc ? "none" : "1000px" }}
           >
-            {vaultDesc && <p style={{marginBlockEnd: 0}}>{vaultDesc}</p>}
+            {vaultDesc && <p style={{ marginBlockEnd: 0 }}>{vaultDesc}</p>}
             {bonusDesc && (
-              <p style={{marginBlockEnd: 0}} dangerouslySetInnerHTML={{ __html: sanitizedBonusDesc }}></p>
+              <p
+                style={{ marginBlockEnd: 0 }}
+                dangerouslySetInnerHTML={{ __html: sanitizedBonusDesc }}
+              ></p>
             )}
           </div>
         </div>

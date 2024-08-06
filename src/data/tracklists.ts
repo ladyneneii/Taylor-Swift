@@ -1003,6 +1003,152 @@ const midnightsTrackList = [
   },
 ];
 
+const ttpdTrackList = [
+  {
+    title: "Fortnight (feat. Post Malone)",
+    url: "https://www.youtube.com/embed/q3zqJs7JUCQ?si=jZ5jtMGa94DMsNcN",
+  },
+  {
+    title: "The Tortured Poets Department",
+    url: "https://www.youtube.com/embed/RQMz4JDbtmI?si=8aL2796LDzn_P3Pi",
+  },
+  {
+    title: "My Boy Only Breaks His Favorite Toys",
+    url: "https://www.youtube.com/embed/wRKXAAV6jh4?si=B9CgIIs28GVQ5dyh",
+  },
+  {
+    title: "Down Bad",
+    url: "https://www.youtube.com/embed/EVbtjaWXQVg?si=GCVid746WnKpB5af",
+  },
+  {
+    title: "So Long, London",
+    url: "https://www.youtube.com/embed/CCUr2pNJft4?si=qJro6dQ1dB0PpOP0",
+  },
+  {
+    title: "But Daddy I Love Him",
+    url: "https://www.youtube.com/embed/U2W173hRfyA?si=3tAv55qHZ_PlO6oS",
+  },
+  {
+    title: "Fresh Out The Slammer",
+    url: "https://www.youtube.com/embed/0EKbEP2L32M?si=benXaKfOL0kO1cjp",
+  },
+  {
+    title: "Florida!!! (feat. Florence + The Machine)",
+    url: "https://www.youtube.com/embed/uEssK8o3jKg?si=8cCyFzc4FxRpVtxt",
+  },
+  {
+    title: "Guilty as Sin",
+    url: "https://www.youtube.com/embed/OOYlWF6V8t8?si=ypp_gntkJja4XM0e",
+  },
+  {
+    title: "Who’s Afraid of Little Old Me?",
+    url: "https://www.youtube.com/embed/vOZFiX6hDXQ?si=wuXcj5QmwQ3Xpap6",
+  },
+  {
+    title: "I Can Fix Him (No Really I Can)",
+    url: "https://www.youtube.com/embed/OKWfv-x2rdU?si=neXn9rrfiv0xlhwp",
+  },
+  {
+    title: "loml",
+    url: "https://www.youtube.com/embed/GZ4vaTRn0HU?si=i-JzEtuvNM7eddUs",
+  },
+  {
+    title: "I Can Do It With a Broken Heart",
+    url: "https://www.youtube.com/embed/i8_w_m6HLJ0?si=vMBzKUdgcLG9Qu8N",
+  },
+  {
+    title: "The Smallest Man Who Ever Lived",
+    url: "https://www.youtube.com/embed/Atdzfj8LcuY?si=1sA9ms09WNvZ0JjI",
+    defaultUrl:
+      "https://www.youtube.com/embed/Atdzfj8LcuY?si=n0ajVJw9El1YjsTq&amp;start=146",
+  },
+  {
+    title: "The Alchemy",
+    url: "https://www.youtube.com/embed/iMMUAd66vxo?si=rF-fVu0HzlXan5QR",
+  },
+  {
+    title: "Clara Bow",
+    url: "https://www.youtube.com/embed/fcVUbmdQfaE?si=X5PJfMJZ-zbXvp5U",
+  },
+  {
+    title: "The Black Dog",
+    url: "https://www.youtube.com/embed/56TZ3B8Qxsk?si=gPzZaKXbnmVGF790",
+  },
+  {
+    title: "imgonnagetyouback",
+    url: "https://www.youtube.com/embed/SBGdvxi2JmU?si=hNIlOruGypqr37rW",
+  },
+  {
+    title: "The Albatross",
+    url: "https://www.youtube.com/embed/4wOsiM2T_xc?si=LBuJb_TY3Jei1dVk",
+  },
+  {
+    title: "Chloe or Sam or Sophia or Marcus",
+    url: "https://www.youtube.com/embed/gOtOWeD9YJk?si=XAuH1wjq_lmyrNj_",
+  },
+  {
+    title: "How Did It End?",
+    url: "https://www.youtube.com/embed/O3wlMR0y4a4?si=VnBRAShin8RpL0sv",
+  },
+  {
+    title: "So High School",
+    url: "https://www.youtube.com/embed/w-FkV0EM_CU?si=O2y8kqE6ht3qq35B",
+  },
+  {
+    title: "I Hate It Here",
+    url: "https://www.youtube.com/embed/BpkmUfv1I4Q?si=6Ra-Qfg7rHOVFjtM",
+  },
+  {
+    title: "thanK you aIMee",
+    url: "https://www.youtube.com/embed/oaBJlKXBvjk?si=5PntNvzJmhfsV-i8",
+  },
+  {
+    title: "I Look in People's Windows",
+    url: "https://www.youtube.com/embed/6HIA7ouBfGY?si=0h9KszzGcORSFKH6",
+  },
+  {
+    title: "The Prophecy",
+    url: "https://www.youtube.com/embed/_PsBoqNwYo4?si=FOayBqbzVl9t6JUN",
+  },
+  {
+    title: "Cassandra",
+    url: "https://www.youtube.com/embed/0hYY86DmqPY?si=FUCApUWgjUQNCgWL",
+  },
+  {
+    title: "Peter",
+    url: "https://www.youtube.com/embed/Mxxswu7V1Us?si=cPqK0FhHv-N4GjnE",
+  },
+  {
+    title: "The Bolter",
+    url: "https://www.youtube.com/embed/bAi80EylyXQ?si=mCTFSDIZhdWXf1Os",
+  },
+  {
+    title: "Robin",
+    url: "https://www.youtube.com/embed/FQyEZZPbOb0?si=zPLjU-0fdflKHHWS",
+  },
+  {
+    title: "The Manuscript",
+    url: "https://www.youtube.com/embed/iY6Qhlua8Zw?si=YHJ7_ykBkK1ZP7FC",
+  },
+  {
+    title: "Fortnight (feat Post Malone) (BLOND:ISH Remix)",
+    url: "https://www.youtube.com/embed/KJXP13hqf2I?si=dOfwwa8sGCM4U4Rr",
+  },
+  {
+    title: "Fortnight (feat. Post Malone) (Acoustic)",
+    url: "https://www.youtube.com/embed/HZIg5sQrPAM?si=HGrDXNAjUjInPcDn",
+  },
+  {
+    title: "Fortnight (feat. Post Malone) (Cults Remix)",
+    url: "https://www.youtube.com/embed/PQTA-EVc5DI?si=iuUYYfqy1V9ZcrrC",
+  },
+];
+
+const ttpdNotes =
+  "Tracks 1-15 are on The Tortured Poets Department, while the first 15 tracks plus tracks 16-31 are on The Tortured Poets Department: The Anthology, released two hours after the first album. Tracks 32 and above are just remixes and extra versions of the songs. Since the release of The Anthology, Taylor Swift has been releasing other versions of the songs, like voice memos and live ones from the Eras Tour, but they are not included here because they are not available on YouTube.";
+
+const aimeeNotes = `As you have observed from track 24's song title "thanK you aIMee", the capitalized letters spell out "Kim", which is an indirect address to Kim Kardashian. In this song, Taylor Swift expresses her frustration with Aimee (who may or may not be Kim Kardashian) for always bringing her down but ultimately thanks Aimee for making her stronger. Recall that in Taylor's reputation era, Kim Kardashian was the root of all the hate that Taylor was getting at the time, so this song metaphorically describes Kim's bullying towards Taylor and Taylor's healing journey from it.`;
+
 export const trackListsArr = [
   {
     trackList: debutTrackList,
@@ -1054,10 +1200,9 @@ export const trackListsArr = [
     defaultTrackIndex: 1,
   },
   {
-    trackList: fearlessTVTrackList,
-    // vaultTrackList: fearlessTVVaultTrackList,
-    vaultDesc: vaultTrackDescription,
-    // bonusTrackList: fearlessTVBonusTrackList,
-    defaultTrackIndex: 0,
+    trackList: ttpdTrackList,
+    vaultDesc: ttpdNotes,
+    bonusDesc: aimeeNotes,
+    defaultTrackIndex: 13,
   },
 ];

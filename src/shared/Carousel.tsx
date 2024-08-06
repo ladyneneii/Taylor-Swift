@@ -16,6 +16,8 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
   const [canScrollRight, setCanScrollRight] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalImg, setModalImg] = useState("");
+  const [imgNum, setImgNum] = useState(-1);
+  const [carouselNum, setCarouselNum] = useState(-1)
 
   const updateArrows = () => {
     if (carouselRef.current) {
@@ -43,8 +45,10 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
     }
   };
 
-  const handleImgClick = (imgPath: string) => {
+  const handleImgClick = (imgPath: string, imgNum: number, carouselNum: num) => {
     setShowModal(true);
+    setImgNum(imgNum)
+    setCarouselNum(carouselNum)
     setModalImg(imgPath);
   };
 
@@ -67,6 +71,8 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
         <Modal
           setShowModal={setShowModal}
           imgPath={modalImg}
+          imgNum={imgNum}
+          carouselNum={carouselNum}
           closeBgColor={bgColor}
         />
       )}
@@ -87,7 +93,7 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
                     className={`img-border-${
                       bgColor === blackish ? "white" : "black"
                     }`}
-                    onClick={() => handleImgClick(imgPath)}
+                    onClick={() => handleImgClick(imgPath, index, eraNumber - 1)}
                     src={imgPath}
                     alt={description}
                   />
