@@ -1,3 +1,5 @@
+import { albums } from "./img-data";
+
 export interface TrackInfo {
   title: string;
   url: string;
@@ -10,6 +12,11 @@ export interface Tracks {
   vaultDesc?: string;
   bonusTrackList?: TrackInfo[];
   bonusDesc?: string;
+}
+
+interface TrackAlbum {
+  title: string;
+  albumPath: string;
 }
 
 export const debutTrackList = [
@@ -1160,7 +1167,6 @@ export const trackListsArr = [
     trackList: fearlessTVTrackList,
     // vaultTrackList: fearlessTVVaultTrackList,
     vaultDesc: vaultTrackDescription,
-    bonusDesc: track5Note,
     // bonusTrackList: fearlessTVBonusTrackList,
     defaultTrackIndex: 0,
   },
@@ -1206,3 +1212,14 @@ export const trackListsArr = [
     defaultTrackIndex: 13,
   },
 ];
+
+export const allTracks: Array<TrackAlbum> = []
+
+trackListsArr.forEach((album, index) => {
+  album.trackList.forEach(({title}) => {
+    allTracks.push({
+      title,
+      albumPath: albums[index]
+    })
+  })
+})
