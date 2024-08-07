@@ -427,7 +427,10 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
   // }, [squaresToMoveDown, squaresToMoveDownOnce, squaresToMoveRight]);
 
   return (
-    <div className="tracks__container">
+    <div
+      className="tracks__container"
+      
+    >
       {/* <h1>Select the songs you want to listen to!</h1> */}
 
       <div className="tracklist-h2" style={{ height: tracklistH2Height }}>
@@ -494,6 +497,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
                   className={`track-info ${title === track ? "expand" : ""}`}
                   style={{
                     backgroundColor: textColor === "white" ? blackish : whitish,
+                    
                   }}
                   onClick={() =>
                     handleClickTrack(index, url, title, trackList.length)

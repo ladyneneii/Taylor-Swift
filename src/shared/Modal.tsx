@@ -62,7 +62,7 @@ const Modal = ({
           </p> */}
 
       <div className="modal__close-btn" onClick={() => setShowModal(false)}>
-        <IoClose size={50} />
+        <IoClose color="white" size={50} />
       </div>
       <div ref={leftRef} className="modal__left-btn" onClick={handleClickLeft}>
         <FaChevronLeft color="white" size={40} />

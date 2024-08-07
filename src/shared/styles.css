@@ -161,12 +161,12 @@ button p {
 }
 
 .tracklist-h2 {
-  border: 5px solid blue;
+  /* border: 5px solid blue; */
   position: relative;
 }
 
 .tracklist {
-  border: 5px solid red;
+  /* border: 5px solid red; */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -270,7 +270,7 @@ button p {
 }
 
 .album-notes {
-  border: 5px solid red;
+  /* border: 5px solid red; */
   display: flex;
   gap: 4rem;
   padding: 1rem;

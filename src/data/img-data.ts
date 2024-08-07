@@ -72,6 +72,14 @@ const debutCarousel: Array<CarouselProps> = [
     description: `The Eras Tour Acoustic Set <br />(2023-2024)`,
   },
   {
+    imgPath: "https://pbs.twimg.com/media/F1DTLpvaQAAzMTl.jpg",
+    description: `The Eras Tour Performance: Picture To Burn`,
+  },
+  {
+    imgPath: "https://pbs.twimg.com/media/Fvaqlu-aUAAYNHR.jpg:large",
+    description: `The Eras Tour Performance: Teardrops On My Guitar`,
+  },
+  {
     imgPath:
       "https://i.insider.com/64d4ec4e4dd2b50019c2c198?width=800&format=jpeg&auto=webp",
   },
@@ -286,7 +294,7 @@ const reputationCarousel: Array<CarouselProps> = [
   {
     imgPath:
       "https://1.bp.blogspot.com/-5rHajU8h6Y8/XCzE6iKhnbI/AAAAAAAAd38/FpQJDFb9p_k0JhP3ytXHG5JK5VAsZ6pmACLcBGAs/s1600/image.jpg",
-    description: "Reputation Tour (2018)",
+    description: `<span style="font-style: italic">reputation</span> Tour (2018)`,
   },
   {
     imgPath:
@@ -323,7 +331,7 @@ const reputationCarousel: Array<CarouselProps> = [
   {
     imgPath:
       "https://www.rollingstone.com/wp-content/uploads/2023/03/GettyImages-1474294735.jpg?w=1024",
-    description: "The Eras Tour Reputation Set <br />(2023-2024)",
+    description: `The Eras Tour <span style="font-style: italic">reputation</span> Set <br />(2023-2024)`,
   },
   {
     imgPath:
@@ -346,6 +354,315 @@ const reputationCarousel: Array<CarouselProps> = [
   },
 ];
 
+const loverCarousel: Array<CarouselProps> = [
+  {
+    imgPath:
+      "https://pyxis.nymag.com/v1/imgs/5c3/86c/a07c6f001bc9e1a8fadfe91dbbdc0d466f-taylor-swift-lover-09.rsocial.w1200.jpg",
+    description: "Lover Era (~ 2019)",
+  },
+  {
+    imgPath:
+      "https://ew.com/thmb/zJDg2F4UfI8bpj29QABM_4Xoh_0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/gettyimages-1146349912-2000-42c1dab928804005a02754deadf401b8.jpg",
+  },
+  {
+    imgPath:
+      "https://static01.nyt.com/images/2019/08/23/arts/23swift-news/merlin_157778103_3ea96033-cf73-4ab9-8e08-166e386ccdbd-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+  },
+  {
+    imgPath:
+      "https://ew.com/thmb/1cnflcBNjhH9fAedbHmhNI3qroI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/gettyimages-1145748475-2000-e33c54a7eeb546bea5088b3b9f46439b.jpg",
+  },
+  {
+    imgPath:
+      "https://pbs.twimg.com/amplify_video_thumb/1140590458885804034/img/zMi6-921fSypNzw1.jpg",
+  },
+  {
+    imgPath:
+      "https://media.architecturaldigest.com/photos/6418aaacc32da9aef3ceda64/master/w_1600%2Cc_limit/GettyImages-1474263664.jpg",
+    description: "The Eras Tour Lover Set <br /> (2023-2024)",
+  },
+  {
+    imgPath:
+      "https://images.prestigeonline.com/wp-content/uploads/sites/5/2023/10/17120225/us_singer_songwriter_taylor_swift_performs_onstage_on_the_first_night_of_her_eras_tour_at_at_and_t_stadium_on_march_31_2023_in_arlington_texas_3e6b309e2a-1350x900.jpeg",
+    description:
+      "The Eras Tour Performance: Miss Americana & The Heartbreak Prince",
+  },
+  {
+    imgPath:
+      "https://uproxx.com/wp-content/uploads/2023/10/1-t-swift-eras-tour.jpg?w=1024&h=437&crop=1",
+    description: "The Eras Tour Performance: Cruel Summer",
+  },
+  {
+    imgPath:
+      "https://media.architecturaldigest.com/photos/6418ad95e2847bf58f6202f9/master/w_1600%2Cc_limit/GettyImages-1474479289.jpg",
+    description: "The Eras Tour Performance: The Man",
+  },
+  {
+    imgPath:
+      "https://i.insider.com/64ee719c26dda200194d7123?width=800&format=jpeg&auto=webp",
+    description: "The Eras Tour Performance: You Need To Calm Down",
+  },
+  {
+    imgPath:
+      "https://hips.hearstapps.com/hmg-prod/images/gettyimages-1474479288-651ae4755253e.jpg",
+    description: "The Eras Tour Performance: Lover",
+  },
+  {
+    imgPath: "https://i.insider.com/6446873a101b77001857ab68?width=700",
+    description: "The Eras Tour Performance: The Archer",
+  },
+];
+
+const folkloreCarousel: Array<CarouselProps> = [
+  {
+    imgPath:
+      "https://www.rollingstone.com/wp-content/uploads/2020/07/000066060006c.jpg?w=1581&h=1054&crop=1",
+    description: `<span style="font-style: italic">folklore</span> Era (~ 2020)`,
+  },
+  {
+    imgPath:
+      "https://static01.nyt.com/images/2020/07/29/arts/26TAYLOR-REVIEW2/merlin_174906645_18f50351-935e-4249-93a9-9a463e9f0dd5-superJumbo.jpg",
+  },
+  {
+    imgPath:
+      "https://people.com/thmb/sJuHBf6oCSV0gCdEFHmmMPvWMJo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/taylor-swift-5-a95c5f5793a64665913bd9ce00d8de08.jpg",
+  },
+  {
+    imgPath:
+      "https://image.khaleejtimes.com/?uuid=330a3124-63c2-5ea9-a30c-3dcaedc8d8d4&function=cropresize&type=preview&source=false&q=75&crop_w=0.99999&crop_h=0.99967&x=0&y=0&width=1200&height=675",
+  },
+  {
+    imgPath:
+      "https://people.com/thmb/BdWzjVas5yf6RAr8cHqWgvH0cuU=/4000x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/taylor-swift-2-26f7bfd1b0844bb7ac23a2b2e66c8445.jpg",
+  },
+  {
+    imgPath:
+      "https://i.pinimg.com/736x/92/c8/35/92c835ae50ee57ee5496692dc5ece80a.jpg",
+    description: `The Eras Tour <span style="font-style: italic">folklore</span> Set <br />(2023-2024)`,
+  },
+  {
+    imgPath:
+      "https://i.insider.com/6480e5a93973bf001961e956?width=800&format=jpeg&auto=webp",
+    description: `The Eras Tour Performance: the 1`,
+  },
+  {
+    imgPath:
+      "https://i.insider.com/64e7966652bc2d0019917993?width=800&format=jpeg&auto=webp",
+    description: `The Eras Tour Performance: invisible string`,
+  },
+  {
+    imgPath:
+      "https://static1.srcdn.com/wordpress/wp-content/uploads/2023/10/untitled-design-16-2.jpg",
+    description: `The Eras Tour Performance: betty`,
+  },
+  {
+    imgPath:
+      "https://pbs.twimg.com/media/Ft9XcL_aUAAwzg8?format=jpg&name=4096x4096",
+    description: `The Eras Tour Performance: the last great american dynasty`,
+  },
+  {
+    imgPath:
+      "https://i0.wp.com/marvelousgeeksmedia.com/wp-content/uploads/2023/08/Taylor-3.jpg?ssl=1",
+    description: `The Eras Tour Performance: august`,
+  },
+  {
+    imgPath:
+      "https://static1.srcdn.com/wordpress/wp-content/uploads/2024/03/taylor-swift-sings-illicit-affairs-during-the-eras-tour.jpg",
+    description: `The Eras Tour Performance: illicit affairs`,
+  },
+  {
+    imgPath: "https://i.ytimg.com/vi/AaeP-Yvv9Yo/maxresdefault.jpg",
+    description: `The Eras Tour Performance: my tears ricochet`,
+  },
+  {
+    imgPath:
+      "https://www.digitalmusicnews.com/wp-content/uploads/2024/02/taylor-swift-eras-tour-concert-film-heads-to-disney-plus-feat.png",
+    description: `cardigan`,
+  },
+];
+
+const evermoreCarousel: Array<CarouselProps> = [
+  {
+    imgPath:
+      "https://www.hollywoodreporter.com/wp-content/uploads/2020/08/-p1_000066350004_r.jpg",
+    description: `<span style="font-style: italic">evermore</span> Era (~ 2020)`,
+  },
+  {
+    imgPath:
+      "https://consequence.net/wp-content/uploads/2021/05/taylor-swift-evermore-vinyl-record-best-week-sales-break.jpg?resize=768",
+  },
+  {
+    imgPath:
+      "https://i.pinimg.com/564x/90/a3/e4/90a3e4fa266c508b574d30c54e4ff11a.jpg",
+  },
+  {
+    imgPath:
+      "https://www.usmagazine.com/wp-content/uploads/2020/12/Taylor-Swift-Fans-Think-Folklore-Evermore-Are-Part-Trilogy-001.jpg?quality=86&strip=all",
+  },
+  {
+    imgPath:
+      "https://i.pinimg.com/originals/c0/e1/8e/c0e18e674cc53470327529021f542edf.jpg",
+  },
+  {
+    imgPath:
+      "https://pbs.twimg.com/media/FyXi8dNXoAAqreq?format=jpg&name=large",
+    description: `The Eras Tour <span style="font-style: italic">evermore</span> Set <br />(2023-2024)`,
+  },
+  {
+    imgPath:
+      "https://i.insider.com/6499e4640abaf00019f5593e?width=800&format=jpeg&auto=webp",
+    description: `The Eras Tour Performance: 'tis the damn season`,
+  },
+  {
+    imgPath:
+      "https://people.com/thmb/lAxC6LBGZzkmKblxLnCHNpwL95g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x0:751x2)/haim-joins-taylor-swift-in-seattle-072423-tout-f717cd8668ea4973b6e69c1b9c900219.jpg",
+    description: `The Eras Tour Performance: no body, no crime (feat. HAIM)`,
+  },
+  {
+    imgPath: "https://i.ytimg.com/vi/tN_z5mokLpM/sddefault.jpg",
+    description: `The Eras Tour Performance: willow`,
+  },
+  {
+    imgPath:
+      "https://i.insider.com/663e3f7db4abc992e8c80ff6?width=800&format=jpeg&auto=webp",
+    description: `The Eras Tour Performance: marjorie`,
+  },
+  {
+    imgPath:
+      "https://static1.srcdn.com/wordpress/wp-content/uploads/2024/03/the-eras-tour-stream-14.jpg",
+    description: `The Eras Tour Performance: champagne problems`,
+  },
+  {
+    imgPath:
+      "https://pbs.twimg.com/media/GBXIcClaUAAzU2s?format=jpg&name=4096x4096",
+    description: `The Eras Tour Performance: tolerate it`,
+  },
+];
+
+const midnightsCarousel: Array<CarouselProps> = [
+  {
+    imgPath: "https://footwearnews.com/wp-content/uploads/2023/02/taylor.jpg",
+    description: "Midnights Era (~ 2022)",
+  },
+  {
+    imgPath:
+      "https://i.pinimg.com/736x/9d/e8/1d/9de81dc09ff008e8154df5cecab24c2c.jpg",
+  },
+  {
+    imgPath:
+      "https://assets.teenvogue.com/photos/630c337259ab699fc415ce92/4:3/w_2499,h_1874,c_limit/1418917945",
+  },
+  {
+    imgPath:
+      "https://assets.telegraphindia.com/telegraph/2022/Nov/1667263128_new-project-2022-11-01t060812-478.jpg",
+  },
+  {
+    imgPath:
+      "https://storage.googleapis.com/buro-malaysia-storage/www.buro247.my/2022/10/da2d9f86-intext_tsmidnights_2.jpg",
+  },
+  {
+    imgPath:
+      "https://parade.com/.image/t_share/MTk2NjI2MjUxNzMxOTcwMDE1/lavender-haze-eras-tour.jpg",
+    description: "The Eras Tour Midnights Set <br />(2023-2024)",
+  },
+  {
+    imgPath:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/Taylor_Swift_Eras_Tour_-_Arlington_TX_20230331_-_Lavender_Haze.jpg",
+    description: "The Eras Tour Performance: Lavender Haze",
+  },
+  {
+    imgPath:
+      "https://i.pinimg.com/736x/a6/35/db/a635dbe78535ef6c3efc1239f0eaa42c.jpg",
+    description: "The Eras Tour Performance: Anti-Hero",
+  },
+  {
+    imgPath:
+      "https://cdn.socast.io/6616/sites/392/2023/05/11165516/GettyImages-1474520613-2.jpg",
+    description: "The Eras Tour Performance: Midnight Rain",
+  },
+  {
+    imgPath: "https://i.ytimg.com/vi/APAmsSYnR-s/maxresdefault.jpg",
+    description: "The Eras Tour Performance: Vigilante Shit",
+  },
+  {
+    imgPath:
+      "https://assets.teenvogue.com/photos/6415f8a7fd1edaf1e66d0ccb/1:1/w_4867,h_4867,c_limit/1474304090",
+    description: "The Eras Tour Performance: Bejeweled",
+  },
+  {
+    imgPath:
+      "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00d22584-1082-4f23-a95d-2258db9462ca_1000x750.webp",
+    description: "The Eras Tour Performance: Mastermind",
+  },
+  {
+    imgPath:
+      "https://static1.srcdn.com/wordpress/wp-content/uploads/2024/03/the-eras-tour-stream-40.jpg",
+    description: "The Eras Tour Performance: Karma",
+  },
+];
+
+const ttpdCarousel: Array<CarouselProps> = [
+  {
+    imgPath:
+      "https://www.cnet.com/a/img/resize/e65b6655fdf2eaa704bcc326dc9a71e44d06b1cb/hub/2024/04/20/59d18b85-4067-48d7-812b-26dabf303f1d/screenshot-2024-04-19-at-8-17-47pm.png?auto=webp&fit=crop&height=675&width=1200",
+    description: "The Tortured Poets Department Era (~ 2024)",
+  },
+  {
+    imgPath:
+      "https://s.abcnews.com/images/GMA/swift-tortured-poets-department-01-ht-jef-240419_1713535110444_hpMain_16x9_992.jpg",
+  },
+  {
+    imgPath:
+      "https://www.rollingstone.com/wp-content/uploads/2024/04/Screen-Shot-2024-04-18-at-5.09.02-PM.jpg?w=1581&h=1054&crop=1",
+  },
+  {
+    imgPath:
+      "https://admin.promonews.tv/sites/default/files/Screenshot%202024-04-23%20at%2016.53.37.png",
+  },
+  {
+    imgPath:
+      "https://i8.amplience.net/i/naras/Taylor-Swift-2024-GRAMMYs-GettyImages-1986535927",
+  },
+  {
+    imgPath: "https://i.ytimg.com/vi/ncyFf_Z4A0w/maxresdefault.jpg",
+    description:
+      "The Eras Tour The Tortured Poets Department Set <br /> (2023-2024)",
+  },
+  {
+    imgPath:
+      "https://www.billboard.com/wp-content/uploads/2024/06/taylor-swift-eras-tour-tortured-poets-london-june-21-2024-billboard-1548.jpg?w=942&h=623&crop=1",
+    description: "The Eras Tour Performance: But Daddy I Love Him",
+  },
+  {
+    imgPath:
+      "https://64.media.tumblr.com/182c82c3368df584f4f616fa9571b5dd/669c74a4d2101ac8-55/s540x810/a2b4571826e5021b4dabc9fbacf8176bc7bd7199.jpg",
+    description: "The Eras Tour Performance: So High School",
+  },
+  {
+    imgPath:
+      "https://miro.medium.com/v2/resize:fit:1400/1*PJbOBiyxq_Snn-MN4ICmTw@2x.jpeg",
+    description: "The Eras Tour Performance: Who's Afraid of Little Old Me",
+  },
+  {
+    imgPath:
+      "https://upload.wikimedia.org/wikipedia/commons/2/29/Taylor_Swift_Eras_Tour_TTPD_Set_Down_Bad.jpg",
+    description: "The Eras Tour Performance: Down Bad",
+  },
+  {
+    imgPath:
+      "https://pbs.twimg.com/media/GNK8dpNXIAAIs1W?format=jpg&name=4096x4096",
+    description: "The Eras Tour Performance: Fortnight",
+  },
+  {
+    imgPath: "https://i.ytimg.com/vi/8YZd-baEp-k/maxresdefault.jpg",
+    description: "The Eras Tour Performance: The Smallest Man Who Ever Lived",
+  },
+  {
+    imgPath: "https://pbs.twimg.com/media/GSTxRrMWsAAvsg1.jpg:large",
+    description: "The Eras Tour Performance: I Can Do It With a Broken Heart",
+  },
+];
+
 export const carouselEras = [
   debutCarousel,
   fearlessCarousel,
@@ -353,9 +670,9 @@ export const carouselEras = [
   redCarousel,
   _1989Carousel,
   reputationCarousel,
-  debutCarousel,
-  debutCarousel,
-  debutCarousel,
-  debutCarousel,
-  debutCarousel,
+  loverCarousel,
+  folkloreCarousel,
+  evermoreCarousel,
+  midnightsCarousel,
+  ttpdCarousel,
 ];
