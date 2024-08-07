@@ -365,19 +365,21 @@ button p {
   right: 0;
   /* min-height: 800px; */
   z-index: 100;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
 }
 
+.modal__close-btn,
 .modal__left-btn,
 .modal__right-btn {
   position: absolute;
   z-index: 5;
 }
 
+.modal__close-btn:hover,
 .modal__left-btn:hover,
 .modal__right-btn:hover {
   cursor: pointer;
@@ -385,46 +387,26 @@ button p {
   transition-duration: 100ms;
 }
 
+.modal__close-btn {
+  right: 20px;
+  top: 20px;
+}
+
 .modal__left-btn {
-  left: 10px;
+  left: 20px;
 }
 
 .modal__right-btn {
-  right: 10px;
+  right: 20px;
 }
 
-.modal__container .img-p-container {
+.modal__container .img-container {
   /* make sure to set a value to height so that the CONTAINER scales as the screen is resized vertically */
   height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.modal__container p {
-  border-radius: 15px;
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  letter-spacing: 0.3rem;
-  /* align-self: center; */
-  margin-block: 0;
-  align-self: flex-end;
-}
-
-.modal__container p:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.modal__container .img-container {
-  width: 100vw;
-  max-height: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border: 5px solid violet;
 }
 
 .img-container img {
@@ -433,6 +415,7 @@ button p {
   /* setting max-width and max-height to 100% instead ensures that the height and width of the image will always follow the height and width of the parent, respectively, while the resizing of the image is properly scaled since the values set to max-width and max-height are not the absolute width and height of the image; they are just the max. */
   max-width: 100%;
   max-height: 100%;
+ 
 }
 
 /* Lyrics.tsx */

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import { blackish } from "./types";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 import { carouselEras } from "@/data/img-data";
 
 type Props = {
@@ -20,7 +21,14 @@ const Modal = ({
   closeBgColor,
 }: Props) => {
   const imgRef = useRef(null);
-  useOutsideClick({ ref: imgRef, setVisibility: setShowModal });
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+  useOutsideClick({
+    ref: imgRef,
+    refLeft: leftRef,
+    refRight: rightRef,
+    setVisibility: setShowModal,
+  });
   const [image, setImage] = useState(imgPath);
   const [currImgNum, setCurrImgNum] = useState(imgNum);
 
@@ -28,10 +36,12 @@ const Modal = ({
     setCurrImgNum(
       currImgNum === 0 ? carouselEras[carouselNum].length - 1 : currImgNum - 1
     );
+    setShowModal(true);
   };
 
   const handleClickRight = () => {
     setCurrImgNum((currImgNum + 1) % carouselEras[carouselNum].length);
+    setShowModal(true);
   };
 
   useEffect(() => {
@@ -40,25 +50,37 @@ const Modal = ({
 
   return (
     <div className="modal__container">
-      <div className="img-p-container">
-        <div ref={imgRef} className="img-container">
-        <p
-          onClick={() => setShowModal(false)}
-          style={{
-            backgroundColor: closeBgColor,
-            color: closeBgColor === blackish ? "white" : "black",
-          }}
-        >
-          Close
-        </p>
-          <div className="modal__left-btn" onClick={handleClickLeft}>
-            <FaChevronLeft color="white" size={30} />
-          </div>
-          <img src={image} alt={image} />
-          <div className="modal__right-btn" onClick={handleClickRight}>
-            <FaChevronRight color="white" size={30} />
-          </div>
-        </div>
+      {/* <p
+            onClick={() => setShowModal(false)}
+            style={{
+              backgroundColor: closeBgColor,
+              color: closeBgColor === blackish ? "white" : "black",
+            }}
+            className="no-select no-outline"
+          >
+            Close
+          </p> */}
+
+      <div className="modal__close-btn" onClick={() => setShowModal(false)}>
+        <IoClose size={50} />
+      </div>
+      <div ref={leftRef} className="modal__left-btn" onClick={handleClickLeft}>
+        <FaChevronLeft color="white" size={40} />
+      </div>
+      <div
+        ref={rightRef}
+        className="modal__right-btn"
+        onClick={handleClickRight}
+      >
+        <FaChevronRight color="white" size={40} />
+      </div>
+      <div className="img-container">
+        <img
+          ref={imgRef}
+          src={image}
+          alt={image}
+          className="no-select no-outline"
+        />
       </div>
     </div>
   );
