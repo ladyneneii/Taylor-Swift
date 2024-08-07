@@ -1,3 +1,4 @@
+import { createTrackId } from "@/shared/types";
 import { albums } from "./img-data";
 
 export interface TrackInfo {
@@ -15,7 +16,11 @@ export interface Tracks {
 }
 
 interface TrackAlbum {
+  idx: number;
   title: string;
+  trackId: string;
+  url: string;
+  length: number;
   albumPath: string;
 }
 
@@ -1162,6 +1167,8 @@ export const trackListsArr = [
     // bonusTrackList: debutBonusTrackList,
     bonusDesc: debutBonusTrackDesc,
     defaultTrackIndex: 2,
+
+    trackListLength: debutTrackList.length,
   },
   {
     trackList: fearlessTVTrackList,
@@ -1169,57 +1176,80 @@ export const trackListsArr = [
     vaultDesc: vaultTrackDescription,
     // bonusTrackList: fearlessTVBonusTrackList,
     defaultTrackIndex: 0,
+
+    trackListLength: fearlessTVTrackList.length,
   },
   {
     trackList: speakNowTVTrackList,
     // bonusTrackList: debutBonusTrackList,
     defaultTrackIndex: 8,
+
+    trackListLength: speakNowTVTrackList.length,
   },
   {
     trackList: redTVTrackList,
     defaultTrackIndex: 29,
+    trackListLength: redTVTrackList.length,
   },
   {
     trackList: _1989TVTrackList,
     defaultTrackIndex: 2,
+
+    trackListLength: _1989TVTrackList.length,
   },
   {
     trackList: reputationTrackList,
     bonusDesc: fiftyShadesDesc,
     defaultTrackIndex: 11,
+    trackListLength: reputationTrackList.length,
   },
   {
     trackList: loverTrackList,
     bonusDesc: track5Note,
     defaultTrackIndex: 12,
+    trackListLength: loverTrackList.length,
   },
   {
     trackList: folkloreTrackList,
     defaultTrackIndex: 1,
+
+    trackListLength: folkloreTrackList.length,
   },
   {
     trackList: evermoreTrackList,
     defaultTrackIndex: 4,
+
+    trackListLength: evermoreTrackList.length,
   },
   {
     trackList: midnightsTrackList,
     defaultTrackIndex: 1,
+
+    trackListLength: midnightsTrackList.length,
   },
   {
     trackList: ttpdTrackList,
     vaultDesc: ttpdNotes,
     bonusDesc: aimeeNotes,
     defaultTrackIndex: 13,
+    trackListLength: ttpdTrackList.length,
   },
 ];
 
-export const allTracks: Array<TrackAlbum> = []
+export const allTracks: Array<TrackAlbum> = [];
 
-trackListsArr.forEach((album, index) => {
-  album.trackList.forEach(({title}) => {
+trackListsArr.forEach((album) => {
+  album.trackList.forEach(({ title, url }, index) => {
     allTracks.push({
+      idx: index,
       title,
-      albumPath: albums[index]
-    })
-  })
-})
+      trackId: createTrackId(title),
+      url,
+      length: album.trackListLength,
+      albumPath: albums[index],
+    });
+  });
+});
+
+// Sort the allTracks array by title
+allTracks.sort((a, b) => a.title.localeCompare(b.title));

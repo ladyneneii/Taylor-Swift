@@ -1,7 +1,7 @@
 import { TrackInfo, trackListsArr } from "@/data/tracklists";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import React, { useEffect, useState } from "react";
-import { blackish, whitish } from "./types";
+import { blackish, createTrackId, whitish } from "./types";
 import DOMPurify from "dompurify";
 
 type Props = {
@@ -184,6 +184,8 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
         return 0;
     }
   };
+
+  // console.log(`tracks-${eraId}`);
 
   // const vaultTrackNumber = trackList.length + 1;
   // const bonusTrackNumber =
@@ -452,6 +454,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
 
             return (
               <div
+              id={createTrackId(title)}
                 key={index}
                 className="track-info-square"
                 style={{

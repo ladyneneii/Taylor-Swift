@@ -1,4 +1,18 @@
-// SHARED VARIABLES
+// SHARED VARIABLES AND FUNCTIONS
+
+export const formatEraId = (currEra: string) => {
+  return currEra.toLowerCase().replace(/\s+/g, "");
+};
+
+export const createTrackId = (track: string) => {
+  let result = track.toLowerCase();
+
+  result = result.replace(/\s+/g, "-");
+
+  result = result.replace(/[^a-z0-9-]/g, "");
+
+  return `track-${result}`;
+};
 
 export const eras = [
   "Home",
@@ -30,10 +44,10 @@ export const erasColor = [
   "white",
 ];
 
-export const blackish = "rgba(0, 0, 0, 0.5)"
-export const whitish = "rgba(255, 255, 255, 0.5)"
-export const blackish2 = "rgba(76, 75, 75, 0.667)"
-export const whitish2 = "rgba(255, 255, 255, 0.7)"
+export const blackish = "rgba(0, 0, 0, 0.5)";
+export const whitish = "rgba(255, 255, 255, 0.5)";
+export const blackish2 = "rgba(76, 75, 75, 0.667)";
+export const whitish2 = "rgba(255, 255, 255, 0.7)";
 
 export interface CarouselProps {
   imgPath: string;

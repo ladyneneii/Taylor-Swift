@@ -11,6 +11,7 @@ import {
   blackish2,
   eras,
   erasColor,
+  formatEraId,
   whitish,
   whitish2,
 } from "@/shared/types";
@@ -42,12 +43,35 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
     else return `selectedEra ${textColor}`;
   };
 
-  const formatEraId = (currEra: string) => {
-    return currEra.toLowerCase().replace(/\s+/g, "");
-  };
-
   const handleSearchChange = (input: string) => {
     setSearch(input);
+  };
+
+  const handleAnchorClick = (
+    e: any,
+    targetId: string,
+    idx: number,
+    url: string,
+    title: string,
+    length: number
+  ) => {
+    e.preventDefault();
+
+    const targetElement = document.getElementById(targetId);
+    const offset = 120; // Adjust this value to the height of your navbar
+
+    if (targetElement) {
+      setShowSearchResults(false);
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+
+      handleClickTrack(index, url, title, trackList.length);
+    }
   };
 
   useEffect(() => {
@@ -58,14 +82,12 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
       setExpandSearch(false);
     }
     if (isPhone) {
-      setShowSearchResults(false)
+      setShowSearchResults(false);
     }
   }, [isAboveLargeScreens, isPhone]);
 
-
-
-  // console.log(allTracks);
-  console.log(search);
+  console.log(allTracks);
+  // console.log(search);
 
   return (
     <nav
@@ -144,9 +166,37 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
                       .filter(({ title }) => {
                         return title.toLowerCase().includes(search);
                       })
-                      .map(({ title, albumPath }, index) => (
-                        <div key={index}>{title}</div>
-                      ))}
+                      .map(
+                        (
+                          { idx, title, trackId, url, length, albumPath },
+                          index
+                        ) => (
+                          <a
+                            style={{ color: textColor }}
+                            key={index}
+                            // href={`#${trackId}`}
+                            onClick={(e) =>
+                              handleAnchorClick(
+                                e,
+                                trackId,
+                                idx,
+                                url,
+                                title,
+                                length
+                              )
+                            }
+                          >
+                            <div
+                              className={`nav__album-track ${
+                                textColor === "white" ? "dark" : "light"
+                              }`}
+                            >
+                              <img src={albumPath} alt={albumPath} />
+                              <p>{title}</p>
+                            </div>
+                          </a>
+                        )
+                      )}
                   </div>
                   <div style={{ height: "2rem" }}></div>
                 </div>
