@@ -1238,7 +1238,7 @@ export const trackListsArr = [
 
 export const allTracks: Array<TrackAlbum> = [];
 
-trackListsArr.forEach((album) => {
+trackListsArr.forEach((album, albumIndex) => {
   album.trackList.forEach(({ title, url }, index) => {
     allTracks.push({
       idx: index,
@@ -1246,7 +1246,7 @@ trackListsArr.forEach((album) => {
       trackId: createTrackId(title),
       url,
       length: album.trackListLength,
-      albumPath: albums[index],
+      albumPath: albums[albumIndex],
     });
   });
 });

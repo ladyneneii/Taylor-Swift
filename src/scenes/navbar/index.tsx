@@ -58,7 +58,7 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
     e.preventDefault();
 
     const targetElement = document.getElementById(targetId);
-    const offset = 120; // Adjust this value to the height of your navbar
+    const offset = 220; // Adjust this value to the height of your navbar
 
     if (targetElement) {
       setShowSearchResults(false);
@@ -86,7 +86,7 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
     }
   }, [isAboveLargeScreens, isPhone]);
 
-  console.log(allTracks);
+  // console.log(allTracks);
   // console.log(search);
 
   return (
