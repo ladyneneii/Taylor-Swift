@@ -48,7 +48,11 @@ const Navbar = ({
 }: Props) => {
   const isAboveLargeScreens = useMediaQuery("(min-width: 1650px)");
   const isSmall = useMediaQuery("(max-width: 1050px) and (min-width: 551px)");
+  const isTablet = useMediaQuery("(max-width: 750px)");
   const isPhone = useMediaQuery("(max-width: 550px)");
+  const [textColor, setTextcolor] = useState(
+    erasColor[eras.indexOf(selectedEra)]
+  );
   const [expandSearch, setExpandSearch] = useState(false);
   const [search, setSearch] = useState("");
   const [showSearchResults, setShowSearchResults] = useState(false);
@@ -58,10 +62,6 @@ const Navbar = ({
   const sidebarRef = useRef(null);
   useOutsideClick({ ref: searchRef, setVisibility: setShowSearchResults });
   useOutsideClick({ ref: sidebarRef, setVisibility: setShowSidebar });
-
-  // console.log(selectedEra);
-
-  const textColor = erasColor[eras.indexOf(selectedEra)];
 
   const borderColor = (era: string) => {
     if (selectedEra !== era) return "";
@@ -131,46 +131,45 @@ const Navbar = ({
     }
   };
 
- const handleAnchorClick = (
-   e: any,
-   targetId: string,
-   idx: number,
-   url: string,
-   title: string,
-   length: number,
-   albumNumber: number
- ) => {
-   e.preventDefault();
-   e.stopPropagation(); // Stop the input field from regaining focus
+  const handleAnchorClick = (
+    e: any,
+    targetId: string,
+    idx: number,
+    url: string,
+    title: string,
+    length: number,
+    albumNumber: number
+  ) => {
+    e.preventDefault();
+    e.stopPropagation(); // Stop the input field from regaining focus
 
-   const offset = 300;
+    const offset = 300;
 
-   // Set the album track state
-   setAlbumTrackState(idx, url, title, length, albumNumber);
+    // Set the album track state
+    setAlbumTrackState(idx, url, title, length, albumNumber);
 
-   // Delay the position calculation until after the DOM has updated
-   setTimeout(() => {
-     const targetElement = document.getElementById(targetId);
+    // Delay the position calculation until after the DOM has updated
+    setTimeout(() => {
+      const targetElement = document.getElementById(targetId);
 
-     if (targetElement) {
-       setSearch(title);
-       setShowSearchResults(false);
-       searchInputRef.current?.blur();
+      if (targetElement) {
+        setSearch(title);
+        setShowSearchResults(false);
+        searchInputRef.current?.blur();
 
-       // Ensure that the position is calculated after rendering and layout updates
-       requestAnimationFrame(() => {
-         const elementPosition = targetElement.getBoundingClientRect().top;
-         const offsetPosition = elementPosition + window.scrollY - offset;
+        // Ensure that the position is calculated after rendering and layout updates
+        requestAnimationFrame(() => {
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - offset;
 
-         window.scrollTo({
-           top: offsetPosition,
-           behavior: "smooth",
-         });
-       });
-     }
-   }, 550); // Delay to allow the DOM to update before getting the position
- };
-
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        });
+      }
+    }, 550); // Delay to allow the DOM to update before getting the position
+  };
 
   const handleFocus = () => {
     setShowSearchResults(true);
@@ -196,8 +195,14 @@ const Navbar = ({
       setShowSearchResults(false);
     }
 
-    console.log(isPhone, isSmall);
+    // console.log(isPhone, isSmall);
   }, [isAboveLargeScreens, isPhone, isSmall]);
+
+  useEffect(() => {
+    setTextcolor(erasColor[eras.indexOf(selectedEra)]);
+    borderColor(selectedEra);
+    // console.log(selectedEra);
+  }, [selectedEra]);
 
   // console.log(allTracks);
   // console.log(search);
@@ -338,7 +343,6 @@ const Navbar = ({
                     href={`#${formatEraId(era)}`}
                     style={{ color: textColor }}
                     className={borderColor(era)}
-                    onClick={() => setSelectedEra(era)}
                   >
                     {era === "Reputation"
                       ? "reputation"
@@ -391,7 +395,7 @@ const Navbar = ({
                 href={`#${formatEraId(era)}`}
                 style={{ color: textColor }}
                 className={borderColor(era)}
-                onClick={() => setSelectedEra(era)}
+                onClick={isTablet ? () => setShowSidebar(false) : undefined}
               >
                 {era === "Reputation"
                   ? "reputation"

@@ -49,6 +49,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
   const [cols, setCols] = useState(4);
   const [width, setWidth] = useState(300);
   const height = 100;
+  const [iframeLoaded, setIframeLoaded] = useState(false)
   const trackIframeDimensions = {
     width: 0,
     height: 0,
@@ -74,6 +75,8 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
 
   const handleClickTrack = () => {
     const { trackIndex, trackAlbumLength } = track;
+
+    setIframeLoaded(false)
 
     setSquaresToMoveDown(() => {
       const newSquares = [];
@@ -519,6 +522,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerPolicy="strict-origin-when-cross-origin"
                         allowFullScreen
+                        onLoad={() => setIframeLoaded(true)}
                       ></iframe>
                     )}
                   </div>

@@ -124,17 +124,16 @@
   }
 
   .terms__ts-pic-text-container {
-  margin-top: 0;
-}
+    margin-top: 0;
+  }
 
-
-.terms__ts-pic-text-container,
-.terms__eras-vid-container {
-  gap: 0;
-}
-.terms__ts-pic-media-title-container {
-  margin-top: 24px;
-}
+  .terms__ts-pic-text-container,
+  .terms__eras-vid-container {
+    gap: 0;
+  }
+  .terms__about-taylor {
+    order: -1;
+  }
 
   .terms__eras-vid-container iframe {
     align-self: center;
@@ -145,7 +144,6 @@
     margin-bottom: 3rem;
   }
 
-  .terms__ts-pic-text-container p,
   .terms__tv-pics-text-container p {
     order: -1;
   }

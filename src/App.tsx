@@ -169,7 +169,7 @@ const App = () => {
           setMidnightsTrack={setMidnightsTrack}
           setTtpdTrack={setTtpdTrack}
         />
-        <Home />
+        <Home setSelectedEra={setSelectedEra} />
       </section>
 
       {/* no need to set universal textColor for terminologies because in this section, there are two text colors */}
@@ -179,6 +179,7 @@ const App = () => {
         textColor={erasColor[eras.indexOf("Home")]}
         bgcolor={erasBgColor[eras.indexOf("Home")]}
         track={returnTrack(0)}
+        setSelectedEra={setSelectedEra}
         setTrack={returnSetTrack(0)}
       />
 
@@ -190,6 +191,7 @@ const App = () => {
           textColor={erasColor[index + 1]}
           bgcolor={erasBgColor[index + 1]}
           track={returnTrack(index)}
+          setSelectedEra={setSelectedEra}
           setTrack={returnSetTrack(index)}
         />
       ))}

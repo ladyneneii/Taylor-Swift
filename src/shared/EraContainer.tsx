@@ -10,7 +10,7 @@ import Tracks from "./Tracks";
 import Terminologies from "@/scenes/terminologies";
 import DOMPurify from "dompurify";
 import { Track } from "@/data/tracklists";
-
+import { motion } from "framer-motion";
 
 type Props = {
   eraNumber: number;
@@ -18,10 +18,19 @@ type Props = {
   textColor: string;
   bgcolor: string;
   track: Track;
+  setSelectedEra: (value: string) => void;
   setTrack: (value: Track) => void;
 };
 
-const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor, track, setTrack }: Props) => {
+const EraContainer = ({
+  eraNumber,
+  eraTitle,
+  textColor,
+  bgcolor,
+  track,
+  setSelectedEra,
+  setTrack,
+}: Props) => {
   const isLarge = useMediaQuery("(max-width: 1400px)");
   const isMedium = useMediaQuery("(max-width: 750px)");
 
@@ -83,11 +92,14 @@ const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor, track, setTrack
 
   const sanitizedDetails = DOMPurify.sanitize(details[eraNumber - 1]);
 
+  // console.log(`this is eraTitle: ${eraTitle}`);
+
   return (
-    <section
+    <motion.div
       className="era-container"
       style={{ background: bgcolor, color: textColor, borderColor: textColor }}
       id={eraId}
+      onViewportEnter={() => setSelectedEra(eraTitle)}
     >
       {/* HERO SECTION */}
       {eraTitle !== "Home" && (
@@ -106,7 +118,18 @@ const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor, track, setTrack
                 eraTitle === "TTPD" ? (!isLarge ? "1rem" : "4rem") : "10rem",
             }}
           >
-            <div className="title-desc" style={{ order: isLarge ? -2 : 0 }}>
+            <motion.div
+              className="title-desc"
+              style={{ order: isLarge ? -2 : 0 }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ duration: 0.5 }}
+              variants={{
+                hidden: { opacity: 0, x: eraNumber % 2 !== 0 ? -50 : 50 },
+                visible: { opacity: 1, x: 0 },
+              }}
+            >
               <img
                 src={logos[eraNumber - 1]}
                 alt={`${eras[eraNumber]}-album-cover`}
@@ -116,10 +139,18 @@ const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor, track, setTrack
                 style={{ color: "white" }}
                 dangerouslySetInnerHTML={{ __html: sanitizedDetails }}
               ></p>
-            </div>
-            <div
+            </motion.div>
+            <motion.div
               className="album-photo"
               style={{ order: eraNumber % 2 !== 0 ? -1 : 1 }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ duration: 0.5 }}
+              variants={{
+                hidden: { opacity: 0, x: eraNumber % 2 !== 0 ? -50 : 50 },
+                visible: { opacity: 1, x: 0 },
+              }}
             >
               {eraTitle === "TTPD" ? (
                 <img
@@ -129,7 +160,7 @@ const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor, track, setTrack
               ) : (
                 <img src={albums[eraNumber - 1]} alt={albums[eraNumber - 1]} />
               )}
-            </div>
+            </motion.div>
           </div>
 
           {eraTitle === "TTPD" && (
@@ -190,7 +221,7 @@ const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor, track, setTrack
         quotes[eraNumber - 1].map((lyrics, index) => (
           <Lyrics key={index} eraNumber={eraNumber} lyrics={lyrics} />
         ))} */}
-    </section>
+    </motion.div>
   );
 };
 

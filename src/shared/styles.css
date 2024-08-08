@@ -1,5 +1,9 @@
 /* EraContainer.tsx */
 
+.era-container {
+  margin-top: 0.1rem;
+}
+
 .era-hero {
   width: clamp(300px, 100%, 2040px);
   margin-inline: auto;

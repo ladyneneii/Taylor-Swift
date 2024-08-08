@@ -53,7 +53,7 @@ const Terminologies = () => {
                 </p>
               </div>
             </div>
-            <div>
+            <div className="terms__about-taylor">
               <p>
                 Taylor Alison Swift is an American songwriter, singer, and
                 musician who tells vivid, artistic, and poetic stories through
