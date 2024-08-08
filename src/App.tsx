@@ -4,9 +4,110 @@ import "./index.css";
 import Home from "./scenes/home";
 import EraContainer from "./shared/EraContainer";
 import { eras, erasColor } from "./shared/types";
+import { Track, trackListsArr } from "./data/tracklists";
+
 
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
+
+  const defaultTrackValues = (eraNumber: number) => {
+    const { defaultTrackIndex, trackListLength, trackList } =
+      trackListsArr[eraNumber];
+    const { defaultUrl, url, title } = trackList[defaultTrackIndex];
+
+    return {
+      trackIndex: defaultTrackIndex,
+      url: defaultUrl ?? url,
+      title,
+      trackAlbumLength: trackListLength,
+    };
+  };
+
+  const [taylorSwiftTrack, setTaylorSwiftTrack] = useState<Track>(
+    defaultTrackValues(0)
+  );
+  const [fearlessTVTrack, setFearlessTVTrack] = useState<Track>(
+    defaultTrackValues(1)
+  );
+  const [speakNowTVTrack, setSpeakNowTVTrack] = useState<Track>(
+    defaultTrackValues(2)
+  );
+  const [redTVTrack, setRedTVTrack] = useState<Track>(defaultTrackValues(3));
+  const [_1989TVTrack, set_1989TVTrack] = useState<Track>(
+    defaultTrackValues(4)
+  );
+  const [reputationTrack, setReputationTrack] = useState<Track>(
+    defaultTrackValues(5)
+  );
+  const [loverTrack, setLoverTrack] = useState<Track>(defaultTrackValues(6));
+  const [folkloreTrack, setFolkloreTrack] = useState<Track>(
+    defaultTrackValues(7)
+  );
+  const [evermoreTrack, setEvermoreTrack] = useState<Track>(
+    defaultTrackValues(8)
+  );
+  const [midnightsTrack, setMidnightsTrack] = useState<Track>(
+    defaultTrackValues(9)
+  );
+  const [ttpdTrack, setTtpdTrack] = useState<Track>(defaultTrackValues(10));
+
+  const returnTrack = (eraNumber: number) => {
+    switch (eraNumber) {
+      case 0:
+        return taylorSwiftTrack;
+      case 1:
+        return fearlessTVTrack;
+      case 2:
+        return speakNowTVTrack;
+      case 3:
+        return redTVTrack;
+      case 4:
+        return _1989TVTrack;
+      case 5:
+        return reputationTrack;
+      case 6:
+        return loverTrack;
+      case 7:
+        return folkloreTrack;
+      case 8:
+        return evermoreTrack;
+      case 9:
+        return midnightsTrack;
+      case 10:
+        return ttpdTrack;
+      default:
+        return taylorSwiftTrack;
+    }
+  };
+
+  const returnSetTrack = (eraNumber: number) => {
+    switch (eraNumber) {
+      case 0:
+        return setTaylorSwiftTrack;
+      case 1:
+        return setFearlessTVTrack;
+      case 2:
+        return setSpeakNowTVTrack;
+      case 3:
+        return setRedTVTrack;
+      case 4:
+        return set_1989TVTrack;
+      case 5:
+        return setReputationTrack;
+      case 6:
+        return setLoverTrack;
+      case 7:
+        return setFolkloreTrack;
+      case 8:
+        return setEvermoreTrack;
+      case 9:
+        return setMidnightsTrack;
+      case 10:
+        return setTtpdTrack;
+      default:
+        return setTaylorSwiftTrack;
+    }
+  };
 
   const erasBgColor = [
     "#000000",
@@ -33,7 +134,21 @@ const App = () => {
           color: erasColor[eras.indexOf("Home")],
         }}
       >
-        <Navbar selectedEra={selectedEra} setSelectedEra={setSelectedEra} />
+        <Navbar
+          selectedEra={selectedEra}
+          setSelectedEra={setSelectedEra}
+          setTaylorSwiftTrack={setTaylorSwiftTrack}
+          setFearlessTVTrack={setFearlessTVTrack}
+          setSpeakNowTVTrack={setSpeakNowTVTrack}
+          setRedTVTrack={setRedTVTrack}
+          set_1989TVTrack={set_1989TVTrack}
+          setReputationTrack={setReputationTrack}
+          setLoverTrack={setLoverTrack}
+          setFolkloreTrack={setFolkloreTrack}
+          setEvermoreTrack={setEvermoreTrack}
+          setMidnightsTrack={setMidnightsTrack}
+          setTtpdTrack={setTtpdTrack}
+        />
         <Home />
       </section>
 
@@ -43,6 +158,8 @@ const App = () => {
         eraTitle="Home"
         textColor={erasColor[eras.indexOf("Home")]}
         bgcolor={erasBgColor[eras.indexOf("Home")]}
+        track={returnTrack(0)}
+        setTrack={returnSetTrack(0)}
       />
 
       {eras.slice(1).map((era, index) => (
@@ -52,6 +169,8 @@ const App = () => {
           eraTitle={era}
           textColor={erasColor[index + 1]}
           bgcolor={erasBgColor[index + 1]}
+          track={returnTrack(index)}
+          setTrack={returnSetTrack(index)}
         />
       ))}
     </div>

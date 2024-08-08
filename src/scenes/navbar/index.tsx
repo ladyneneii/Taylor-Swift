@@ -8,21 +8,44 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import {
   blackish,
-  blackish2,
   eras,
   erasColor,
   formatEraId,
   whitish,
-  whitish2,
 } from "@/shared/types";
-import { allTracks } from "@/data/tracklists";
+import { Track, allTracks } from "@/data/tracklists";
 
 type Props = {
   selectedEra: string;
   setSelectedEra: (value: string) => void;
+  setTaylorSwiftTrack: (value: Track) => void;
+  setFearlessTVTrack: (value: Track) => void;
+  setSpeakNowTVTrack: (value: Track) => void;
+  setRedTVTrack: (value: Track) => void;
+  set_1989TVTrack: (value: Track) => void;
+  setReputationTrack: (value: Track) => void;
+  setLoverTrack: (value: Track) => void;
+  setFolkloreTrack: (value: Track) => void;
+  setEvermoreTrack: (value: Track) => void;
+  setMidnightsTrack: (value: Track) => void;
+  setTtpdTrack: (value: Track) => void;
 };
 
-const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
+const Navbar = ({
+  selectedEra,
+  setSelectedEra,
+  setTaylorSwiftTrack,
+  setFearlessTVTrack,
+  setSpeakNowTVTrack,
+  setRedTVTrack,
+  set_1989TVTrack,
+  setReputationTrack,
+  setLoverTrack,
+  setFolkloreTrack,
+  setEvermoreTrack,
+  setMidnightsTrack,
+  setTtpdTrack,
+}: Props) => {
   const isAboveLargeScreens = useMediaQuery("(min-width: 1650px)");
   const isPhone = useMediaQuery("(max-width: 550px)");
   const [expandSearch, setExpandSearch] = useState(false);
@@ -30,6 +53,7 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const searchRef = useRef(null);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
   const sidebarRef = useRef(null);
   useOutsideClick({ ref: searchRef, setVisibility: setShowSearchResults });
   useOutsideClick({ ref: sidebarRef, setVisibility: setShowSidebar });
@@ -47,21 +71,83 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
     setSearch(input);
   };
 
+  const handleExpandSearch = () => {
+    setExpandSearch(true);
+    searchInputRef.current?.focus();
+  };
+
+  const setAlbumTrackState = (
+    idx: number,
+    url: string,
+    title: string,
+    length: number,
+    albumNumber: number
+  ) => {
+    const trackValues = {
+      trackIndex: idx,
+      url: url,
+      title: title,
+      trackAlbumLength: length,
+    };
+
+    switch (albumNumber) {
+      case 0:
+        setTaylorSwiftTrack(trackValues);
+        return;
+      case 1:
+        setFearlessTVTrack(trackValues);
+        return;
+      case 2:
+        setSpeakNowTVTrack(trackValues);
+        return;
+      case 3:
+        setRedTVTrack(trackValues);
+        return;
+      case 4:
+        set_1989TVTrack(trackValues);
+        return;
+      case 5:
+        setReputationTrack(trackValues);
+        return;
+      case 6:
+        setLoverTrack(trackValues);
+        return;
+      case 7:
+        setFolkloreTrack(trackValues);
+        return;
+      case 8:
+        setEvermoreTrack(trackValues);
+        return;
+      case 9:
+        setMidnightsTrack(trackValues);
+        return;
+      case 10:
+        setTtpdTrack(trackValues);
+        return;
+      default:
+        setTaylorSwiftTrack(trackValues);
+        return;
+    }
+  };
+
   const handleAnchorClick = (
     e: any,
     targetId: string,
     idx: number,
     url: string,
     title: string,
-    length: number
+    length: number,
+    albumNumber: number
   ) => {
     e.preventDefault();
+    e.stopPropagation(); // Stop the input field from regaining focus
 
     const targetElement = document.getElementById(targetId);
-    const offset = 220; // Adjust this value to the height of your navbar
+    const offset = 400; // Adjust this value to the height of your navbar
 
     if (targetElement) {
       setShowSearchResults(false);
+      searchInputRef.current?.blur();
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
 
@@ -70,7 +156,9 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
         behavior: "smooth",
       });
 
-      handleClickTrack(index, url, title, trackList.length);
+      setAlbumTrackState(idx, url, title, length, albumNumber);
+
+      // handleClickTrack(index, url, title, trackList.length);
     }
   };
 
@@ -135,12 +223,13 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
                     ? "rgba(0, 0, 0, 0.9)"
                     : "rgba(255, 255, 255, 0.9)",
               }}
-              onClick={isPhone ? () => setExpandSearch(true) : undefined}
+              onClick={isPhone ? handleExpandSearch : undefined}
             >
               <div className="nav__search-icon">
                 <CiSearch size={20} />
               </div>
               <input
+                ref={searchInputRef}
                 type="text"
                 placeholder="Search songs..."
                 style={{
@@ -164,11 +253,25 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
                   <div className="nav__tracklist">
                     {allTracks
                       .filter(({ title }) => {
-                        return title.toLowerCase().includes(search);
+                        const normalizedTitle = title
+                          .toLowerCase()
+                          .replace(/\s+/g, "");
+                        const normalizedSearch = search
+                          .toLowerCase()
+                          .replace(/\s+/g, "");
+                        return normalizedTitle.includes(normalizedSearch);
                       })
                       .map(
                         (
-                          { idx, title, trackId, url, length, albumPath },
+                          {
+                            idx,
+                            title,
+                            trackId,
+                            url,
+                            length,
+                            albumNumber,
+                            albumPath,
+                          },
                           index
                         ) => (
                           <a
@@ -182,7 +285,8 @@ const Navbar = ({ selectedEra, setSelectedEra }: Props) => {
                                 idx,
                                 url,
                                 title,
-                                length
+                                length,
+                                albumNumber
                               )
                             }
                           >
