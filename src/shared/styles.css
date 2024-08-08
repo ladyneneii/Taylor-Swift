@@ -297,6 +297,7 @@ button p {
 /* Carousel.tsx */
 
 .carousel__container {
+  margin-top: 5rem;
   width: 100%;
   overflow: hidden;
   padding: 2rem 3rem;

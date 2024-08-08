@@ -127,10 +127,14 @@
   margin-top: 0;
 }
 
-  .terms__ts-pic-text-container,
-  .terms__eras-vid-container {
-    gap: 0;
-  }
+
+.terms__ts-pic-text-container,
+.terms__eras-vid-container {
+  gap: 0;
+}
+.terms__ts-pic-media-title-container {
+  margin-top: 24px;
+}
 
   .terms__eras-vid-container iframe {
     align-self: center;

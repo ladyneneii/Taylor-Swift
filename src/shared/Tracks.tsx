@@ -186,12 +186,12 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
     if (is2XLarge) {
       setTracklistWidth(width * 6);
       setCols(5);
-      setDebutRows(6);
+      setDebutRows(7);
       setFearlessRows(9);
-      setSpeakNowRows(7);
+      setSpeakNowRows(8);
       setRedRows(9);
       setNineteen89Rows(8);
-      setReputationRows(6);
+      setReputationRows(7);
       setLoverRows(7);
       setFolkloreRows(7);
       setEvermoreRows(8);
@@ -201,12 +201,12 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
     if (isXLarge) {
       setTracklistWidth(width * 5);
       setCols(4);
-      setDebutRows(7);
+      setDebutRows(8);
       setFearlessRows(10);
       setSpeakNowRows(9);
       setRedRows(11);
       setNineteen89Rows(9);
-      setReputationRows(6);
+      setReputationRows(7);
       setLoverRows(8);
       setFolkloreRows(8);
       setEvermoreRows(10);
@@ -216,17 +216,17 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
     if (isLarge) {
       setTracklistWidth(width * 4);
       setCols(3);
-      setDebutRows(8);
+      setDebutRows(9);
       setFearlessRows(12);
-      setSpeakNowRows(10);
+      setSpeakNowRows(11);
       setRedRows(13);
-      setNineteen89Rows(10);
-      setReputationRows(8);
+      setNineteen89Rows(11);
+      setReputationRows(9);
       setLoverRows(10);
-      setFolkloreRows(9);
-      setEvermoreRows(11);
+      setFolkloreRows(10);
+      setEvermoreRows(12);
       setMidnightsRows(11);
-      setTtpdRows(14);
+      setTtpdRows(15);
     }
     if (isMedium) {
       setTracklistWidth(width * 3);
@@ -236,26 +236,26 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setSpeakNowRows(14);
       setRedRows(18);
       setNineteen89Rows(15);
-      setReputationRows(10);
+      setReputationRows(11);
       setLoverRows(13);
-      setFolkloreRows(12);
+      setFolkloreRows(13);
       setEvermoreRows(16);
-      setMidnightsRows(14);
+      setMidnightsRows(15);
       setTtpdRows(20);
     }
     if (isSmall) {
       // when there are no squares moving to the right anymore, but cols is still 2
       setTracklistWidth(width * 2);
       setCols(2);
-      setDebutRows(12);
-      setFearlessRows(17);
+      setDebutRows(13);
+      setFearlessRows(18);
       setSpeakNowRows(15);
       setRedRows(19);
-      setNineteen89Rows(15);
+      setNineteen89Rows(16);
       setReputationRows(12);
       setLoverRows(14);
       setFolkloreRows(14);
-      setEvermoreRows(16);
+      setEvermoreRows(17);
       setMidnightsRows(16);
       setTtpdRows(21);
     }
@@ -263,19 +263,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
     setTracklistHeight(height * albumRows());
     setTracklistH2Height(tracklistHeight + height + 30);
 
-    // const defaultTrack = trackList[defaultTrackIndex] as TrackInfo;
-
-    // if (eraNumber === 1) {
-    //   console.log(track.title);
-    // }
-
     handleClickTrack();
-    // defaultTrackIndex,
-    // defaultTrack.defaultUrl ?? defaultTrack.url,
-    // defaultTrack.title,
-    // trackList.length
-
-    console.log(track);
   }, [
     track, // when this gets changed either by the setTrack in this component or the setTrack in Navbar, handleClickTrack() runs again
     cols,
@@ -317,18 +305,18 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       // the time when square height is greatly bigger than the iframe height, so a custom height should be set
       setSquareHeightExpand(330);
       setTracklistWidth(width * 2);
-      setDebutRows(12);
-      setFearlessRows(17);
+      setDebutRows(13);
+      setFearlessRows(18);
       setSpeakNowRows(15);
       setRedRows(19);
-      setNineteen89Rows(15);
+      setNineteen89Rows(16);
       setReputationRows(12);
       setLoverRows(14);
       setFolkloreRows(14);
-      setEvermoreRows(16);
+      setEvermoreRows(17);
       setMidnightsRows(16);
       setTtpdRows(21);
-      setTracklistH2Height(tracklistHeight + height + 20);
+      setTracklistH2Height(tracklistHeight + height - 70);
     }
     if (isPhone) {
       setCols(1);
@@ -341,13 +329,13 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setSpeakNowRows(24);
       setRedRows(32);
       setNineteen89Rows(25);
-      setReputationRows(17);
+      setReputationRows(18);
       setLoverRows(22);
       setFolkloreRows(21);
       setEvermoreRows(27);
       setMidnightsRows(25);
       setTtpdRows(36);
-      setTracklistH2Height(tracklistHeight + height + 60);
+      setTracklistH2Height(tracklistHeight + height - 10);
     }
     if (isSPhone) {
       setCols(1);
@@ -360,13 +348,13 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setSpeakNowRows(24);
       setRedRows(32);
       setNineteen89Rows(25);
-      setReputationRows(17);
+      setReputationRows(18);
       setLoverRows(22);
       setFolkloreRows(21);
       setEvermoreRows(27);
       setMidnightsRows(25);
       setTtpdRows(36);
-      setTracklistH2Height(tracklistHeight + height + 20);
+      setTracklistH2Height(tracklistHeight + height - 70);
     }
     if (isXSPhone) {
       setCols(1);
@@ -379,13 +367,13 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setSpeakNowRows(24);
       setRedRows(32);
       setNineteen89Rows(25);
-      setReputationRows(17);
+      setReputationRows(18);
       setLoverRows(22);
       setFolkloreRows(21);
       setEvermoreRows(27);
       setMidnightsRows(25);
       setTtpdRows(36);
-      setTracklistH2Height(tracklistHeight + height + 20);
+      setTracklistH2Height(tracklistHeight + height - 70);
     }
     // console.log(`isSPhone: ${isSPhone}`);
     // console.log(`isXTablet: ${isXTablet}`);

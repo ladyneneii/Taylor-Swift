@@ -6,7 +6,6 @@ import EraContainer from "./shared/EraContainer";
 import { eras, erasColor } from "./shared/types";
 import { Track, trackListsArr } from "./data/tracklists";
 
-
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
 
@@ -126,8 +125,29 @@ const App = () => {
     "linear-gradient(to bottom, 	#231e1a 10%, 	#a79e8f 100%)",
   ];
 
+  const scrollbarStyles = `
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: ${
+        erasColor[eras.indexOf(selectedEra)] === "white" ? "#242427" : "#f0f0f0"
+      };
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 100px;
+      background: ${
+        erasColor[eras.indexOf(selectedEra)] === "white" ? "#48494e" : "#c0c0c0"
+      };
+    }
+  `;
+
   return (
     <div className="app">
+      <style>{scrollbarStyles}</style>
       <section
         style={{
           backgroundColor: erasBgColor[eras.indexOf("Home")],

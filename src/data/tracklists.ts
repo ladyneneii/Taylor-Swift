@@ -649,6 +649,11 @@ const reputationTrackList = [
     title: "New Year’s Day",
     url: "https://www.youtube.com/embed/KkvTYrFIxNM?si=KaoExHVPZWqPUPse",
   },
+  {
+    title:
+      "ZAYN, Taylor Swift - I Don’t Wanna Live Forever (Fifty Shades Darker)",
+    url: "https://www.youtube.com/embed/7F37r50VUTQ?si=hWrDT6Ic0VBcLhPn",
+  },
 ];
 
 const fiftyShadesDesc = `I Don't Wanna Live Forever (also subtitled "Fifty Shades Darker") is actually not part of the <span style="font-style: italic">reputation</span> album as it is a song by Zayn and Taylor Swift as a soundtrack to the 2017 film Fifty Shades Darker. However, a lot of fans consider this to belong to the <span style="font-style: italic">reputation</span> era since the song was released around 2017 (same as the album), and its overall vibes, thematically and sonically, match the album's.`;

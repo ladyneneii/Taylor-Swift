@@ -47,6 +47,7 @@ const Navbar = ({
   setTtpdTrack,
 }: Props) => {
   const isAboveLargeScreens = useMediaQuery("(min-width: 1650px)");
+  const isSmall = useMediaQuery("(max-width: 1050px) and (min-width: 551px)");
   const isPhone = useMediaQuery("(max-width: 550px)");
   const [expandSearch, setExpandSearch] = useState(false);
   const [search, setSearch] = useState("");
@@ -130,36 +131,58 @@ const Navbar = ({
     }
   };
 
-  const handleAnchorClick = (
-    e: any,
-    targetId: string,
-    idx: number,
-    url: string,
-    title: string,
-    length: number,
-    albumNumber: number
-  ) => {
-    e.preventDefault();
-    e.stopPropagation(); // Stop the input field from regaining focus
+ const handleAnchorClick = (
+   e: any,
+   targetId: string,
+   idx: number,
+   url: string,
+   title: string,
+   length: number,
+   albumNumber: number
+ ) => {
+   e.preventDefault();
+   e.stopPropagation(); // Stop the input field from regaining focus
 
-    const targetElement = document.getElementById(targetId);
-    const offset = 400; // Adjust this value to the height of your navbar
+   const offset = 300;
 
-    if (targetElement) {
-      setShowSearchResults(false);
-      searchInputRef.current?.blur();
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - offset;
+   // Set the album track state
+   setAlbumTrackState(idx, url, title, length, albumNumber);
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+   // Delay the position calculation until after the DOM has updated
+   setTimeout(() => {
+     const targetElement = document.getElementById(targetId);
 
-      setAlbumTrackState(idx, url, title, length, albumNumber);
+     if (targetElement) {
+       setSearch(title);
+       setShowSearchResults(false);
+       searchInputRef.current?.blur();
 
-      // handleClickTrack(index, url, title, trackList.length);
-    }
+       // Ensure that the position is calculated after rendering and layout updates
+       requestAnimationFrame(() => {
+         const elementPosition = targetElement.getBoundingClientRect().top;
+         const offsetPosition = elementPosition + window.scrollY - offset;
+
+         window.scrollTo({
+           top: offsetPosition,
+           behavior: "smooth",
+         });
+       });
+     }
+   }, 550); // Delay to allow the DOM to update before getting the position
+ };
+
+
+  const handleFocus = () => {
+    setShowSearchResults(true);
+    setSearch("");
+  };
+
+  const normalizeString = (str: string) => {
+    return str
+      .toLowerCase() // Convert to lowercase
+      .trim() // Remove leading and trailing spaces
+      .replace(/\s+/g, " ") // Replace multiple spaces with a single space
+      .replace(/[^a-zA-Z0-9 ]/g, ""); // Remove punctuation
   };
 
   useEffect(() => {
@@ -172,7 +195,9 @@ const Navbar = ({
     if (isPhone) {
       setShowSearchResults(false);
     }
-  }, [isAboveLargeScreens, isPhone]);
+
+    console.log(isPhone, isSmall);
+  }, [isAboveLargeScreens, isPhone, isSmall]);
 
   // console.log(allTracks);
   // console.log(search);
@@ -236,7 +261,8 @@ const Navbar = ({
                   color: textColor === "white" ? "white" : "black",
                 }}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                onFocus={() => setShowSearchResults(true)}
+                onFocus={handleFocus}
+                value={search}
               />
 
               {showSearchResults && (
@@ -253,13 +279,9 @@ const Navbar = ({
                   <div className="nav__tracklist">
                     {allTracks
                       .filter(({ title }) => {
-                        const normalizedTitle = title
-                          .toLowerCase()
-                          .replace(/\s+/g, "");
-                        const normalizedSearch = search
-                          .toLowerCase()
-                          .replace(/\s+/g, "");
-                        return normalizedTitle.includes(normalizedSearch);
+                        return normalizeString(title).includes(
+                          normalizeString(search)
+                        );
                       })
                       .map(
                         (
@@ -273,35 +295,37 @@ const Navbar = ({
                             albumPath,
                           },
                           index
-                        ) => (
-                          <a
-                            style={{ color: textColor }}
-                            key={index}
-                            // href={`#${trackId}`}
-                            onClick={(e) =>
-                              handleAnchorClick(
-                                e,
-                                trackId,
-                                idx,
-                                url,
-                                title,
-                                length,
-                                albumNumber
-                              )
-                            }
-                          >
-                            <div
-                              className={`nav__album-track ${
-                                textColor === "white" ? "dark" : "light"
-                              }`}
+                        ) => {
+                          return (
+                            <a
+                              style={{ color: textColor }}
+                              key={index}
+                              onClick={(e) =>
+                                handleAnchorClick(
+                                  e,
+                                  trackId,
+                                  idx,
+                                  url,
+                                  title,
+                                  length,
+                                  albumNumber
+                                )
+                              }
                             >
-                              <img src={albumPath} alt={albumPath} />
-                              <p>{title}</p>
-                            </div>
-                          </a>
-                        )
+                              <div
+                                className={`nav__album-track ${
+                                  textColor === "white" ? "dark" : "light"
+                                }`}
+                              >
+                                <img src={albumPath} alt={albumPath} />
+                                <p>{title}</p>
+                              </div>
+                            </a>
+                          );
+                        }
                       )}
                   </div>
+
                   <div style={{ height: "2rem" }}></div>
                 </div>
               )}
