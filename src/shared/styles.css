@@ -258,6 +258,7 @@ button p {
 
 .track-iframe.expand {
   opacity: 1;
+  position: relative;
   /* border: 5px solid red; */
 }
 

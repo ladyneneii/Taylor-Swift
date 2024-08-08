@@ -1,4 +1,4 @@
-import {Track, trackListsArr } from "@/data/tracklists";
+import { Track, trackListsArr } from "@/data/tracklists";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useEffect, useState } from "react";
 import { blackish, createTrackId, whitish } from "./types";
@@ -12,11 +12,7 @@ type Props = {
 };
 
 const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
-  const {
-    trackList,
-    vaultDesc,
-    bonusDesc,
-  } = trackListsArr[eraNumber - 1];
+  const { trackList, vaultDesc, bonusDesc } = trackListsArr[eraNumber - 1];
 
   let sanitizedBonusDesc = "";
   if (bonusDesc) {
@@ -49,7 +45,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
   const [cols, setCols] = useState(4);
   const [width, setWidth] = useState(300);
   const height = 100;
-  const [iframeLoaded, setIframeLoaded] = useState(false)
+  const [iframeLoaded, setIframeLoaded] = useState(false);
   const trackIframeDimensions = {
     width: 0,
     height: 0,
@@ -76,7 +72,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
   const handleClickTrack = () => {
     const { trackIndex, trackAlbumLength } = track;
 
-    setIframeLoaded(false)
+    setIframeLoaded(false);
 
     setSquaresToMoveDown(() => {
       const newSquares = [];
@@ -516,14 +512,19 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
                     }
                   >
                     {title === track.title && (
-                      <iframe
-                        src={track.url}
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allowFullScreen
-                        onLoad={() => setIframeLoaded(true)}
-                      ></iframe>
+                      <>
+                        {!iframeLoaded && (
+                          <div className="loading">Loading</div>
+                        )}
+                        <iframe
+                          src={track.url}
+                          title="YouTube video player"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                          onLoad={() => setIframeLoaded(true)}
+                        ></iframe>
+                      </>
                     )}
                   </div>
                 </div>

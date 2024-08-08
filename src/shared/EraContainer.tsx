@@ -126,7 +126,7 @@ const EraContainer = ({
               viewport={{ once: false, amount: 0.5 }}
               transition={{ duration: 0.5 }}
               variants={{
-                hidden: { opacity: 0, x: eraNumber % 2 !== 0 ? -50 : 50 },
+                hidden: { opacity: 0 },
                 visible: { opacity: 1, x: 0 },
               }}
             >
@@ -148,7 +148,7 @@ const EraContainer = ({
               viewport={{ once: false, amount: 0.5 }}
               transition={{ duration: 0.5 }}
               variants={{
-                hidden: { opacity: 0, x: eraNumber % 2 !== 0 ? -50 : 50 },
+                hidden: { opacity: 0 },
                 visible: { opacity: 1, x: 0 },
               }}
             >
