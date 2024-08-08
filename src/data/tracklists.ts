@@ -21,7 +21,15 @@ interface TrackAlbum {
   trackId: string;
   url: string;
   length: number;
+  albumNumber: number;
   albumPath: string;
+}
+
+export interface Track {
+  trackIndex: number;
+  url: string;
+  title: string;
+  trackAlbumLength: number;
 }
 
 export const debutTrackList = [
@@ -112,7 +120,7 @@ export const fearlessTVTrackList = [
     title: "Fearless (Taylor's Version)",
     url: "https://www.youtube.com/embed/7lLigiVgJsE?si=SCcavwK9PaG0pDz_",
     defaultUrl:
-      "https://www.youtube.com/embed/7lLigiVgJsE?si=ElRm5zcBLUxjwgvP&amp;start=191",
+      "https://www.youtube.com/embed/7lLigiVgJsE?si=ElRm5zcBLUxjwgvP&amp;start=190",
   },
   {
     title: "Fifteen (Taylor's Version)",
@@ -1246,6 +1254,7 @@ trackListsArr.forEach((album, albumIndex) => {
       trackId: createTrackId(title),
       url,
       length: album.trackListLength,
+      albumNumber: albumIndex,
       albumPath: albums[albumIndex],
     });
   });

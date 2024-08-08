@@ -1,24 +1,27 @@
 import React from "react";
 import "./styles.css";
 import Carousel from "./Carousel";
-import { blackish, CarouselProps, eras, whitish } from "./types";
-import Lyrics from "./Lyrics";
-import { LyricsTitle, quotes } from "@/data/lyrics";
+import { blackish, eras, whitish } from "./types";
+
 import { albums, heroEras, logos } from "@/data/img-data";
 import { details } from "@/data/details";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import Tracks from "./Tracks";
 import Terminologies from "@/scenes/terminologies";
 import DOMPurify from "dompurify";
+import { Track } from "@/data/tracklists";
+
 
 type Props = {
   eraNumber: number;
   eraTitle: string;
   textColor: string;
   bgcolor: string;
+  track: Track;
+  setTrack: (value: Track) => void;
 };
 
-const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor }: Props) => {
+const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor, track, setTrack }: Props) => {
   const isLarge = useMediaQuery("(max-width: 1400px)");
   const isMedium = useMediaQuery("(max-width: 750px)");
 
@@ -168,7 +171,12 @@ const EraContainer = ({ eraNumber, eraTitle, textColor, bgcolor }: Props) => {
       {eraTitle === "Home" ? (
         <Terminologies />
       ) : (
-        <Tracks textColor={textColor} eraNumber={eraNumber} />
+        <Tracks
+          textColor={textColor}
+          eraNumber={eraNumber}
+          track={track}
+          setTrack={setTrack}
+        />
       )}
 
       {/* CAROUSEL SECTION */}

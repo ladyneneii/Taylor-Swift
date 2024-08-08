@@ -1,22 +1,21 @@
-import { TrackInfo, trackListsArr } from "@/data/tracklists";
+import {Track, trackListsArr } from "@/data/tracklists";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { blackish, createTrackId, whitish } from "./types";
 import DOMPurify from "dompurify";
 
 type Props = {
   textColor: string;
   eraNumber: number;
+  track: Track;
+  setTrack: (value: Track) => void;
 };
 
-const Tracks = ({ textColor, eraNumber }: Props) => {
+const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
   const {
     trackList,
-    // vaultTrackList,
     vaultDesc,
-    // bonusTrackList,
     bonusDesc,
-    defaultTrackIndex,
   } = trackListsArr[eraNumber - 1];
 
   let sanitizedBonusDesc = "";
@@ -64,8 +63,6 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
   const [tracklistH2Height, setTracklistH2Height] = useState(0);
   const [tracklistHeight, setTracklistHeight] = useState(0);
   const [tracklistWidth, setTracklistWidth] = useState(width * 5);
-  const [videoURL, setVideoURL] = useState("");
-  const [track, setTrack] = useState(trackList[defaultTrackIndex].title);
   const [squaresToMoveDown, setSquaresToMoveDown] = useState<number[]>([]);
   const [squaresToMoveDownOnce, setSquaresToMoveDownOnce] = useState<number[]>(
     []
@@ -75,24 +72,18 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
   >([]);
   const [squaresToMoveRight, setSquaresToMoveRight] = useState<number[]>([]);
 
-  const handleClickTrack = (
-    index: number,
-    url: string,
-    title: string,
-    length: number
-  ) => {
-    setVideoURL(url);
-    setTrack(title);
+  const handleClickTrack = () => {
+    const { trackIndex, trackAlbumLength } = track;
 
     setSquaresToMoveDown(() => {
       const newSquares = [];
 
-      for (let i = index + cols; i < length; i += cols) {
+      for (let i = trackIndex + cols; i < trackAlbumLength; i += cols) {
         newSquares.push(i);
       }
 
       if (isPhone) {
-        for (let i = index + 1; i < length; i += cols) {
+        for (let i = trackIndex + 1; i < trackAlbumLength; i += cols) {
           newSquares.push(i);
         }
       }
@@ -101,13 +92,13 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
       if (isSmall || isXTablet) {
         setSquaresToMoveDownThrice(() => {
           const newSquares = [];
-          for (let i = index + 1; i < length; i += cols) {
+          for (let i = trackIndex + 1; i < trackAlbumLength; i += cols) {
             newSquares.push(i);
           }
 
           // if the square is on the very right edge
-          if ((index + 1) % cols === 0) {
-            newSquares.push(index - 1);
+          if ((trackIndex + 1) % cols === 0) {
+            newSquares.push(trackIndex - 1);
           }
 
           return newSquares;
@@ -119,12 +110,12 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
 
     // if the square is not on the very right edge
     // no need to put the smaller screen sizes where cols = 1 in the condition because when cols = 1, the squares are treated as the ones on the very edge.
-    if (!isSmall && !isXTablet && (index + 1) % cols !== 0) {
+    if (!isSmall && !isXTablet && (trackIndex + 1) % cols !== 0) {
       setSquaresToMoveRight(() => {
-        let i = index + 1;
+        let i = trackIndex + 1;
         const newSquares = [];
 
-        for (; i <= index + cols + 1; i += cols) {
+        for (; i <= trackIndex + cols + 1; i += cols) {
           newSquares.push(i);
           for (let j = i + 1; j % cols !== 0; ++j) {
             newSquares.push(j);
@@ -134,7 +125,7 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
         setSquaresToMoveDownOnce(() => {
           const newSquares = [];
 
-          for (; i < length; i += cols) {
+          for (; i < trackAlbumLength; i += cols) {
             newSquares.push(i);
           }
 
@@ -272,17 +263,21 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
     setTracklistHeight(height * albumRows());
     setTracklistH2Height(tracklistHeight + height + 30);
 
-    const track = trackList[defaultTrackIndex] as TrackInfo;
+    // const defaultTrack = trackList[defaultTrackIndex] as TrackInfo;
 
-    handleClickTrack(
-      defaultTrackIndex,
-      track.defaultUrl ?? track.url,
-      trackList[defaultTrackIndex].title,
-      trackList.length
-    );
+    // if (eraNumber === 1) {
+    //   console.log(track.title);
+    // }
 
-    // console.log(isMedium);
+    handleClickTrack();
+    // defaultTrackIndex,
+    // defaultTrack.defaultUrl ?? defaultTrack.url,
+    // defaultTrack.title,
+    // trackList.length
+
+    console.log(track);
   }, [
+    track, // when this gets changed either by the setTrack in this component or the setTrack in Navbar, handleClickTrack() runs again
     cols,
     height,
     tracklistHeight,
@@ -454,22 +449,22 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
 
             return (
               <div
-              id={createTrackId(title)}
+                id={createTrackId(title)}
                 key={index}
                 className="track-info-square"
                 style={{
                   width:
                     isPhone || isSPhone || isXSPhone
                       ? width
-                      : title === track
+                      : title === track.title
                       ? width * 2
                       : width,
-                  height: title === track ? squareHeightExpand : height,
+                  height: title === track.title ? squareHeightExpand : height,
                   left: squaresToMoveRight.includes(index)
                     ? left + width
                     : (isSmall || isXTablet) &&
                       !isPhone &&
-                      title === track &&
+                      title === track.title &&
                       (index + 1) % 2 === 0
                     ? left - width // expand to the left if isSmall and the square is on the very right edge
                     : left,
@@ -494,12 +489,19 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
                 }}
               >
                 <div
-                  className={`track-info ${title === track ? "expand" : ""}`}
+                  className={`track-info ${
+                    title === track.title ? "expand" : ""
+                  }`}
                   style={{
                     backgroundColor: textColor === "white" ? blackish : whitish,
                   }}
                   onClick={() =>
-                    handleClickTrack(index, url, title, trackList.length)
+                    setTrack({
+                      trackIndex: index,
+                      url,
+                      title,
+                      trackAlbumLength: trackList.length,
+                    })
                   }
                 >
                   <div className="track-number-title">
@@ -514,17 +516,17 @@ const Tracks = ({ textColor, eraNumber }: Props) => {
                   </div>
                   <div
                     className={`track-iframe ${
-                      title === track ? "expand" : ""
+                      title === track.title ? "expand" : ""
                     }`}
                     style={
-                      title === track
+                      title === track.title
                         ? trackIframeDimensionsExpand
                         : trackIframeDimensions
                     }
                   >
-                    {title === track && (
+                    {title === track.title && (
                       <iframe
-                        src={videoURL}
+                        src={track.url}
                         title="YouTube video player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerPolicy="strict-origin-when-cross-origin"
