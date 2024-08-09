@@ -13,7 +13,7 @@
   width: clamp(300px, 100%, 2040px);
   /* overflow-x: auto; disabling this allows the entirety ofc search-results to appear */
   margin-inline: auto;
-  gap: 3rem;
+  gap: 6rem;
 }
 
 .nav__eras-container {
@@ -230,6 +230,11 @@
 @media only screen and (max-width: 750px) {
   .nav__container {
     padding: 1rem;
+    gap: 3rem;
+  }
+
+  .nav__search-field {
+    width: 14rem;
   }
 
   .nav__container-sm-closebtn-container {
