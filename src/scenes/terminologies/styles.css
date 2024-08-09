@@ -2,6 +2,7 @@
   width: clamp(300px, 100%, 2040px);
   margin-inline: auto;
   padding: var(--container-padding);
+  margin-bottom: 10rem;
 }
 
 .terms__container h1 {

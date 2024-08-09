@@ -5,6 +5,17 @@ import Home from "./scenes/home";
 import EraContainer from "./shared/EraContainer";
 import { eras, erasColor } from "./shared/types";
 import { Track, trackListsArr } from "./data/tracklists";
+import TaylorSwift from "./scenes/lyrics/TaylorSwift";
+import FearlessTV from "./scenes/lyrics/FearlessTV";
+import SpeakNowTV from "./scenes/lyrics/SpeakNowTV";
+import RedTV from "./scenes/lyrics/RedTV";
+import _1989TV from "./scenes/lyrics/_1989TV";
+import Reputation from "./scenes/lyrics/Reputation";
+import Lover from "./scenes/lyrics/Lover";
+import Folklore from "./scenes/lyrics/Folklore";
+import Evermore from "./scenes/lyrics/Evermore";
+import Midnights from "./scenes/lyrics/Midnights";
+import TTPD from "./scenes/lyrics/TTPD";
 
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
@@ -108,6 +119,20 @@ const App = () => {
     }
   };
 
+  const introMessage = [
+    "My name is Taylor...",
+    "It's fearless",
+    `And they said, "Speak now"...`,
+    "Lovin' him was red...",
+    "...And I was born in 1989!",
+    "Big reputation",
+    "It's been a long time coming...",
+    "Into folklore...",
+    "Evermore...",
+    "Meet me at midnight...",
+    "Straight from the tortured poets department...",
+  ];
+
   const erasBgColor = [
     "#000000",
     "linear-gradient(to bottom, #203e24 10%, #18a5bf 100%)",
@@ -123,6 +148,20 @@ const App = () => {
     "linear-gradient(to bottom, 	#351c75 10%, 	#550101 100%)",
     // "linear-gradient(to bottom, 	#231e1a 10%, 	#a79e8f 100%)",
     "linear-gradient(to bottom, 	#231e1a 10%, 	#a79e8f 100%)",
+  ];
+
+  const lyricsIntro = [
+    <TaylorSwift />,
+    <FearlessTV />,
+    <SpeakNowTV />,
+    <RedTV />,
+    <_1989TV />,
+    <Reputation />,
+    <Lover />,
+    <Folklore />,
+    <Evermore />,
+    <Midnights />,
+    <TTPD />,
   ];
 
   const scrollbarStyles = `
@@ -184,16 +223,21 @@ const App = () => {
       />
 
       {eras.slice(1).map((era, index) => (
-        <EraContainer
-          key={index + 1}
-          eraNumber={index + 1}
-          eraTitle={era}
-          textColor={erasColor[index + 1]}
-          bgcolor={erasBgColor[index + 1]}
-          track={returnTrack(index)}
-          setSelectedEra={setSelectedEra}
-          setTrack={returnSetTrack(index)}
-        />
+        <div style={{ background: erasBgColor[index + 1] }}>
+          <>
+            {lyricsIntro[index]}
+            <EraContainer
+              key={index + 1}
+              eraNumber={index + 1}
+              eraTitle={era}
+              textColor={erasColor[index + 1]}
+              bgcolor={erasBgColor[index + 1]}
+              track={returnTrack(index)}
+              setSelectedEra={setSelectedEra}
+              setTrack={returnSetTrack(index)}
+            />
+          </>
+        </div>
       ))}
     </div>
   );

@@ -1,0 +1,102 @@
+.intro__container {
+  padding: 3rem;
+  width: clamp(300px, 100%, 2040px);
+  margin-inline: auto;
+  font-style: italic;
+}
+
+.intro__container h1 {
+  font-weight: 100;
+}
+
+/* TaylorSwift.tsx */
+
+.taylorswift-grid {
+  display: grid;
+  grid-template-areas:
+    "a a a a"
+    "b b c c";
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  color: white;
+}
+
+.ts1 {
+  grid-area: a;
+}
+
+.ts1 h1 {
+  font-size: 3.5rem;
+}
+
+.ts2 {
+  grid-area: b;
+  align-self: flex-start;
+}
+
+.ts3 {
+  grid-area: c;
+  align-self: flex-start;
+}
+
+/* FearlessTV.tsx */
+
+.fearlessTV-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  color: white;
+  /* justify-items: ; */
+}
+
+.fearlessTV {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.normal-letterSpacing {
+  font-style: normal;
+  letter-spacing: 1rem;
+  font-size: 3rem;
+  margin-block: 0;
+}
+
+/* RedTV.tsx */
+.redTV-grid {
+    color: white
+}
+
+/* _1989.tsx */
+
+
+/* TitleAuthor.tsx */
+
+.titleAuthor-span {
+  font-style: normal;
+}
+
+@media only screen and (max-width: 750px) {
+  .intro__container {
+    padding: 1rem;
+  }
+
+  .taylorswift-grid {
+    width: clamp(300px, 100%, 2040px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-areas:
+      "a a"
+      "a a"
+      "b b"
+      "c c";
+    justify-items: start;
+  }
+
+  .fearlessTV-grid {
+    grid-template-columns: 1fr;
+    padding-bottom: 4rem;
+  }
+}

@@ -63,7 +63,7 @@ const Navbar = ({
   useOutsideClick({ ref: searchRef, setVisibility: setShowSearchResults });
   useOutsideClick({ ref: sidebarRef, setVisibility: setShowSidebar });
   const [focusedIndex, setFocusedIndex] = useState(-1); // No item is focused initially
-  const resultsRef = useRef(null);
+  const resultsRef = useRef<HTMLDivElement | null>(null);
 
   const borderColor = (era: string) => {
     if (selectedEra !== era) return "";
@@ -193,18 +193,25 @@ const Navbar = ({
   const handleKeyDown = (event: any) => {
     switch (event.key) {
       case "ArrowDown":
-        setFocusedIndex((prevIndex) =>
-          Math.min(prevIndex + 1, filteredTracks.length - 1)
-        );
-        event.preventDefault(); // Prevent scrolling
+        setFocusedIndex((prevIndex) => {
+          const newIndex = Math.min(prevIndex + 1, filteredTracks.length - 1);
+          scrollToIndex(newIndex);
+          return newIndex;
+        });
+        event.preventDefault();
         break;
       case "ArrowUp":
-        setFocusedIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-        event.preventDefault(); // Prevent scrolling
+        setFocusedIndex((prevIndex) => {
+          const newIndex = Math.max(prevIndex - 1, 0);
+          scrollToIndex(newIndex);
+          return newIndex;
+        });
+        event.preventDefault();
         break;
       case "Enter":
         if (focusedIndex >= 0) {
           const selectedTrack = filteredTracks[focusedIndex];
+
           handleAnchorClick(
             event,
             selectedTrack.trackId,
@@ -215,9 +222,24 @@ const Navbar = ({
             selectedTrack.albumNumber
           );
         }
+        event.preventDefault();
         break;
+
       default:
+        // Do not prevent default for other keys to allow typing
         break;
+    }
+  };
+
+  const scrollToIndex = (index: number) => {
+    if (resultsRef.current) {
+      const focusedItem = resultsRef.current.children[index];
+      if (focusedItem) {
+        focusedItem.scrollIntoView({
+          behavior: "smooth", // Smooth scroll
+          block: "nearest", // Scroll to the nearest edge
+        });
+      }
     }
   };
 
@@ -228,13 +250,14 @@ const Navbar = ({
       }
     };
 
-    document.addEventListener("keydown", handleDocumentKeyDown);
+    if (showSearchResults) {
+      document.addEventListener("keydown", handleDocumentKeyDown);
+    }
 
-    // Cleanup the event listener
     return () => {
       document.removeEventListener("keydown", handleDocumentKeyDown);
     };
-  }, [showSearchResults, focusedIndex, filteredTracks]);
+  }, [showSearchResults, focusedIndex]);
 
   useEffect(() => {
     if (isAboveLargeScreens) {
@@ -255,9 +278,6 @@ const Navbar = ({
     borderColor(selectedEra);
     // console.log(selectedEra);
   }, [selectedEra]);
-
-  // console.log(allTracks);
-  // console.log(search);
 
   return (
     <nav
@@ -320,6 +340,7 @@ const Navbar = ({
                 onChange={(e) => handleSearchChange(e.target.value)}
                 onFocus={handleFocus}
                 value={search}
+                // onKeyDown={handleInputKeyDown}
               />
 
               {showSearchResults && (
@@ -333,7 +354,7 @@ const Navbar = ({
                   }}
                 >
                   <div style={{ height: "5.4rem" }}></div>
-                  <div ref={resultsRef} className="nav__tracklist">
+                  <div ref={resultsRef} className="nav__tracklist" tabIndex={0}>
                     {filteredTracks.map(
                       (
                         {
@@ -363,12 +384,19 @@ const Navbar = ({
                               )
                             }
                             onMouseEnter={() => setFocusedIndex(index)}
-                            onFocus={() => setFocusedIndex(index)}
                           >
                             <div
-                              className={`nav__album-track ${
-                                textColor === "white" ? "dark" : "light"
-                              } ${focusedIndex === index ? "focused" : ""}`}
+                              className={`nav__album-track`}
+                              style={{
+                                backgroundColor:
+                                  focusedIndex === index &&
+                                  textColor === "white"
+                                    ? "rgba(45, 45, 45, 0.9)"
+                                    : focusedIndex === index &&
+                                      textColor === "black"
+                                    ? "rgba(210, 210, 210, 0.9)"
+                                    : "",
+                              }}
                             >
                               <img src={albumPath} alt={albumPath} />
                               <p>{title}</p>

@@ -107,7 +107,7 @@
 }
 
 /* background-color: rgba(45, 45, 45, 0.9); */
-.nav__album-track.light:hover,
+/* .nav__album-track.light:hover,
 .nav__album-track.light.focused {
   background-color: rgba(210, 210, 210, 0.9);
   cursor: pointer;
@@ -117,13 +117,17 @@
 .nav__album-track.dark.focus {
   background-color: rgba(45, 45, 45, 0.9);
   cursor: pointer;
-}
+} */
 
 .nav__album-track {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 0.5rem;
+}
+
+.nav__album-track:hover {
+  cursor: pointer;
 }
 
 .nav__album-track img {

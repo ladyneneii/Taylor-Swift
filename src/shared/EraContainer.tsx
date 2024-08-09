@@ -97,7 +97,7 @@ const EraContainer = ({
   return (
     <motion.div
       className="era-container"
-      style={{ background: bgcolor, color: textColor, borderColor: textColor }}
+      style={{ color: textColor, borderColor: textColor }}
       id={eraId}
       onViewportEnter={() => setSelectedEra(eraTitle)}
     >
