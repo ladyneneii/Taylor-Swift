@@ -1,6 +1,6 @@
 import { Track, trackListsArr } from "@/data/tracklists";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { blackish, createTrackId, whitish } from "./types";
 import DOMPurify from "dompurify";
 
@@ -45,7 +45,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
   const [cols, setCols] = useState(4);
   const [width, setWidth] = useState(300);
   const height = 100;
-  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [iframeLoaded, setIframeLoaded] = useState(true);
   const trackIframeDimensions = {
     width: 0,
     height: 0,
@@ -71,8 +71,6 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
 
   const handleClickTrack = () => {
     const { trackIndex, trackAlbumLength } = track;
-
-    setIframeLoaded(false);
 
     setSquaresToMoveDown(() => {
       const newSquares = [];
@@ -401,6 +399,12 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
     ttpdRows,
   ]);
 
+  useEffect(() => {
+    setIframeLoaded(false);
+  }, []);
+
+  // console.log(iframeLoaded);
+
   // useEffect(() => {
   //   console.log(`move down: ${squaresToMoveDown}`);
   //   if (squaresToMoveDownOnce)
@@ -433,6 +437,8 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
             top = Math.floor(index / cols) * height;
             // left = (index % 1) * width;
             // top = Math.floor(index / 1) * height;
+
+            // console.log(title);
 
             return (
               <div
@@ -499,7 +505,9 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
                     >
                       {index + 1}.
                     </div>
-                    <div className="track-title">{title}</div>
+                    <div className="track-title">
+                      <p>{title}</p>
+                    </div>
                   </div>
                   <div
                     className={`track-iframe ${
@@ -514,7 +522,9 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
                     {title === track.title && (
                       <>
                         {!iframeLoaded && (
-                          <div className="loading">Loading</div>
+                          <div className="loading">
+                            <div className="loading-circle"></div>
+                          </div>
                         )}
                         <iframe
                           src={track.url}
@@ -523,6 +533,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
                           referrerPolicy="strict-origin-when-cross-origin"
                           allowFullScreen
                           onLoad={() => setIframeLoaded(true)}
+                          onPlay={() => setIframeLoaded(true)}
                         ></iframe>
                       </>
                     )}

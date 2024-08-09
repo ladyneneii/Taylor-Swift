@@ -197,8 +197,9 @@ button p {
 
 .track-info:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scaleY(1.1);
   transition-duration: 200ms;
+  height: 140%;
 }
 
 .track-info.expand {
@@ -210,6 +211,7 @@ button p {
 
 .track-info.expand:hover {
   transform: scale(1);
+  height: 100%;
 }
 
 .track-number-title {
@@ -234,6 +236,10 @@ button p {
   transform: translateY(-50%);
 }
 
+.track-info.expand .track-number::after {
+  height: 50%;
+}
+
 .track-number-white::after {
   background-color: white;
 }
@@ -246,6 +252,60 @@ button p {
   /* border: 1px solid yellow; */
   padding: 1rem;
   flex-grow: 1;
+}
+
+.track-title p {
+  margin-block: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  line-clamp: 2; /* Fallback for other browsers */
+  white-space: normal;
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.track-info:not(.expand):hover .track-title p {
+  text-overflow: unset;
+  -webkit-line-clamp: unset; /* Remove line clamping */
+  line-clamp: unset; /* Fallback */
+  overflow: visible; /* Allow text to overflow */
+  white-space: normal; /* Ensure text wraps normally */
+}
+
+.track-info.expand .track-title {
+  position: relative; /* disallows the removing of the part of the text going beyond the .track-title container at the beginning, caused by overflow:hidden */
+  overflow: hidden; /* makes the part of the text going beyond the .track-title container disappear */
+  display: flex; /* allows overflow:hidden to work */
+  align-items: center;
+  max-width: 100%;
+  /* border: 5px solid red; */
+}
+
+.track-info.expand .track-title p {
+  position: absolute; /* disallows the removing of the part of the text going beyond the .track-title container at the beginning, caused by overflow:hidden */
+  white-space: nowrap;
+  animation: ticker-animation 10s linear infinite;
+  padding-right: 20rem;
+  /* border: 5px solid yellow */
+}
+
+@keyframes ticker-animation {
+  0% {
+    transform: translateX(30%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-70%); /* Move the content out of view */
+    opacity: 0;
+  }
 }
 
 .track-iframe {
@@ -421,7 +481,6 @@ button p {
   /* setting max-width and max-height to 100% instead ensures that the height and width of the image will always follow the height and width of the parent, respectively, while the resizing of the image is properly scaled since the values set to max-width and max-height are not the absolute width and height of the image; they are just the max. */
   max-width: 100%;
   max-height: 100%;
- 
 }
 
 /* Lyrics.tsx */
