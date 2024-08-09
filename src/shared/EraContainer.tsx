@@ -25,7 +25,7 @@ const EraContainer = ({
   textColor,
 
   track,
-  setSelectedEra,
+  // setSelectedEra,
   setTrack,
 }: Props) => {
   const isLarge = useMediaQuery("(max-width: 1400px)");

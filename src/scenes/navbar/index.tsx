@@ -7,11 +7,11 @@ import { CiSearch } from "react-icons/ci";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import {
-  blackish,
+
   eras,
   erasColor,
-  formatEraId,
-  whitish,
+  // formatEraId,
+ 
 } from "@/shared/types";
 import { Track, allTracks } from "@/data/tracklists";
 
