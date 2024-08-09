@@ -216,7 +216,6 @@ const App = () => {
         eraNumber={0}
         eraTitle="Home"
         textColor={erasColor[eras.indexOf("Home")]}
-        bgcolor={erasBgColor[eras.indexOf("Home")]}
         track={returnTrack(0)}
         setSelectedEra={setSelectedEra}
         setTrack={returnSetTrack(0)}
@@ -230,7 +229,6 @@ const App = () => {
               eraNumber={index + 1}
               eraTitle={era}
               textColor={erasColor[index + 1]}
-              bgcolor={erasBgColor[index + 1]}
               track={returnTrack(index)}
               setSelectedEra={setSelectedEra}
               setTrack={returnSetTrack(index)}

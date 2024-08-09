@@ -1,6 +1,6 @@
 import { Track, trackListsArr } from "@/data/tracklists";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import { useEffect, useRef, useState } from "react";
+import { useEffect,useState } from "react";
 import { blackish, createTrackId, whitish } from "./types";
 import DOMPurify from "dompurify";
 

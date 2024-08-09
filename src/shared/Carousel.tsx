@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { blackish, CarouselProps } from "./types";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import Modal from "./Modal";
@@ -45,7 +45,7 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
     }
   };
 
-  const handleImgClick = (imgPath: string, imgNum: number, carouselNum: num) => {
+  const handleImgClick = (imgPath: string, imgNum: number, carouselNum: number) => {
     setShowModal(true);
     setImgNum(imgNum)
     setCarouselNum(carouselNum)
@@ -73,7 +73,6 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
           imgPath={modalImg}
           imgNum={imgNum}
           carouselNum={carouselNum}
-          closeBgColor={bgColor}
         />
       )}
       <div className="carousel__container" style={{ backgroundColor: bgColor }}>

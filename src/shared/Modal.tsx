@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
-import { blackish } from "./types";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { carouselEras } from "@/data/img-data";
@@ -10,7 +9,6 @@ type Props = {
   imgPath: string;
   imgNum: number;
   carouselNum: number;
-  closeBgColor: string;
 };
 
 const Modal = ({
@@ -18,7 +16,6 @@ const Modal = ({
   imgPath,
   imgNum,
   carouselNum,
-  closeBgColor,
 }: Props) => {
   const imgRef = useRef(null);
   const leftRef = useRef(null);

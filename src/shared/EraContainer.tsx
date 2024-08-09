@@ -1,8 +1,6 @@
-import React from "react";
 import "./styles.css";
 import Carousel from "./Carousel";
 import { blackish, eras, whitish } from "./types";
-
 import { albums, heroEras, logos } from "@/data/img-data";
 import { details } from "@/data/details";
 import useMediaQuery from "@/hooks/useMediaQuery";
@@ -16,7 +14,7 @@ type Props = {
   eraNumber: number;
   eraTitle: string;
   textColor: string;
-  bgcolor: string;
+
   track: Track;
   setSelectedEra: (value: string) => void;
   setTrack: (value: Track) => void;
@@ -26,7 +24,7 @@ const EraContainer = ({
   eraNumber,
   eraTitle,
   textColor,
-  bgcolor,
+
   track,
   setSelectedEra,
   setTrack,
