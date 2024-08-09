@@ -119,19 +119,19 @@ const App = () => {
     }
   };
 
-  const introMessage = [
-    "My name is Taylor...",
-    "It's fearless",
-    `And they said, "Speak now"...`,
-    "Lovin' him was red...",
-    "...And I was born in 1989!",
-    "Big reputation",
-    "It's been a long time coming...",
-    "Into folklore...",
-    "Evermore...",
-    "Meet me at midnight...",
-    "Straight from the tortured poets department...",
-  ];
+  // const introMessage = [
+  //   "My name is Taylor...",
+  //   "It's fearless",
+  //   `And they said, "Speak now"...`,
+  //   "Lovin' him was red...",
+  //   "...And I was born in 1989!",
+  //   "Big reputation",
+  //   "It's been a long time coming...",
+  //   "Into folklore...",
+  //   "Evermore...",
+  //   "Meet me at midnight...",
+  //   "Straight from the tortured poets department...",
+  // ];
 
   const erasBgColor = [
     "#000000",
@@ -144,8 +144,8 @@ const App = () => {
     "linear-gradient(to bottom, 	#fdcdcd 10%, 	#cec0fc 100%)",
     "linear-gradient(to bottom, 	#cccccc 10%, 	#929292 100%)",
     "linear-gradient(to bottom, 	#efd3b6 10%, 	#4f2424 100%)",
-    // "linear-gradient(to bottom, 	#550101 10%, 	#351c75 100%)",
-    "linear-gradient(to bottom, 	#351c75 10%, 	#550101 100%)",
+    "linear-gradient(to bottom, 	#550101 10%, 	#351c75 100%)",
+    // "linear-gradient(to bottom, 	#351c75 10%, 	#550101 100%)",
     // "linear-gradient(to bottom, 	#231e1a 10%, 	#a79e8f 100%)",
     "linear-gradient(to bottom, 	#231e1a 10%, 	#a79e8f 100%)",
   ];
@@ -223,11 +223,10 @@ const App = () => {
       />
 
       {eras.slice(1).map((era, index) => (
-        <div style={{ background: erasBgColor[index + 1] }}>
+        <div key={index} style={{ background: erasBgColor[index + 1] }}>
           <>
             {lyricsIntro[index]}
             <EraContainer
-              key={index + 1}
               eraNumber={index + 1}
               eraTitle={era}
               textColor={erasColor[index + 1]}

@@ -175,7 +175,6 @@ const Navbar = ({
 
   const handleFocus = () => {
     setShowSearchResults(true);
-    setSearch("");
   };
 
   const normalizeString = (str: string) => {
@@ -257,7 +256,7 @@ const Navbar = ({
     return () => {
       document.removeEventListener("keydown", handleDocumentKeyDown);
     };
-  }, [showSearchResults, focusedIndex]);
+  }, [filteredTracks, showSearchResults, focusedIndex]);
 
   useEffect(() => {
     if (isAboveLargeScreens) {

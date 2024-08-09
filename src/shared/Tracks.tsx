@@ -420,7 +420,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
 
       <div className="tracklist-h2" style={{ height: tracklistH2Height }}>
         <div className="text-center">
-          <h2>Tracks</h2>
+          <h2 style={{ color: eraNumber === 6 ? "black" : "white" }}>Tracks</h2>
         </div>
         <div
           className="tracklist"

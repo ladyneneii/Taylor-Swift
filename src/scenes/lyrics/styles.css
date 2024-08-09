@@ -1,5 +1,5 @@
 .intro__container {
-  padding: 3rem;
+  padding: 6rem 3rem 7rem;
   width: clamp(300px, 100%, 2040px);
   margin-inline: auto;
   font-style: italic;
@@ -26,18 +26,22 @@
   grid-area: a;
 }
 
-.ts1 h1 {
-  font-size: 3.5rem;
+.ts1 h1,
+.ts5 h1 {
+  margin-top: 21px;
+  font-size: 3em;
 }
 
 .ts2 {
   grid-area: b;
   align-self: flex-start;
+  width: 100%;
 }
 
 .ts3 {
   grid-area: c;
   align-self: flex-start;
+  width: 100%;
 }
 
 /* FearlessTV.tsx */
@@ -66,11 +70,45 @@
 
 /* RedTV.tsx */
 .redTV-grid {
-    color: white
+  color: white;
 }
 
-/* _1989.tsx */
+/* Folklore.tsx */
+.folklore-grid {
+  display: grid;
+  grid-template-areas:
+    "a a a a"
+    "b b c c"
+    "b b d d"
+    "e e e e";
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  color: black;
+}
 
+.ts4 {
+  grid-area: d;
+  align-self: flex-start;
+  width: 100%;
+}
+
+.ts5 {
+  grid-area: e;
+}
+
+/* TTPD.tsx */
+.ttpd-grid {
+  display: grid;
+  grid-template-areas:
+    "a a a a"
+    "b b c c"
+    "e e e e";
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  color: white;
+}
 
 /* TitleAuthor.tsx */
 
@@ -78,25 +116,52 @@
   font-style: normal;
 }
 
-@media only screen and (max-width: 750px) {
-  .intro__container {
-    padding: 1rem;
+@media only screen and (max-width: 1000px) {
+  .ts1 h1,
+  .ts5 h1 {
+    font-size: 2em;
   }
 
   .taylorswift-grid {
-    width: clamp(300px, 100%, 2040px);
-    margin-inline: auto;
-    display: grid;
     grid-template-areas:
       "a a"
       "a a"
       "b b"
       "c c";
-    justify-items: start;
+    justify-items: flex-start;
+  }
+
+  .folklore-grid {
+    grid-template-areas:
+      "a"
+      "b"
+      "c"
+      "d"
+      "e";
+    justify-items: flex-start;
+  }
+
+  .ttpd-grid {
+    grid-template-areas:
+      "a"
+      "b"
+      "c"
+      "e";
+    justify-items: flex-start;
+  }
+
+  .titleAuthor-span {
+    font-size: 1.3rem !important;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .intro__container {
+    padding: 6rem 1rem 7rem;
   }
 
   .fearlessTV-grid {
     grid-template-columns: 1fr;
-    padding-bottom: 4rem;
+    gap: 4rem;
   }
 }

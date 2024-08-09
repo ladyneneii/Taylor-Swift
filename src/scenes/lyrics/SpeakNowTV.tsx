@@ -15,7 +15,7 @@ const SpeakNowTV = () => {
         <h1>I was enchanted to meet you...</h1>
 
         <TitleAuthor
-          textAlign="center"
+          textAlign="start"
           color={blackish}
           fontSize="2rem"
           titleAuthor="Enchanted (Taylor's Version), Taylor Swift (2023)"
@@ -34,7 +34,7 @@ const SpeakNowTV = () => {
         <h1>And bring on all the pretenders</h1>
         <h1>One day, we will be remembered...</h1>
         <TitleAuthor
-          textAlign="center"
+          textAlign="start"
           color={blackish}
           fontSize="1.3rem"
           titleAuthor="Long Live (Taylor's Version), Taylor Swift (2023)"
@@ -49,7 +49,7 @@ const SpeakNowTV = () => {
         <h1>Probably mindless dreamin'</h1>
         <h1>But if we loved again, I swear I'd love you right</h1>
         <TitleAuthor
-          textAlign="center"
+          textAlign="start"
           color={blackish}
           fontSize="1.3rem"
           titleAuthor="Back To December (Taylor's Version), Taylor Swift (2023)"

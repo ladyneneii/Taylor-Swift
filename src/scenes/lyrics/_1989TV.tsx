@@ -35,7 +35,7 @@ const _1989TV = () => {
           textAlign="start"
           color={whitish}
           fontSize="1.5rem"
-          titleAuthor={`"Slut!" (Taylor's Version) (From The Vault)`}
+          titleAuthor={`"Slut!" (Taylor's Version) (From The Vault), Taylor Swift (2023)`}
         />
       </div>
     </div>

@@ -1,4 +1,3 @@
-
 import { blackish } from "@/shared/types";
 import "./styles.css";
 import TitleAuthor from "@/shared/TitleAuthor";
@@ -12,7 +11,7 @@ const TaylorSwift = () => {
         <h1>He's the song in the car I keep singing, don't know why I do...</h1>
 
         <TitleAuthor
-          textAlign="center"
+          textAlign="start"
           color={blackish}
           fontSize="2rem"
           titleAuthor="Teardrops On My Guitar, Taylor Swift (2009)"
@@ -24,7 +23,7 @@ const TaylorSwift = () => {
         <h1>When we're on the phone, and he talks real slow</h1>
         <h1>'Cause it's late, and his mama don't know</h1>
         <TitleAuthor
-          textAlign="center"
+          textAlign="start"
           color={blackish}
           fontSize="1.3rem"
           titleAuthor="Our Song, Taylor Swift (2009)"
@@ -36,7 +35,7 @@ const TaylorSwift = () => {
         <h1>So watch me strike a match on all my wasted time</h1>
         <h1>As far as I'm concerned, you're just another picture to burn</h1>
         <TitleAuthor
-          textAlign="center"
+          textAlign="start"
           color={blackish}
           fontSize="1.3rem"
           titleAuthor="Picture To Burn, Taylor Swift (2009)"
