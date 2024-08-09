@@ -30,7 +30,7 @@ const Home = ({ setSelectedEra }: Props) => {
           different eras of her music!
         </h1>
         <div className="home__start-btn-container">
-          <Button bgcolor="white" color="black" section="terms">
+          <Button bgcolor="white" color="black" dest="#terms" isWebsite={false}>
             START
           </Button>
         </div>

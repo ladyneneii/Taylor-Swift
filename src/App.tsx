@@ -16,6 +16,7 @@ import Folklore from "./scenes/lyrics/Folklore";
 import Evermore from "./scenes/lyrics/Evermore";
 import Midnights from "./scenes/lyrics/Midnights";
 import TTPD from "./scenes/lyrics/TTPD";
+import Footer from "./scenes/footer";
 
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
@@ -238,6 +239,8 @@ const App = () => {
           </>
         </div>
       ))}
+
+      <Footer></Footer>
     </div>
   );
 };

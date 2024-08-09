@@ -4,28 +4,29 @@ import "./styles.css";
 type Props = {
   bgcolor: string;
   color: string;
-  section: string;
+  dest: string;
   children: React.ReactNode;
+  isWebsite: boolean;
 };
 
-const Button = ({ bgcolor, color, section, children }: Props) => {
+const Button = ({ bgcolor, color, dest, children, isWebsite }: Props) => {
   const [isHovered, SetIsHovered] = useState(false);
 
   return (
-    <button
-      // onClick={() => (window.location.hash = "terms")}
-      onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth" })}
-      onMouseEnter={() => SetIsHovered(true)}
-      onMouseLeave={() => SetIsHovered(false)}
-      style={{
-        backgroundColor: isHovered ? "transparent" : bgcolor,
-        borderColor: bgcolor,
-        color: !isHovered ? color : color === "white" ? "black" : "white",
-        cursor: isHovered ? "pointer" : "",
-      }}
-    >
-      <p>{children}</p>
-    </button>
+    <a href={dest} target={isWebsite ? "_blank" : ""}>
+      <button
+        onMouseEnter={() => SetIsHovered(true)}
+        onMouseLeave={() => SetIsHovered(false)}
+        style={{
+          backgroundColor: isHovered ? "transparent" : bgcolor,
+          borderColor: bgcolor,
+          color: !isHovered ? color : color === "white" ? "black" : "white",
+          cursor: isHovered ? "pointer" : "",
+        }}
+      >
+        <p>{children}</p>
+      </button>
+    </a>
   );
 };
 

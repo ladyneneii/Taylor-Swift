@@ -4,7 +4,10 @@ import TitleAuthor from "@/shared/TitleAuthor";
 
 const Evermore = () => {
   return (
-    <div className="intro__container redTV-grid text-center" style={{color: "black"}}>
+    <div
+      className="intro__container redTV-grid text-center"
+      style={{ color: "black" }}
+    >
       <h1>Your Midas touch on the Chevy door</h1>
       <h1>November flush and your flannel cure</h1>
       <h1>"This dorm was once a madhouse"</h1>

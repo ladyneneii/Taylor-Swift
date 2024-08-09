@@ -1031,7 +1031,7 @@ const midnightsTrackList = [
     url: "https://www.youtube.com/embed/XzOvgu3GPwY?si=6hR3tRh_DgKsTwaR",
   },
   {
-    title: " You're Losing Me (From The Vault)",
+    title: "You're Losing Me (From The Vault)",
     url: "https://www.youtube.com/embed/pQq9eP5OFhw?si=CgS58fpF_QvDGCa1",
   },
 ];
