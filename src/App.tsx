@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./scenes/navbar";
 import "./index.css";
 import Home from "./scenes/home";
@@ -20,6 +20,7 @@ import Footer from "./scenes/footer";
 
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
+  const currEraNum = eras.indexOf(selectedEra);
 
   const defaultTrackValues = (eraNumber: number) => {
     const { defaultTrackIndex, trackListLength, trackList } =
@@ -120,20 +121,6 @@ const App = () => {
     }
   };
 
-  // const introMessage = [
-  //   "My name is Taylor...",
-  //   "It's fearless",
-  //   `And they said, "Speak now"...`,
-  //   "Lovin' him was red...",
-  //   "...And I was born in 1989!",
-  //   "Big reputation",
-  //   "It's been a long time coming...",
-  //   "Into folklore...",
-  //   "Evermore...",
-  //   "Meet me at midnight...",
-  //   "Straight from the tortured poets department...",
-  // ];
-
   const erasBgColor = [
     "#000000",
     "linear-gradient(to bottom, #203e24 10%, #18a5bf 100%)",
@@ -146,8 +133,6 @@ const App = () => {
     "linear-gradient(to bottom, 	#cccccc 10%, 	#929292 100%)",
     "linear-gradient(to bottom, 	#efd3b6 10%, 	#4f2424 100%)",
     "linear-gradient(to bottom, 	#550101 10%, 	#351c75 100%)",
-    // "linear-gradient(to bottom, 	#351c75 10%, 	#550101 100%)",
-    // "linear-gradient(to bottom, 	#231e1a 10%, 	#a79e8f 100%)",
     "linear-gradient(to bottom, 	#231e1a 10%, 	#a79e8f 100%)",
   ];
 
@@ -172,18 +157,22 @@ const App = () => {
     }
 
     ::-webkit-scrollbar-track {
-      background: ${
-        erasColor[eras.indexOf(selectedEra)] === "white" ? "#242427" : "#f0f0f0"
-      };
+      background: ${erasColor[currEraNum] === "white" ? "#242427" : "#f0f0f0"};
     }
 
     ::-webkit-scrollbar-thumb {
       border-radius: 100px;
-      background: ${
-        erasColor[eras.indexOf(selectedEra)] === "white" ? "#48494e" : "#c0c0c0"
-      };
+      background: ${erasColor[currEraNum] === "white" ? "#48494e" : "#c0c0c0"};
     }
   `;
+
+  // useEffect(() => {
+  //   setCurrEraNum(eras.indexOf(selectedEra));
+  //   console.log(currEraNum);
+
+  // }, [currEraNum, selectedEra]);
+
+  console.log(selectedEra);
 
   return (
     <div className="app">
@@ -196,6 +185,7 @@ const App = () => {
       >
         <Navbar
           selectedEra={selectedEra}
+          setSelectedEra={setSelectedEra}
           setTaylorSwiftTrack={setTaylorSwiftTrack}
           setFearlessTVTrack={setFearlessTVTrack}
           setSpeakNowTVTrack={setSpeakNowTVTrack}
@@ -208,20 +198,10 @@ const App = () => {
           setMidnightsTrack={setMidnightsTrack}
           setTtpdTrack={setTtpdTrack}
         />
-        <Home setSelectedEra={setSelectedEra} />
+        {selectedEra === "Home" && <Home setSelectedEra={setSelectedEra} />}
       </section>
 
-      {/* no need to set universal textColor for terminologies because in this section, there are two text colors */}
-      <EraContainer
-        eraNumber={0}
-        eraTitle="Home"
-        textColor={erasColor[eras.indexOf("Home")]}
-        track={returnTrack(0)}
-        setSelectedEra={setSelectedEra}
-        setTrack={returnSetTrack(0)}
-      />
-
-      {eras.slice(1).map((era, index) => (
+      {/* {eras.slice(1).map((era, index) => (
         <div key={index} style={{ background: erasBgColor[index + 1] }}>
           <>
             {lyricsIntro[index]}
@@ -235,9 +215,25 @@ const App = () => {
             />
           </>
         </div>
-      ))}
+      ))} */}
 
-      <Footer></Footer>
+      <div style={{ background: erasBgColor[currEraNum] }}>
+        <>
+          {lyricsIntro[currEraNum - 1]}
+          <EraContainer
+            eraNumber={currEraNum}
+            eraTitle={selectedEra}
+            textColor={erasColor[currEraNum]}
+            track={returnTrack(currEraNum - 1)}
+            setSelectedEra={setSelectedEra}
+            setTrack={returnSetTrack(currEraNum - 1)}
+          />
+        </>
+      </div>
+
+      <Footer
+        bgcolor={erasColor[currEraNum] === "white" ? "black" : "white"}
+      ></Footer>
     </div>
   );
 };

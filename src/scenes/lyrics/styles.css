@@ -1,5 +1,5 @@
 .intro__container {
-  padding: 6rem 3rem 7rem;
+  padding: 12rem 3rem 7rem;
   width: clamp(300px, 100%, 2040px);
   margin-inline: auto;
   font-style: italic;
@@ -157,7 +157,7 @@
 
 @media only screen and (max-width: 750px) {
   .intro__container {
-    padding: 6rem 1rem 7rem;
+    padding: 10rem 1rem 7rem;
   }
 
   .fearlessTV-grid {

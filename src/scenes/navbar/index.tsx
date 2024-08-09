@@ -17,6 +17,7 @@ import { Track, allTracks } from "@/data/tracklists";
 
 type Props = {
   selectedEra: string;
+  setSelectedEra: (value: string) => void;
   setTaylorSwiftTrack: (value: Track) => void;
   setFearlessTVTrack: (value: Track) => void;
   setSpeakNowTVTrack: (value: Track) => void;
@@ -32,6 +33,7 @@ type Props = {
 
 const Navbar = ({
   selectedEra,
+  setSelectedEra,
   setTaylorSwiftTrack,
   setFearlessTVTrack,
   setSpeakNowTVTrack,
@@ -66,6 +68,11 @@ const Navbar = ({
   const borderColor = (era: string) => {
     if (selectedEra !== era) return "";
     else return `selectedEra ${textColor}`;
+  };
+
+  const handleLinkClick = (era: string) => {
+    if (isTablet) setShowSidebar(false);
+    setSelectedEra(era);
   };
 
   const handleSearchChange = (input: string) => {
@@ -142,7 +149,7 @@ const Navbar = ({
   ) => {
     e.preventDefault();
     e.stopPropagation(); // Stop the input field from regaining focus
-
+    setSelectedEra(eras[albumNumber + 1]);
     const offset = 300;
 
     // Set the album track state
@@ -273,7 +280,7 @@ const Navbar = ({
   useEffect(() => {
     setTextcolor(erasColor[eras.indexOf(selectedEra)]);
     borderColor(selectedEra);
-    // console.log(selectedEra);
+    console.log(selectedEra);
   }, [selectedEra]);
 
   return (
@@ -285,7 +292,7 @@ const Navbar = ({
       <div
         className="nav__parent-container"
         style={{
-          backgroundColor: textColor === "white" ? blackish : whitish,
+          backgroundColor: textColor === "white" ? "black" : "white",
         }}
       >
         <div className="nav__container">
@@ -317,10 +324,7 @@ const Navbar = ({
               }`}
               style={{
                 borderColor: textColor === "white" ? "white" : "black",
-                backgroundColor:
-                  textColor === "white"
-                    ? "rgba(0, 0, 0, 0.9)"
-                    : "rgba(255, 255, 255, 0.9)",
+                backgroundColor: textColor === "white" ? "#333333" : "#e0e0e0",
               }}
               onClick={isPhone ? handleExpandSearch : undefined}
             >
@@ -333,7 +337,7 @@ const Navbar = ({
                 placeholder="Search songs..."
                 style={{
                   color: textColor === "white" ? "white" : "black",
-                  fontSize: "1.2rem", 
+                  fontSize: "1.2rem",
                 }}
                 onChange={(e) => handleSearchChange(e.target.value)}
                 onFocus={handleFocus}
@@ -414,7 +418,7 @@ const Navbar = ({
               eras.map((era, index) => (
                 <div className="nav__eras-link" key={index}>
                   <a
-                    href={`#${formatEraId(era)}`}
+                    onClick={() => setSelectedEra(era)}
                     style={{ color: textColor }}
                     className={borderColor(era)}
                   >
@@ -451,7 +455,7 @@ const Navbar = ({
           showSidebar ? "slide-in" : "slide-out"
         }`}
         style={{
-          backgroundColor: textColor === "white" ? blackish : whitish,
+          backgroundColor: textColor === "white" ? "black" : "white",
         }}
         ref={sidebarRef}
       >
@@ -466,10 +470,9 @@ const Navbar = ({
           {eras.map((era, index) => (
             <div key={index} className="nav__eras-link">
               <a
-                href={`#${formatEraId(era)}`}
+                onClick={() => handleLinkClick(era)}
                 style={{ color: textColor }}
                 className={borderColor(era)}
-                onClick={isTablet ? () => setShowSidebar(false) : undefined}
               >
                 {era === "Reputation"
                   ? "reputation"

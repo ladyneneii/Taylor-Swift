@@ -17,16 +17,16 @@ export const createTrackId = (track: string) => {
 export const eras = [
   "Home",
   "Taylor Swift",
-  // "Fearless",
-  // "Speak Now",
-  // "Red",
-  // "1989",
-  // "Reputation",
-  // "Lover",
-  // "Folklore",
-  // "Evermore",
-  // "Midnights",
-  // "TTPD",
+  "Fearless",
+  "Speak Now",
+  "Red",
+  "1989",
+  "Reputation",
+  "Lover",
+  "Folklore",
+  "Evermore",
+  "Midnights",
+  "TTPD",
 ];
 
 export const erasColor = [

@@ -8,7 +8,6 @@ import Tracks from "./Tracks";
 import Terminologies from "@/scenes/terminologies";
 import DOMPurify from "dompurify";
 import { Track } from "@/data/tracklists";
-import { motion } from "framer-motion";
 
 type Props = {
   eraNumber: number;
@@ -93,11 +92,10 @@ const EraContainer = ({
   // console.log(`this is eraTitle: ${eraTitle}`);
 
   return (
-    <motion.div
+    <div
       className="era-container"
       style={{ color: textColor, borderColor: textColor }}
       id={eraId}
-      onViewportEnter={() => setSelectedEra(eraTitle)}
     >
       {/* HERO SECTION */}
       {eraTitle !== "Home" && (
@@ -239,7 +237,7 @@ const EraContainer = ({
         quotes[eraNumber - 1].map((lyrics, index) => (
           <Lyrics key={index} eraNumber={eraNumber} lyrics={lyrics} />
         ))} */}
-    </motion.div>
+    </div>
   );
 };
 

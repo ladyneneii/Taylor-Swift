@@ -1,6 +1,6 @@
 .footer__container {
   color: white;
-  padding: 5rem 3rem;
+  padding: 5rem 3rem 2rem;
   width: clamp(300px, 100%, 2040px);
   margin-inline: auto;
 }
@@ -62,7 +62,7 @@
 }
 
 .copyright-message {
-  padding: 2rem;
+  padding: 4rem 2rem 0;
   text-align: center;
 }
 

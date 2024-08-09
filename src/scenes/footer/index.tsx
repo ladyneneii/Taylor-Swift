@@ -5,9 +5,17 @@ import Button from "@/shared/Button";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
-const Footer = () => {
+type Props = {
+  bgcolor: string;
+};
+
+const Footer = ({ bgcolor }: Props) => {
+  const color = bgcolor === "black" ? "white" : "black";
   return (
-    <div className="footer__container">
+    <div
+      className="footer__container"
+      style={{ backgroundColor: bgcolor, color }}
+    >
       <div className="contact-list">
         <div className="contact-us">
           <div className="img-container">
@@ -20,16 +28,16 @@ const Footer = () => {
             </h2>
             <div className="buttons-container">
               <Button
-                bgcolor="white"
-                color="black"
+                bgcolor={color}
+                color={bgcolor}
                 dest="https://www.taylorswift.com/"
                 isWebsite={true}
               >
                 WEBSITE
               </Button>
               <Button
-                bgcolor="white"
-                color="black"
+                bgcolor={color}
+                color={bgcolor}
                 dest="https://store.taylorswift.com/"
                 isWebsite={true}
               >
@@ -53,17 +61,17 @@ const Footer = () => {
                   href="https://www.linkedin.com/in/ernest-curativo/"
                   target="_blank"
                 >
-                  <FaLinkedin size={30} color="white" />
+                  <FaLinkedin size={30} color={color} />
                 </a>
               </div>
               <div className="social-icon">
                 <a href="mailto:ernestcurativo@gmail.com" target="_blank">
-                  <MdEmail size={30} color="white" />
+                  <MdEmail size={30} color={color} />
                 </a>
               </div>
               <div className="social-icon">
                 <a href="https://github.com/ladyneneii" target="_blank">
-                  <FaGithub size={30} color="white" />
+                  <FaGithub size={30} color={color} />
                 </a>
               </div>
             </div>
