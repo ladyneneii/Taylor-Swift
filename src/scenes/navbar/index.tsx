@@ -337,6 +337,7 @@ const Navbar = ({
               style={{
                 borderColor: textColor === "white" ? "white" : "black",
                 backgroundColor: textColor === "white" ? "#333333" : "#e0e0e0",
+                minWidth: !isAboveLargeScreens ? 0 : "15rem"
               }}
               onClick={isPhone ? handleExpandSearch : undefined}
             >

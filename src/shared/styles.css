@@ -345,12 +345,6 @@ button p {
   /* max-width: 1000px; */
 }
 
-@media only screen and (min-width: 1710px) {
-  .tracks__container {
-    padding: 6rem 3rem 1.5rem;
-  }
-}
-
 @media only screen and (max-width: 1400px) {
   .album-notes {
     flex-direction: column;
