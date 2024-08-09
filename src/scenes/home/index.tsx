@@ -13,16 +13,16 @@ const Home = ({ setSelectedEra }: Props) => {
       onViewportEnter={() => setSelectedEra("Home")}
     >
       <img src={Hero} className="home__hero" alt="taylor-swift-eras-tour" />
-      <motion.div
+      <div
         className="home__text-container"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5 }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, x: 0 },
-        }}
+        // initial="hidden"
+        // whileInView="visible"
+        // viewport={{ once: true, amount: 0.5 }}
+        // transition={{ duration: 0.5 }}
+        // variants={{
+        //   hidden: { opacity: 0 },
+        //   visible: { opacity: 1, x: 0 },
+        // }}
       >
         <h1>
           Venture on a journey with{" "}
@@ -34,7 +34,7 @@ const Home = ({ setSelectedEra }: Props) => {
             START
           </Button>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };

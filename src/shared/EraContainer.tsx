@@ -116,17 +116,17 @@ const EraContainer = ({
                 eraTitle === "TTPD" ? (!isLarge ? "1rem" : "4rem") : "10rem",
             }}
           >
-            <motion.div
+            <div
               className="title-desc"
               style={{ order: isLarge ? -2 : 0 }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.5 }}
-              transition={{ duration: 0.5 }}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1, x: 0 },
-              }}
+              // initial="hidden"
+              // whileInView="visible"
+              // viewport={{ once: false, amount: 0.5 }}
+              // transition={{ duration: 0.5 }}
+              // variants={{
+              //   hidden: { opacity: 0 },
+              //   visible: { opacity: 1, x: 0 },
+              // }}
             >
               <img
                 src={logos[eraNumber - 1]}
@@ -137,18 +137,18 @@ const EraContainer = ({
                 style={{ color: "white" }}
                 dangerouslySetInnerHTML={{ __html: sanitizedDetails }}
               ></p>
-            </motion.div>
-            <motion.div
+            </div>
+            <div
               className="album-photo"
               style={{ order: eraNumber % 2 !== 0 ? -1 : 1 }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.5 }}
-              transition={{ duration: 0.5 }}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1, x: 0 },
-              }}
+              // initial="hidden"
+              // whileInView="visible"
+              // viewport={{ once: false, amount: 0.5 }}
+              // transition={{ duration: 0.5 }}
+              // variants={{
+              //   hidden: { opacity: 0 },
+              //   visible: { opacity: 1, x: 0 },
+              // }}
             >
               {eraTitle === "TTPD" ? (
                 <img
@@ -158,7 +158,7 @@ const EraContainer = ({
               ) : (
                 <img src={albums[eraNumber - 1]} alt={albums[eraNumber - 1]} />
               )}
-            </motion.div>
+            </div>
           </div>
 
           {eraTitle === "TTPD" && (
@@ -166,16 +166,16 @@ const EraContainer = ({
               className="title-desc-album-photo"
               style={{ paddingBlockStart: !isLarge ? "1rem" : "4rem" }}
             >
-              <motion.div
+              <div
                 className="title-desc"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.5 }}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1, x: 0 },
-                }}
+                // initial="hidden"
+                // whileInView="visible"
+                // viewport={{ once: false, amount: 0.5 }}
+                // transition={{ duration: 0.5 }}
+                // variants={{
+                //   hidden: { opacity: 0 },
+                //   visible: { opacity: 1, x: 0 },
+                // }}
               >
                 <img
                   src="/images/logo-the-anthology-transparent.png"
@@ -197,20 +197,20 @@ const EraContainer = ({
                   it ended just like that. This album is A LOT to take in, so
                   make sure to take your time listening to it.
                 </p>
-              </motion.div>
-              <motion.div
+              </div>
+              <div
                 className="album-photo"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.5 }}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1, x: 0 },
-                }}
+                // initial="hidden"
+                // whileInView="visible"
+                // viewport={{ once: false, amount: 0.5 }}
+                // transition={{ duration: 0.5 }}
+                // variants={{
+                //   hidden: { opacity: 0 },
+                //   visible: { opacity: 1, x: 0 },
+                // }}
               >
                 <img src={albums[eraNumber - 1]} alt={albums[eraNumber - 1]} />
-              </motion.div>
+              </div>
             </div>
           )}
         </div>

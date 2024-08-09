@@ -325,7 +325,7 @@ const Navbar = ({
               onClick={isPhone ? handleExpandSearch : undefined}
             >
               <div className="nav__search-icon">
-                <CiSearch size={20} />
+                <CiSearch size={30} />
               </div>
               <input
                 ref={searchInputRef}
@@ -333,6 +333,7 @@ const Navbar = ({
                 placeholder="Search songs..."
                 style={{
                   color: textColor === "white" ? "white" : "black",
+                  fontSize: "1.2rem", 
                 }}
                 onChange={(e) => handleSearchChange(e.target.value)}
                 onFocus={handleFocus}
