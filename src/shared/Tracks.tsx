@@ -189,7 +189,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setRedRows(9);
       setNineteen89Rows(8);
       setReputationRows(7);
-      setLoverRows(7);
+      setLoverRows(8);
       setFolkloreRows(7);
       setEvermoreRows(8);
       setMidnightsRows(8);
@@ -204,7 +204,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setRedRows(11);
       setNineteen89Rows(9);
       setReputationRows(7);
-      setLoverRows(8);
+      setLoverRows(9);
       setFolkloreRows(8);
       setEvermoreRows(10);
       setMidnightsRows(9);
@@ -234,7 +234,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setRedRows(18);
       setNineteen89Rows(15);
       setReputationRows(11);
-      setLoverRows(13);
+      setLoverRows(14);
       setFolkloreRows(13);
       setEvermoreRows(16);
       setMidnightsRows(15);
@@ -250,7 +250,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setRedRows(19);
       setNineteen89Rows(16);
       setReputationRows(12);
-      setLoverRows(14);
+      setLoverRows(15);
       setFolkloreRows(14);
       setEvermoreRows(17);
       setMidnightsRows(16);
@@ -308,7 +308,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setRedRows(19);
       setNineteen89Rows(16);
       setReputationRows(12);
-      setLoverRows(14);
+      setLoverRows(15);
       setFolkloreRows(14);
       setEvermoreRows(17);
       setMidnightsRows(16);
@@ -327,10 +327,10 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setRedRows(32);
       setNineteen89Rows(25);
       setReputationRows(18);
-      setLoverRows(22);
+      setLoverRows(23);
       setFolkloreRows(21);
       setEvermoreRows(27);
-      setMidnightsRows(25);
+      setMidnightsRows(26);
       setTtpdRows(36);
       setTracklistH2Height(tracklistHeight + height - 10);
     }
@@ -346,10 +346,10 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setRedRows(32);
       setNineteen89Rows(25);
       setReputationRows(18);
-      setLoverRows(22);
+      setLoverRows(23);
       setFolkloreRows(21);
       setEvermoreRows(27);
-      setMidnightsRows(25);
+      setMidnightsRows(26);
       setTtpdRows(36);
       setTracklistH2Height(tracklistHeight + height - 70);
     }
@@ -365,10 +365,10 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
       setRedRows(32);
       setNineteen89Rows(25);
       setReputationRows(18);
-      setLoverRows(22);
+      setLoverRows(23);
       setFolkloreRows(21);
       setEvermoreRows(27);
-      setMidnightsRows(25);
+      setMidnightsRows(26);
       setTtpdRows(36);
       setTracklistH2Height(tracklistHeight + height - 70);
     }

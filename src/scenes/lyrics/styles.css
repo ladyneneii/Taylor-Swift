@@ -165,3 +165,9 @@
     gap: 4rem;
   }
 }
+
+@media only screen and (max-width: 400px) {
+  .intro__container h1 {
+    font-size: 1.5rem;
+  }
+}

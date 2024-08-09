@@ -257,7 +257,7 @@ export const fearlessTVTrackList = [
 //   },
 // ];
 
-const vaultTrackDescription = `Vault tracks refer to Taylor Swift's songs that did not make it to the stolen versions of the first six albums but made it to the Taylor's Versions of the same albums. Simply put, when Taylor releases a Taylor's Version of an album, she includes all of the existing songs from the stolen version of the album with Taylor's Version in parentheses next to the titles, plus the additional vault tracks or songs that she had written at the time but did not make it onto the stolen version of the album. These songs are annotated with (From the Vault).`;
+const vaultTrackDescription = `Vault tracks refer to Taylor Swift's songs that did not make it to the stolen versions of the first six albums but made it to the Taylor's Versions of the same albums. Simply put, when Taylor releases a Taylor's Version of an album, she includes all of the existing songs from the stolen version of the album with Taylor's Version in parentheses next to the titles, plus the additional vault tracks or songs that she had written at the time but did not make it onto the stolen version of the album. These songs are annotated with (From the Vault). However, vault tracks are not limited to the first six stolen albums, as they can also be found on albums already fully owned by Taylor Swift. Tracks are considered "from the vault" if they had already been written and created together with the other tracks on the album but were not included in the initial release of the album; instead, vault tracks are included in special or extra releases of the album. An example of this is You're Losing Me (From The Vault) on the Midnights album, which is not included in the standard edition track listing of Midnights but is included in Midnights Late Night Edition tracks.`;
 
 // const fearlessTVBonusTrackList = [
 //   {
@@ -741,6 +741,10 @@ const loverTrackList = [
     title: "Lover (First Dance Remix)",
     url: "https://www.youtube.com/embed/KmT4Y8w1nho?si=MbC5xSrgByez8oqS",
   },
+  {
+    title: "All Of The Girls You Loved Before",
+    url: "https://www.youtube.com/embed/HO-31CVnLes?si=PqaRJbQyQsInBS13",
+  },
 ];
 
 const track5Note = `The songs that Taylor Swift puts as the fifth track on all her albums have always been known to be heartbreaking, devastating, and vulnerable. In an interview before the release of Lover, Taylor admitted that she had not noticed that she was putting her "very vulnerable, personal, honest, emotional" song as track five on her previous albums. Since the fans (Swifties) noticed this pattern, she continued doing so for the rest of her albums. Whenever Taylor Swift releases a new album, Swifties always look forward to it, especially the album's heart-wrenching yet beautifully written track five.`;
@@ -1025,6 +1029,10 @@ const midnightsTrackList = [
   {
     title: "Karma (feat. Ice Spice)",
     url: "https://www.youtube.com/embed/XzOvgu3GPwY?si=6hR3tRh_DgKsTwaR",
+  },
+  {
+    title: " You're Losing Me (From The Vault)",
+    url: "https://www.youtube.com/embed/pQq9eP5OFhw?si=CgS58fpF_QvDGCa1",
   },
 ];
 
