@@ -166,7 +166,17 @@ const EraContainer = ({
               className="title-desc-album-photo"
               style={{ paddingBlockStart: !isLarge ? "1rem" : "4rem" }}
             >
-              <div className="title-desc">
+              <motion.div
+                className="title-desc"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, x: 0 },
+                }}
+              >
                 <img
                   src="/images/logo-the-anthology-transparent.png"
                   alt={`${eras[eraNumber]}-album-cover`}
@@ -187,10 +197,20 @@ const EraContainer = ({
                   it ended just like that. This album is A LOT to take in, so
                   make sure to take your time listening to it.
                 </p>
-              </div>
-              <div className="album-photo">
+              </motion.div>
+              <motion.div
+                className="album-photo"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, x: 0 },
+                }}
+              >
                 <img src={albums[eraNumber - 1]} alt={albums[eraNumber - 1]} />
-              </div>
+              </motion.div>
             </div>
           )}
         </div>
