@@ -62,6 +62,8 @@ const Navbar = ({
   const sidebarRef = useRef(null);
   useOutsideClick({ ref: searchRef, setVisibility: setShowSearchResults });
   useOutsideClick({ ref: sidebarRef, setVisibility: setShowSidebar });
+  const [focusedIndex, setFocusedIndex] = useState(-1); // No item is focused initially
+  const resultsRef = useRef(null);
 
   const borderColor = (era: string) => {
     if (selectedEra !== era) return "";
@@ -184,6 +186,56 @@ const Navbar = ({
       .replace(/[^a-zA-Z0-9 ]/g, ""); // Remove punctuation
   };
 
+  const filteredTracks = allTracks.filter(({ title }) =>
+    normalizeString(title).includes(normalizeString(search))
+  );
+
+  const handleKeyDown = (event: any) => {
+    switch (event.key) {
+      case "ArrowDown":
+        setFocusedIndex((prevIndex) =>
+          Math.min(prevIndex + 1, filteredTracks.length - 1)
+        );
+        event.preventDefault(); // Prevent scrolling
+        break;
+      case "ArrowUp":
+        setFocusedIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+        event.preventDefault(); // Prevent scrolling
+        break;
+      case "Enter":
+        if (focusedIndex >= 0) {
+          const selectedTrack = filteredTracks[focusedIndex];
+          handleAnchorClick(
+            event,
+            selectedTrack.trackId,
+            selectedTrack.idx,
+            selectedTrack.url,
+            selectedTrack.title,
+            selectedTrack.length,
+            selectedTrack.albumNumber
+          );
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    const handleDocumentKeyDown = (event: any) => {
+      if (showSearchResults) {
+        handleKeyDown(event);
+      }
+    };
+
+    document.addEventListener("keydown", handleDocumentKeyDown);
+
+    // Cleanup the event listener
+    return () => {
+      document.removeEventListener("keydown", handleDocumentKeyDown);
+    };
+  }, [showSearchResults, focusedIndex, filteredTracks]);
+
   useEffect(() => {
     if (isAboveLargeScreens) {
       setShowSidebar(false);
@@ -281,54 +333,50 @@ const Navbar = ({
                   }}
                 >
                   <div style={{ height: "5.4rem" }}></div>
-                  <div className="nav__tracklist">
-                    {allTracks
-                      .filter(({ title }) => {
-                        return normalizeString(title).includes(
-                          normalizeString(search)
-                        );
-                      })
-                      .map(
-                        (
-                          {
-                            idx,
-                            title,
-                            trackId,
-                            url,
-                            length,
-                            albumNumber,
-                            albumPath,
-                          },
-                          index
-                        ) => {
-                          return (
-                            <a
-                              style={{ color: textColor }}
-                              key={index}
-                              onClick={(e) =>
-                                handleAnchorClick(
-                                  e,
-                                  trackId,
-                                  idx,
-                                  url,
-                                  title,
-                                  length,
-                                  albumNumber
-                                )
-                              }
+                  <div ref={resultsRef} className="nav__tracklist">
+                    {filteredTracks.map(
+                      (
+                        {
+                          idx,
+                          title,
+                          trackId,
+                          url,
+                          length,
+                          albumNumber,
+                          albumPath,
+                        },
+                        index
+                      ) => {
+                        return (
+                          <a
+                            style={{ color: textColor }}
+                            key={index}
+                            onClick={(e) =>
+                              handleAnchorClick(
+                                e,
+                                trackId,
+                                idx,
+                                url,
+                                title,
+                                length,
+                                albumNumber
+                              )
+                            }
+                            onMouseEnter={() => setFocusedIndex(index)}
+                            onFocus={() => setFocusedIndex(index)}
+                          >
+                            <div
+                              className={`nav__album-track ${
+                                textColor === "white" ? "dark" : "light"
+                              } ${focusedIndex === index ? "focused" : ""}`}
                             >
-                              <div
-                                className={`nav__album-track ${
-                                  textColor === "white" ? "dark" : "light"
-                                }`}
-                              >
-                                <img src={albumPath} alt={albumPath} />
-                                <p>{title}</p>
-                              </div>
-                            </a>
-                          );
-                        }
-                      )}
+                              <img src={albumPath} alt={albumPath} />
+                              <p>{title}</p>
+                            </div>
+                          </a>
+                        );
+                      }
+                    )}
                   </div>
 
                   <div style={{ height: "2rem" }}></div>
