@@ -196,7 +196,6 @@ const App = () => {
       >
         <Navbar
           selectedEra={selectedEra}
-          setSelectedEra={setSelectedEra}
           setTaylorSwiftTrack={setTaylorSwiftTrack}
           setFearlessTVTrack={setFearlessTVTrack}
           setSpeakNowTVTrack={setSpeakNowTVTrack}

@@ -1,4 +1,3 @@
-import React from "react";
 import "./styles.css";
 import TaylorSwift from "@/assets/taylor-swift.jpg";
 import FearlessTV from "@/assets/fearless-logo.png";

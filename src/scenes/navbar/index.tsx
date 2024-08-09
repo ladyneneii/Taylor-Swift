@@ -17,7 +17,6 @@ import { Track, allTracks } from "@/data/tracklists";
 
 type Props = {
   selectedEra: string;
-  setSelectedEra: (value: string) => void;
   setTaylorSwiftTrack: (value: Track) => void;
   setFearlessTVTrack: (value: Track) => void;
   setSpeakNowTVTrack: (value: Track) => void;
@@ -33,7 +32,6 @@ type Props = {
 
 const Navbar = ({
   selectedEra,
-  setSelectedEra,
   setTaylorSwiftTrack,
   setFearlessTVTrack,
   setSpeakNowTVTrack,
