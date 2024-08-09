@@ -47,20 +47,6 @@ const Modal = ({
 
   return (
     <div className="modal__container">
-      {/* <p
-            onClick={() => setShowModal(false)}
-            style={{
-              backgroundColor: closeBgColor,
-              color: closeBgColor === blackish ? "white" : "black",
-            }}
-            className="no-select no-outline"
-          >
-            Close
-          </p> */}
-
-      <div className="modal__close-btn" onClick={() => setShowModal(false)}>
-        <IoClose color="white" size={50} />
-      </div>
       <div ref={leftRef} className="modal__left-btn" onClick={handleClickLeft}>
         <FaChevronLeft color="white" size={40} />
       </div>
@@ -72,6 +58,9 @@ const Modal = ({
         <FaChevronRight color="white" size={40} />
       </div>
       <div className="img-container">
+        <div className="modal__close-btn" onClick={() => setShowModal(false)}>
+          <IoClose color="white" size={50} />
+        </div>
         <img
           ref={imgRef}
           src={image}

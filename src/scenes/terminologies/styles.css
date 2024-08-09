@@ -86,6 +86,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  align-items: center;
 }
 
 .terms__tv-pics-container {

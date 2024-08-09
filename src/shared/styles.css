@@ -439,7 +439,7 @@ button p {
   gap: 2rem;
 }
 
-.modal__close-btn,
+
 .modal__left-btn,
 .modal__right-btn {
   position: absolute;
@@ -455,8 +455,7 @@ button p {
 }
 
 .modal__close-btn {
-  right: 20px;
-  top: 20px;
+  align-self: flex-end;
 }
 
 .modal__left-btn {
@@ -474,6 +473,7 @@ button p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .modal__container .img-container img {
@@ -484,73 +484,3 @@ button p {
   max-height: 100%;
 }
 
-/* Lyrics.tsx */
-
-.quote__container {
-  width: clamp(300px, 100%, 2040px);
-  margin-inline: auto;
-  padding: var(--container-padding);
-  margin-top: 1rem;
-  /* border: 5px solid red; */
-}
-
-.lyrics__container {
-  position: relative;
-  margin-inline: auto;
-  /* this padding is important so the quotation marks do not exceed the universal padding */
-  padding-inline: 3rem;
-  /* border: 5px solid red; */
-}
-
-.lyrics__container::before {
-  content: "“";
-  position: absolute;
-  top: -30px;
-  left: 5px;
-  font-size: 5rem;
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
-
-.lyrics__container::after {
-  content: "„";
-  position: absolute;
-  bottom: -30px;
-  right: 5px;
-  font-size: 5rem;
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
-
-.lyrics__container h1 {
-  font-size: 2rem;
-  font-style: italic;
-  font-weight: 200;
-  letter-spacing: 0.3rem;
-}
-
-.cite-container {
-  text-align: center;
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-}
-
-.cite-container cite {
-  font-style: normal;
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-@media only screen and (max-width: 750px) {
-  .quote__container {
-    padding: 1rem;
-  }
-}
-
-@media only screen and (max-width: 450px) {
-  .lyrics__container h1 {
-    font-size: 1.5rem;
-  }
-
-  .cite-container cite {
-    font-size: 1rem;
-  }
-}
