@@ -11,6 +11,7 @@ type Props = {
 
 const Button = ({ bgcolor, color, dest, children, isWebsite }: Props) => {
   const [isHovered, SetIsHovered] = useState(false);
+  const oppBgColor = bgcolor === "black" ? "white" : "black";
 
   return (
     <a href={dest} target={isWebsite ? "_blank" : ""}>
@@ -18,7 +19,7 @@ const Button = ({ bgcolor, color, dest, children, isWebsite }: Props) => {
         onMouseEnter={() => SetIsHovered(true)}
         onMouseLeave={() => SetIsHovered(false)}
         style={{
-          backgroundColor: isHovered ? "transparent" : bgcolor,
+          backgroundColor: isHovered ? oppBgColor : bgcolor,
           borderColor: bgcolor,
           color: !isHovered ? color : color === "white" ? "black" : "white",
           cursor: isHovered ? "pointer" : "",

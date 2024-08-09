@@ -140,13 +140,12 @@ button p {
   }
 }
 
-
 /* Tracks.tsx */
 
 .tracks__container {
   width: clamp(300px, 100%, 2040px);
   margin-inline: auto;
-  padding: var(--container-padding);
+  padding: 9rem 3rem 1.5rem;
   /* border: 5px solid white; */
 }
 
@@ -346,6 +345,12 @@ button p {
   /* max-width: 1000px; */
 }
 
+@media only screen and (min-width: 1710px) {
+  .tracks__container {
+    padding: 6rem 3rem 1.5rem;
+  }
+}
+
 @media only screen and (max-width: 1400px) {
   .album-notes {
     flex-direction: column;
@@ -356,7 +361,7 @@ button p {
 
 @media only screen and (max-width: 750px) {
   .tracks__container {
-    padding: 1rem;
+    padding: 6rem 1rem 1rem;
   }
 }
 
@@ -368,6 +373,10 @@ button p {
   overflow: hidden;
   padding: 2rem 3rem;
   position: relative;
+}
+
+.carousel__container h1 {
+  font-weight: 500;
 }
 
 .carousel__container img {
@@ -439,7 +448,6 @@ button p {
   gap: 2rem;
 }
 
-
 .modal__left-btn,
 .modal__right-btn {
   position: absolute;
@@ -483,4 +491,3 @@ button p {
   max-width: 100%;
   max-height: 100%;
 }
-

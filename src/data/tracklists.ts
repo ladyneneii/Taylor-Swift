@@ -1275,3 +1275,17 @@ trackListsArr.forEach((album, albumIndex) => {
 
 // Sort the allTracks array by title
 allTracks.sort((a, b) => a.title.localeCompare(b.title));
+
+export const trackListId = [
+  "tracksTaylorSwift",
+  "tracksFearlessTV",
+  "tracksSpeakNowTV",
+  "tracksRedTV",
+  "tracks1989TV",
+  "tracksReputation",
+  "tracksLover",
+  "tracksFolklore",
+  "tracksEvermore",
+  "tracksMidnights",
+  "tracksTTPD",
+]

@@ -13,20 +13,20 @@ type Props = {
   eraNumber: number;
   eraTitle: string;
   textColor: string;
-
   track: Track;
   setSelectedEra: (value: string) => void;
   setTrack: (value: Track) => void;
+  setShowSkipToTracks: (value: boolean) => void;
 };
 
 const EraContainer = ({
   eraNumber,
   eraTitle,
   textColor,
-
   track,
-  // setSelectedEra,
+  setSelectedEra,
   setTrack,
+  setShowSkipToTracks,
 }: Props) => {
   const isLarge = useMediaQuery("(max-width: 1400px)");
   const isMedium = useMediaQuery("(max-width: 750px)");
@@ -216,13 +216,14 @@ const EraContainer = ({
 
       {/* TRACKS SECTION */}
       {eraTitle === "Home" ? (
-        <Terminologies />
+        <Terminologies setSelectedEra={setSelectedEra} />
       ) : (
         <Tracks
           textColor={textColor}
           eraNumber={eraNumber}
           track={track}
           setTrack={setTrack}
+          setShowSkipToTracks={setShowSkipToTracks}
         />
       )}
 

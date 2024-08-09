@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./scenes/navbar";
 import "./index.css";
 import Home from "./scenes/home";
 import EraContainer from "./shared/EraContainer";
 import { eras, erasColor } from "./shared/types";
-import { Track, trackListsArr } from "./data/tracklists";
+import { Track, trackListId, trackListsArr } from "./data/tracklists";
 import TaylorSwift from "./scenes/lyrics/TaylorSwift";
 import FearlessTV from "./scenes/lyrics/FearlessTV";
 import SpeakNowTV from "./scenes/lyrics/SpeakNowTV";
@@ -17,9 +17,11 @@ import Evermore from "./scenes/lyrics/Evermore";
 import Midnights from "./scenes/lyrics/Midnights";
 import TTPD from "./scenes/lyrics/TTPD";
 import Footer from "./scenes/footer";
+import Button from "./shared/Button";
 
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
+  const [showSkipToTracks, setShowSkipToTracks] = useState(true);
   const currEraNum = eras.indexOf(selectedEra);
 
   const defaultTrackValues = (eraNumber: number) => {
@@ -166,13 +168,9 @@ const App = () => {
     }
   `;
 
-  // useEffect(() => {
-  //   setCurrEraNum(eras.indexOf(selectedEra));
-  //   console.log(currEraNum);
-
-  // }, [currEraNum, selectedEra]);
-
-  console.log(selectedEra);
+  useEffect(() => {
+    setShowSkipToTracks(selectedEra !== "Home");
+  }, [selectedEra]);
 
   return (
     <div className="app">
@@ -227,6 +225,7 @@ const App = () => {
             track={returnTrack(currEraNum - 1)}
             setSelectedEra={setSelectedEra}
             setTrack={returnSetTrack(currEraNum - 1)}
+            setShowSkipToTracks={setShowSkipToTracks}
           />
         </>
       </div>
@@ -234,6 +233,19 @@ const App = () => {
       <Footer
         bgcolor={erasColor[currEraNum] === "white" ? "black" : "white"}
       ></Footer>
+
+      {showSkipToTracks && (
+        <div className="skipToTracks">
+          <Button
+            bgcolor={erasColor[currEraNum]}
+            color={erasColor[currEraNum] === "black" ? "white" : "black"}
+            dest={`#${trackListId[currEraNum - 1]}`}
+            isWebsite={false}
+          >
+            Go to Tracks?
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

@@ -191,3 +191,20 @@ a {
 .highlight {
   color: #f6ed95;
 }
+
+.skipToTracks {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 10;
+}
+
+@media only screen and (max-width: 300px) {
+  .skipToTracks {
+    right: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+}
+
+

@@ -1,17 +1,25 @@
-import { Track, trackListsArr } from "@/data/tracklists";
+import { Track, trackListId, trackListsArr } from "@/data/tracklists";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { blackish, createTrackId, whitish } from "./types";
 import DOMPurify from "dompurify";
+import { motion } from "framer-motion";
 
 type Props = {
   textColor: string;
   eraNumber: number;
   track: Track;
   setTrack: (value: Track) => void;
+  setShowSkipToTracks: (value: boolean) => void;
 };
 
-const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
+const Tracks = ({
+  textColor,
+  eraNumber,
+  track,
+  setTrack,
+  setShowSkipToTracks,
+}: Props) => {
   const { trackList, vaultDesc, bonusDesc } = trackListsArr[eraNumber - 1];
 
   let sanitizedBonusDesc = "";
@@ -415,12 +423,17 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
   // }, [squaresToMoveDown, squaresToMoveDownOnce, squaresToMoveRight]);
 
   return (
-    <div className="tracks__container">
-      {/* <h1>Select the songs you want to listen to!</h1> */}
-
+    <motion.div
+      id={trackListId[eraNumber - 1]}
+      className="tracks__container"
+      onViewportEnter={() => setShowSkipToTracks(false)}
+      onViewportLeave={() => setShowSkipToTracks(true)}
+    >
       <div className="tracklist-h2" style={{ height: tracklistH2Height }}>
         <div className="text-center">
-          <h2 style={{ color: textColor === "black" ? "black" : "white" }}>Tracks</h2>
+          <h2 style={{ color: textColor === "black" ? "black" : "white" }}>
+            Tracks
+          </h2>
         </div>
         <div
           className="tracklist"
@@ -563,7 +576,7 @@ const Tracks = ({ textColor, eraNumber, track, setTrack }: Props) => {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

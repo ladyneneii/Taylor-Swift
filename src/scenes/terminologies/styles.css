@@ -105,6 +105,18 @@
   width: 100%;
 }
 
+.eras-btns-list {
+  margin-top: 5rem;
+}
+
+.eras-btns-grid {
+  display: flex;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
 @media only screen and (min-width: 1700px) {
   .terms__tv-pics-text-container {
     margin-top: 2rem;

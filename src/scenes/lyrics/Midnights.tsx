@@ -47,7 +47,7 @@ const Midnights = () => {
           textAlign="start"
           color={blackish}
           fontSize="1.3rem"
-          titleAuthor="Would'v, Could've, Should've, Taylor Swift (2022)"
+          titleAuthor="Would've, Could've, Should've, Taylor Swift (2022)"
         />
       </div>
     </div>

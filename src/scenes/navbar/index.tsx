@@ -7,11 +7,9 @@ import { CiSearch } from "react-icons/ci";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import {
-
   eras,
   erasColor,
   // formatEraId,
- 
 } from "@/shared/types";
 import { Track, allTracks } from "@/data/tracklists";
 
@@ -46,7 +44,7 @@ const Navbar = ({
   setMidnightsTrack,
   setTtpdTrack,
 }: Props) => {
-  const isAboveLargeScreens = useMediaQuery("(min-width: 1650px)");
+  const isAboveLargeScreens = useMediaQuery("(min-width: 1180px)");
   const isSmall = useMediaQuery("(max-width: 1050px) and (min-width: 551px)");
   const isTablet = useMediaQuery("(max-width: 750px)");
   const isPhone = useMediaQuery("(max-width: 550px)");
@@ -73,6 +71,17 @@ const Navbar = ({
   const handleLinkClick = (era: string) => {
     if (isTablet) setShowSidebar(false);
     setSelectedEra(era);
+
+    /// Temporarily disable smooth scrolling
+    document.documentElement.style.scrollBehavior = "auto";
+
+    // Scroll to the top of the page without smooth scrolling
+    window.scrollTo({ top: 0 });
+
+    // Restore smooth scrolling after the operation
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = "";
+    }, 0);
   };
 
   const handleSearchChange = (input: string) => {
@@ -198,7 +207,8 @@ const Navbar = ({
     switch (event.key) {
       case "ArrowDown":
         setFocusedIndex((prevIndex) => {
-          const newIndex = Math.min(prevIndex + 1, filteredTracks.length - 1);
+          // const newIndex = Math.min(prevIndex + 1, filteredTracks.length - 1);
+          const newIndex = (prevIndex + 1) % filteredTracks.length;
           scrollToIndex(newIndex);
           return newIndex;
         });
@@ -206,7 +216,9 @@ const Navbar = ({
         break;
       case "ArrowUp":
         setFocusedIndex((prevIndex) => {
-          const newIndex = Math.max(prevIndex - 1, 0);
+          // const newIndex = Math.max(prevIndex - 1, 0);
+          const newIndex =
+            prevIndex - 1 < 0 ? filteredTracks.length - 1 : prevIndex - 1;
           scrollToIndex(newIndex);
           return newIndex;
         });
@@ -298,7 +310,7 @@ const Navbar = ({
         <div className="nav__container">
           {!expandSearch && (
             <div className="nav__logo">
-              <a href="#home">
+              <a href="#">
                 <img
                   src={
                     textColor === "white"
@@ -414,37 +426,39 @@ const Navbar = ({
               )}
             </div>
 
-            {isAboveLargeScreens ? (
-              eras.map((era, index) => (
-                <div className="nav__eras-link" key={index}>
-                  <a
-                    onClick={() => setSelectedEra(era)}
-                    style={{ color: textColor }}
-                    className={borderColor(era)}
-                  >
-                    {era === "Reputation"
-                      ? "reputation"
-                      : era === "Folklore"
-                      ? "folklore"
-                      : era === "Evermore"
-                      ? "evermore"
-                      : era}
-                  </a>
-                </div>
-              ))
-            ) : !expandSearch ? (
-              <IoMenu
-                size={50}
-                className="nav__hamburger"
-                onClick={() => setShowSidebar(true)}
-              />
-            ) : (
-              <IoClose
-                size={50}
-                className="nav__hamburger"
-                onClick={() => setExpandSearch(false)}
-              />
-            )}
+            <div className="nav__eras-container-overflow">
+              {isAboveLargeScreens ? (
+                eras.map((era, index) => (
+                  <div className="nav__eras-link" key={index}>
+                    <a
+                      onClick={() => handleLinkClick(era)}
+                      style={{ color: textColor }}
+                      className={borderColor(era)}
+                    >
+                      {era === "Reputation"
+                        ? "reputation"
+                        : era === "Folklore"
+                        ? "folklore"
+                        : era === "Evermore"
+                        ? "evermore"
+                        : era}
+                    </a>
+                  </div>
+                ))
+              ) : !expandSearch ? (
+                <IoMenu
+                  size={50}
+                  className="nav__hamburger"
+                  onClick={() => setShowSidebar(true)}
+                />
+              ) : (
+                <IoClose
+                  size={50}
+                  className="nav__hamburger"
+                  onClick={() => setExpandSearch(false)}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>

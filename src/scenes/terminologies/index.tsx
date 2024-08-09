@@ -4,8 +4,14 @@ import FearlessTV from "@/assets/fearless-logo.png";
 import SpeakNowTV from "@/assets/speak-now-logo.png";
 import RedTV from "@/assets/red-logo.png";
 import NineteenEightyNineTV from "@/assets/1989-logo.png";
+import { eras } from "@/shared/types";
+import Button from "@/shared/Button";
 
-const Terminologies = () => {
+type Props = {
+  setSelectedEra: (value: string) => void;
+};
+
+const Terminologies = ({ setSelectedEra }: Props) => {
   const getCurrentDateFormatted = (): string => {
     const currentDate = new Date();
 
@@ -167,6 +173,25 @@ const Terminologies = () => {
             <span style={{ fontStyle: "italic" }}>reputation</span> (sixth
             album).
           </p>
+        </div>
+      </div>
+      <div className="eras-btns-list text-center">
+        <h1>
+          Freely explore the magical eras of{" "}
+          <span className="nowrap">Taylor Swift's</span> music.
+        </h1>
+        <div className="eras-btns-grid">
+          {eras.slice(1).map((era, index) => (
+            <div
+              key={index}
+              className="eras-btn-container"
+              onClick={() => setSelectedEra(era)}
+            >
+              <Button bgcolor="white" color="black" dest="#" isWebsite={false}>
+                {era}
+              </Button>
+            </div>
+          ))}
         </div>
       </div>
     </div>
