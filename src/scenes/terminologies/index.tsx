@@ -39,6 +39,17 @@ const Terminologies = ({ setSelectedEra }: Props) => {
   const handleButtonClick = (era: string) => {
     setSelectedEra(era);
     // window.scrollTo({ top: 0 });
+
+    /// Temporarily disable smooth scrolling
+    document.documentElement.style.scrollBehavior = "auto";
+
+    // Scroll to the top of the page without smooth scrolling
+    window.scrollTo({ top: 0 });
+
+    // Restore smooth scrolling after the operation
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = "";
+    }, 0);
   };
   
   return (
