@@ -605,7 +605,7 @@ const ttpdCarousel: Array<CarouselProps> = [
   {
     imgPath:
       "https://www.cnet.com/a/img/resize/e65b6655fdf2eaa704bcc326dc9a71e44d06b1cb/hub/2024/04/20/59d18b85-4067-48d7-812b-26dabf303f1d/screenshot-2024-04-19-at-8-17-47pm.png?auto=webp&fit=crop&height=675&width=1200",
-    description: "The Tortured Poets Department Era (~ 2024)",
+    description: "The Tortured Poets Department Era </br>(~ 2024)",
   },
   {
     imgPath:
