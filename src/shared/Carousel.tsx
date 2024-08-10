@@ -69,12 +69,15 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
     if (showModal) {
       document.body.classList.add("modal-open");
     } else {
-      document.body.classList.remove("modal-open");
-    }
+      // Delay the removal of the class
+      const timeoutId = setTimeout(() => {
+        document.body.classList.remove("modal-open");
+      }, 300); // Delay in milliseconds (adjust as needed)
 
-    return () => {
-      document.body.classList.remove("modal-open");
-    };
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }
   }, [showModal]);
 
   return (
