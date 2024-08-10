@@ -19,7 +19,7 @@
 .nav__eras-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 2rem;
 }
 
@@ -34,6 +34,8 @@
   gap: 1.5rem;
   flex-wrap: wrap;
   align-content: space-evenly;
+  justify-content: center;
+  /* border: 5px solid red; */
 }
 
 .nav__eras-container-overflow .nav__eras-link {
@@ -215,15 +217,25 @@
   overflow: hidden;
 }
 
-@media only screen and (min-width: 1710px) {
+@media only screen and (min-width: 1723px) {
   .nav__container {
     padding: var(--container-padding);
+  }
+}
+
+@media only screen and (max-width: 1723px) {
+  .nav__eras-container-overflow {
+    width: 565px;
   }
 }
 
 @media only screen and (max-width: 1180px) {
   .nav__container {
     padding: var(--container-padding);
+  }
+
+  .nav__eras-container-overflow {
+    width: 50px;
   }
 }
 

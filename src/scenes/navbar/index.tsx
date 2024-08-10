@@ -337,7 +337,7 @@ const Navbar = ({
               style={{
                 borderColor: textColor === "white" ? "white" : "black",
                 backgroundColor: textColor === "white" ? "#333333" : "#e0e0e0",
-                minWidth: !isAboveLargeScreens ? 0 : "15rem"
+                minWidth: !isAboveLargeScreens ? 0 : "15rem",
               }}
               onClick={isPhone ? handleExpandSearch : undefined}
             >
@@ -427,7 +427,9 @@ const Navbar = ({
               )}
             </div>
 
-            <div className="nav__eras-container-overflow">
+            <div
+              className="nav__eras-container-overflow"
+            >
               {isAboveLargeScreens ? (
                 eras.map((era, index) => (
                   <div className="nav__eras-link" key={index}>

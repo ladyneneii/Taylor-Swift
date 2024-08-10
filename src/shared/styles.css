@@ -345,11 +345,23 @@ button p {
   /* max-width: 1000px; */
 }
 
+@media only screen and (min-width: 1723px) {
+  .tracks__container {
+    padding-top: 6rem;
+  }
+}
+
 @media only screen and (max-width: 1400px) {
   .album-notes {
     flex-direction: column;
     gap: 1rem;
     text-align: start;
+  }
+}
+
+@media only screen and (max-width: 1180px) {
+  .tracks__container {
+    padding-top: 6rem;
   }
 }
 
@@ -369,8 +381,10 @@ button p {
   position: relative;
 }
 
-.carousel__container h1 {
+.carousel__img-desc {
   font-weight: 500;
+  font-size: 1.5rem;
+  white-space: wrap;
 }
 
 .carousel__container img {
@@ -419,9 +433,20 @@ button p {
   overflow-x: auto;
 }
 
+@media only screen and (max-width: 600px) {
+  .carousel__img-desc {
+    font-size: 1.5rem;
+    max-width: 20rem;
+  }
+}
 @media only screen and (max-width: 450px) {
   .carousel__container {
     width: max(300px, 100%);
+  }
+
+  .carousel__img-desc {
+    font-size: 1.5rem;
+    max-width: 17rem;
   }
 }
 

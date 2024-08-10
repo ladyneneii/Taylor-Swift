@@ -17,7 +17,7 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
   const [showModal, setShowModal] = useState(false);
   const [modalImg, setModalImg] = useState("");
   const [imgNum, setImgNum] = useState(-1);
-  const [carouselNum, setCarouselNum] = useState(-1)
+  const [carouselNum, setCarouselNum] = useState(-1);
 
   const updateArrows = () => {
     if (carouselRef.current) {
@@ -45,10 +45,14 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
     }
   };
 
-  const handleImgClick = (imgPath: string, imgNum: number, carouselNum: number) => {
+  const handleImgClick = (
+    imgPath: string,
+    imgNum: number,
+    carouselNum: number
+  ) => {
     setShowModal(true);
-    setImgNum(imgNum)
-    setCarouselNum(carouselNum)
+    setImgNum(imgNum);
+    setCarouselNum(carouselNum);
     setModalImg(imgPath);
   };
 
@@ -102,17 +106,22 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
                 sanitizedDesc = DOMPurify.sanitize(description);
               }
               return (
-                <div key={index}>
+                <div className="carousel__img-desc-container" key={index}>
                   <img
                     className={`img-border-${
                       bgColor === blackish ? "white" : "black"
                     }`}
-                    onClick={() => handleImgClick(imgPath, index, eraNumber - 1)}
+                    onClick={() =>
+                      handleImgClick(imgPath, index, eraNumber - 1)
+                    }
                     src={imgPath}
                     alt={description}
                   />
                   {description && (
-                    <h1 dangerouslySetInnerHTML={{ __html: sanitizedDesc }} />
+                    <h1
+                      className="carousel__img-desc"
+                      dangerouslySetInnerHTML={{ __html: sanitizedDesc }}
+                    />
                   )}
                 </div>
               );
