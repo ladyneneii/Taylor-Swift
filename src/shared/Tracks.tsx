@@ -80,6 +80,8 @@ const Tracks = ({
   const handleClickTrack = () => {
     const { trackIndex, trackAlbumLength } = track;
 
+    setShowSkipToTracks(false)
+
     setSquaresToMoveDown(() => {
       const newSquares = [];
 
