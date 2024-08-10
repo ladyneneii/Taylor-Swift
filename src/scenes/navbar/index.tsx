@@ -314,7 +314,10 @@ const Navbar = ({
         <div className="nav__container">
           {!expandSearch && (
             <div className="nav__logo">
-              <a href="#">
+              <a
+                href={`#${formatEraId(selectedEra)}`}
+                onClick={() => window.scrollTo({ top: 0 })}
+              >
                 <img
                   src={
                     textColor === "white"

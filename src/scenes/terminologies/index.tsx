@@ -36,6 +36,11 @@ const Terminologies = ({ setSelectedEra }: Props) => {
     return `${day}${daySuffix(day)} of ${month}, ${year}`;
   };
 
+  const handleButtonClick = (era: string) => {
+    setSelectedEra(era);
+    window.scrollTo({ top: 0 });
+  };
+  
   return (
     <div id="terms" className="terms__container">
       <div className="h1-container">
@@ -185,7 +190,7 @@ const Terminologies = ({ setSelectedEra }: Props) => {
             <div
               key={index}
               className="eras-btn-container"
-              onClick={() => setSelectedEra(era)}
+              onClick={() => handleButtonClick(era)}
             >
               <Button
                 bgcolor="white"
