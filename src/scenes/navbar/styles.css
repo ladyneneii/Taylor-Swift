@@ -229,7 +229,7 @@
   }
 }
 
-@media only screen and (max-width: 1180px) {
+@media only screen and (max-width: 1185px) {
   .nav__container {
     padding: var(--container-padding);
   }
