@@ -72,7 +72,7 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
       // Delay the removal of the class
       const timeoutId = setTimeout(() => {
         document.body.classList.remove("modal-open");
-      }, 300); // Delay in milliseconds (adjust as needed)
+      }, 600); // Delay in milliseconds (adjust as needed)
 
       return () => {
         clearTimeout(timeoutId);
