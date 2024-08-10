@@ -16,6 +16,7 @@ import { Track, allTracks } from "@/data/tracklists";
 type Props = {
   selectedEra: string;
   setSelectedEra: (value: string) => void;
+  setShowSkipToTracks: (value: boolean) => void;
   setTaylorSwiftTrack: (value: Track) => void;
   setFearlessTVTrack: (value: Track) => void;
   setSpeakNowTVTrack: (value: Track) => void;
@@ -32,6 +33,7 @@ type Props = {
 const Navbar = ({
   selectedEra,
   setSelectedEra,
+  setShowSkipToTracks,
   setTaylorSwiftTrack,
   setFearlessTVTrack,
   setSpeakNowTVTrack,
@@ -169,6 +171,7 @@ const Navbar = ({
       const targetElement = document.getElementById(targetId);
 
       if (targetElement) {
+        setShowSkipToTracks(false);
         setSearch(title);
         setShowSearchResults(false);
         searchInputRef.current?.blur();
@@ -292,7 +295,7 @@ const Navbar = ({
   useEffect(() => {
     setTextcolor(erasColor[eras.indexOf(selectedEra)]);
     borderColor(selectedEra);
-    console.log(selectedEra);
+    // console.log(selectedEra);
   }, [selectedEra]);
 
   return (
@@ -427,9 +430,7 @@ const Navbar = ({
               )}
             </div>
 
-            <div
-              className="nav__eras-container-overflow"
-            >
+            <div className="nav__eras-container-overflow">
               {isAboveLargeScreens ? (
                 eras.map((era, index) => (
                   <div className="nav__eras-link" key={index}>

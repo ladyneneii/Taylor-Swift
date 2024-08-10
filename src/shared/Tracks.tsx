@@ -80,8 +80,6 @@ const Tracks = ({
   const handleClickTrack = () => {
     const { trackIndex, trackAlbumLength } = track;
 
-    setShowSkipToTracks(false)
-
     setSquaresToMoveDown(() => {
       const newSquares = [];
 
@@ -272,7 +270,7 @@ const Tracks = ({
 
     handleClickTrack();
   }, [
-    track, // when this gets changed either by the setTrack in this component or the setTrack in Navbar, handleClickTrack() runs again
+    track,
     cols,
     height,
     tracklistHeight,

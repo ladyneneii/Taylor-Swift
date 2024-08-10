@@ -170,7 +170,15 @@ const App = () => {
 
   useEffect(() => {
     setShowSkipToTracks(selectedEra !== "Home");
+
+
   }, [selectedEra]);
+
+  
+
+  useEffect(() => {
+    console.log(showSkipToTracks);
+  }, [showSkipToTracks])
 
   return (
     <div className="app">
@@ -184,6 +192,7 @@ const App = () => {
         <Navbar
           selectedEra={selectedEra}
           setSelectedEra={setSelectedEra}
+          setShowSkipToTracks={setShowSkipToTracks}
           setTaylorSwiftTrack={setTaylorSwiftTrack}
           setFearlessTVTrack={setFearlessTVTrack}
           setSpeakNowTVTrack={setSpeakNowTVTrack}
