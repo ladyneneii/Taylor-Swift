@@ -315,8 +315,8 @@ const Navbar = ({
           {!expandSearch && (
             <div className="nav__logo">
               <a
-                href={`#${formatEraId(selectedEra)}`}
-                onClick={() => window.scrollTo({ top: 0 })}
+                href="#home"
+                onClick={() => handleLinkClick("Home")}
               >
                 <img
                   src={
