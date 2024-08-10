@@ -429,23 +429,33 @@ button p {
 
 .modal__container {
   position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensures the modal is above the overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__overlay {
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   /* min-height: 800px; */
-  z-index: 100;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.897);
 }
 
+.modal__close-btn,
 .modal__left-btn,
 .modal__right-btn {
   position: absolute;
-  z-index: 5;
+  z-index: 1000;
 }
 
 .modal__close-btn:hover,
@@ -457,7 +467,8 @@ button p {
 }
 
 .modal__close-btn {
-  align-self: flex-end;
+  top: 20px;
+  right: 20px;
 }
 
 .modal__left-btn {
@@ -468,17 +479,24 @@ button p {
   right: 20px;
 }
 
-.modal__container .img-container {
+.modal__overlay .img-container {
   /* make sure to set a value to height so that the CONTAINER scales as the screen is resized vertically */
   height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 
-.modal__container .img-container img {
+.modal__overlay .img-container a {
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__overlay .img-container img {
   /* set both properties to 100% so the IMG scales accordingly as screen is resized whether horizontally or vertically */
   /* setting width and height to 100% will cause the img to stretch and not be properly scaled as it will always occupy the full space of the parent */
   /* setting max-width and max-height to 100% instead ensures that the height and width of the image will always follow the height and width of the parent, respectively, while the resizing of the image is properly scaled since the values set to max-width and max-height are not the absolute width and height of the image; they are just the max. */

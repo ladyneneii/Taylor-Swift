@@ -11,12 +11,7 @@ type Props = {
   carouselNum: number;
 };
 
-const Modal = ({
-  setShowModal,
-  imgPath,
-  imgNum,
-  carouselNum,
-}: Props) => {
+const Modal = ({ setShowModal, imgPath, imgNum, carouselNum }: Props) => {
   const imgRef = useRef(null);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
@@ -46,27 +41,35 @@ const Modal = ({
   }, [currImgNum, carouselNum]);
 
   return (
-    <div className="modal__container">
-      <div ref={leftRef} className="modal__left-btn" onClick={handleClickLeft}>
-        <FaChevronLeft color="white" size={40} />
-      </div>
-      <div
-        ref={rightRef}
-        className="modal__right-btn"
-        onClick={handleClickRight}
-      >
-        <FaChevronRight color="white" size={40} />
-      </div>
-      <div className="img-container">
+    <div className="modal__overlay">
+      <div className="modal__container">
         <div className="modal__close-btn" onClick={() => setShowModal(false)}>
           <IoClose color="white" size={50} />
         </div>
-        <img
-          ref={imgRef}
-          src={image}
-          alt={image}
-          className="no-select no-outline"
-        />
+        <div
+          ref={leftRef}
+          className="modal__left-btn"
+          onClick={handleClickLeft}
+        >
+          <FaChevronLeft color="white" size={40} />
+        </div>
+        <div
+          ref={rightRef}
+          className="modal__right-btn"
+          onClick={handleClickRight}
+        >
+          <FaChevronRight color="white" size={40} />
+        </div>
+        <div className="img-container">
+          <a href={image} target="_blank">
+            <img
+              ref={imgRef}
+              src={image}
+              alt={image}
+              className="no-select no-outline"
+            />
+          </a>
+        </div>
       </div>
     </div>
   );
