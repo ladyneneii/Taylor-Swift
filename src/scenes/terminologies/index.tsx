@@ -195,7 +195,8 @@ const Terminologies = ({ setSelectedEra }: Props) => {
               <Button
                 bgcolor="white"
                 color="black"
-                dest={`#${formatEraId(era)}`}
+                // dest={`#${formatEraId(era)}`}
+                dest="#"
                 isWebsite={false}
               >
                 {era}
