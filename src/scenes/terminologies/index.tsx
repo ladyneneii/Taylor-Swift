@@ -38,7 +38,7 @@ const Terminologies = ({ setSelectedEra }: Props) => {
 
   const handleButtonClick = (era: string) => {
     setSelectedEra(era);
-    window.scrollTo({ top: 0 });
+    // window.scrollTo({ top: 0 });
   };
   
   return (
