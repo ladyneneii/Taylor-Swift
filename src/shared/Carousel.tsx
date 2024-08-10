@@ -65,6 +65,18 @@ const Carousel = ({ bgColor, eraNumber }: Props) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (showModal) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+
+    return () => {
+      document.body.classList.remove("modal-open");
+    };
+  }, [showModal]);
+
   return (
     <>
       {showModal && (

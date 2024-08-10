@@ -40,9 +40,11 @@ const Modal = ({ setShowModal, imgPath, imgNum, carouselNum }: Props) => {
     setImage(carouselEras[carouselNum][currImgNum].imgPath);
   }, [currImgNum, carouselNum]);
 
+
+
   return (
     <div className="modal__overlay">
-      <div className="modal__container">
+      <div className="modal__container" onClick={(e) => e.stopPropagation()}>
         <div className="modal__close-btn" onClick={() => setShowModal(false)}>
           <IoClose color="white" size={50} />
         </div>

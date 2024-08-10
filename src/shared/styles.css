@@ -428,6 +428,7 @@ button p {
 /* Modal.tsx */
 
 .modal__container {
+  pointer-events: all;
   position: fixed;
   width: 100%;
   height: 100%;

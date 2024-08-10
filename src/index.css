@@ -202,9 +202,11 @@ a {
 @media only screen and (max-width: 300px) {
   .skipToTracks {
     right: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
-
+.modal-open {
+  pointer-events: none;
+}
