@@ -9,6 +9,7 @@ import useOutsideClick from "@/hooks/useOutsideClick";
 import {
   eras,
   erasColor,
+  formatEraId,
   // formatEraId,
 } from "@/shared/types";
 import { Track, allTracks } from "@/data/tracklists";
@@ -435,6 +436,7 @@ const Navbar = ({
                 eras.map((era, index) => (
                   <div className="nav__eras-link" key={index}>
                     <a
+                      href={`#${formatEraId(eras[index])}`}
                       onClick={() => handleLinkClick(era)}
                       style={{ color: textColor }}
                       className={borderColor(era)}
@@ -488,6 +490,7 @@ const Navbar = ({
           {eras.map((era, index) => (
             <div key={index} className="nav__eras-link">
               <a
+                href={`#${formatEraId(eras[index])}`}
                 onClick={() => handleLinkClick(era)}
                 style={{ color: textColor }}
                 className={borderColor(era)}

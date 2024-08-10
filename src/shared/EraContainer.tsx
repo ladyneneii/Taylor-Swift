@@ -31,12 +31,6 @@ const EraContainer = ({
   const isLarge = useMediaQuery("(max-width: 1400px)");
   const isMedium = useMediaQuery("(max-width: 750px)");
 
-  const formatEraId = (currEra: string) => {
-    return currEra?.toLowerCase().replace(/\s+/g, "");
-  };
-
-  const eraId = formatEraId(eraTitle);
-
   const heroEraStyle: Record<string, object> = {
     "Taylor Swift": {
       objectPosition: useMediaQuery("(min-width: 1600px)")
@@ -95,7 +89,7 @@ const EraContainer = ({
     <div
       className="era-container"
       style={{ color: textColor, borderColor: textColor }}
-      id={eraId}
+   
     >
       {/* HERO SECTION */}
       {eraTitle !== "Home" && (

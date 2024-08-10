@@ -4,7 +4,7 @@ import FearlessTV from "@/assets/fearless-logo.png";
 import SpeakNowTV from "@/assets/speak-now-logo.png";
 import RedTV from "@/assets/red-logo.png";
 import NineteenEightyNineTV from "@/assets/1989-logo.png";
-import { eras } from "@/shared/types";
+import { eras, formatEraId } from "@/shared/types";
 import Button from "@/shared/Button";
 
 type Props = {
@@ -187,7 +187,12 @@ const Terminologies = ({ setSelectedEra }: Props) => {
               className="eras-btn-container"
               onClick={() => setSelectedEra(era)}
             >
-              <Button bgcolor="white" color="black" dest="#" isWebsite={false}>
+              <Button
+                bgcolor="white"
+                color="black"
+                dest={`#${formatEraId(era)}`}
+                isWebsite={false}
+              >
                 {era}
               </Button>
             </div>
