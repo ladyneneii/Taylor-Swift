@@ -281,7 +281,7 @@ const speakNowTVTrackList = [
   },
   {
     title: "Speak Now (Taylor's Version)",
-    url: "https://www.youtube.com/embed/qc2Z-OX9wnc?si=v74xAj49NPWK0t7U",
+    url: "https://www.youtube.com/embed/JlZnvyBqceY?si=kQKHrBYgzhNPEret",
   },
   {
     title: "Dear John (Taylor's Version)",
