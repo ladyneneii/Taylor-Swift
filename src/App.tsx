@@ -21,7 +21,9 @@ import Button from "./shared/Button";
 
 const App = () => {
   const [selectedEra, setSelectedEra] = useState("Home");
-  const [showSkipToTracks, setShowSkipToTracks] = useState(true);
+  const [showSkipToTracks, setShowSkipToTracks] = useState(
+    selectedEra !== "Home"
+  );
   const currEraNum = eras.indexOf(selectedEra);
 
   const defaultTrackValues = (eraNumber: number) => {
@@ -169,16 +171,12 @@ const App = () => {
   `;
 
   useEffect(() => {
-    setShowSkipToTracks(selectedEra !== "Home");
+    const timer = setTimeout(() => {
+      setShowSkipToTracks(selectedEra !== "Home");
+    }, 10);
 
-
+    return () => clearTimeout(timer);
   }, [selectedEra]);
-
-  
-
-  useEffect(() => {
-    console.log(showSkipToTracks);
-  }, [showSkipToTracks])
 
   return (
     <div className="app">
