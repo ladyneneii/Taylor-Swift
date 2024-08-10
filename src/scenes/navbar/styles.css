@@ -223,20 +223,18 @@
   }
 }
 
-@media only screen and (max-width: 1723px) {
+@media only screen and (min-width: 1180px) {
   .nav__eras-container-overflow {
     width: 565px;
   }
 }
 
-@media only screen and (max-width: 1179px) {
+@media only screen and (max-width: 1180px) {
   .nav__container {
     padding: var(--container-padding);
   }
 
-  .nav__eras-container-overflow {
-    width: 50px;
-  }
+
 }
 
 @media only screen and (max-width: 750px) {
